@@ -1,0 +1,220 @@
+
+#dat-demo-settings {
+	display: block;
+	position: fixed;
+	left: 0px;
+	top: 20%;
+	background: #232323;
+	color: #fff;
+	font-family: sans-serif;
+	font-size: 14px;
+	font-weight: normal;
+	width: 226px;
+	z-index: 100;
+	left: -226px;
+	min-height: 200px;
+	transition: left 0.2s;
+	-moz-transition: left 0.2s;
+	-webkit-transition: left 0.2s;
+	-o-transition: left 0.2s;
+}
+
+#dat-demo-settings.active {
+	left: 0px;
+}
+
+#dat-demo-settings .dat-demo-button {
+	display: block;
+	text-align: left;
+	white-space: nowrap;
+	position: absolute;
+	left: 100%;
+	top: 20px;
+	width: 1px;
+	height: 1px;
+	cursor: pointer;
+	background: inherit;
+	-ms-transform: rotate(90deg);
+	-webkit-transform: rotate(90deg);
+	transform: rotate(90deg);
+	z-index: 101;
+	opacity: 0.8;
+	filter: alpha(opacity=80);
+	transition: all 0.2s;
+	-moz-transition: all 0.2s;
+	-webkit-transition: all 0.2s;
+	-o-transition: all 0.2s;
+}
+
+#dat-demo-settings.active .dat-demo-button,
+#dat-demo-settings .dat-demo-button:hover {
+	opacity: 1;
+	filter: alpha(opacity=100);
+}
+
+#dat-demo-settings .dat-demo-button span {
+	text-align: left;
+	white-space: nowrap;
+	display: inline-block;
+	background: inherit;
+	padding: 10px 15px;
+	position: relative;
+	top: -35px;
+	cursor: pointer;
+}
+
+#dat-demo-settings .dat-demo-button span i.fa {
+	padding-right: 8px;
+}
+
+#dat-demo-settings .dat-demo-inner {
+	display: block;
+	position: relative;
+	padding: 15px;
+}
+
+#dat-demo-settings > strong {
+	padding: 15px 15px 10px 15px;
+	display: block;
+	font-size: 18px;
+	font-weight: normal;
+}
+
+#dat-demo-settings .dat-demo-row {
+	display: block;
+	margin-bottom: 25px;
+}
+
+#dat-demo-settings .dat-demo-row:last-child {
+	margin-bottom: 0px;
+}
+
+#dat-demo-settings .dat-demo-row > strong {
+	display: block;
+	padding-bottom: 15px;
+	font-weight: normal;
+	color: #9c9c9c;
+	font-size: 14px;
+	transition: all 0.2s;
+	-moz-transition: all 0.2s;
+	-webkit-transition: all 0.2s;
+	-o-transition: all 0.2s;
+}
+
+#dat-demo-settings select {
+	appearance: none;
+	-ms-appearance: none;
+	-webkit-appearance: none;
+	-moz-appearance:none;
+}
+
+#dat-demo-settings .dat-demo-row > i {
+	display: block;
+	padding-bottom: 15px;
+	font-weight: normal;
+	color: #5E5E5E;
+	font-style: normal;
+	font-size: 12px;
+	margin-top: -8px;
+	transition: all 0.2s;
+	-moz-transition: all 0.2s;
+	-webkit-transition: all 0.2s;
+	-o-transition: all 0.2s;
+}
+
+#dat-demo-settings .dat-demo-row > i:empty {
+	display: none!important;
+}
+
+#dat-demo-settings .dat-demo-row:hover > strong {
+	color: #ccc;
+}
+
+#dat-demo-settings .dat-demo-row:hover > i {
+	color: #9c9c9c;
+}
+
+#dat-demo-settings .dat-demo-row select {
+	display: block;
+	background: transparent;
+	color: #fff;
+	border: 1px solid rgba(255,255,255,0.15);
+	border-radius: 17px;
+	padding: 6px 10px;
+	cursor: pointer;
+	width: 100%;
+	z-index: 2;
+	position: relative;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+#dat-demo-settings .dat-demo-row label {
+	display: block;
+	position: relative;
+}
+
+#dat-demo-settings .dat-demo-row label:after {
+	display: block;
+	position: absolute;
+	top: 37%;
+	right: 15px;
+	content: '\f0d7';
+	font-size: 10px;
+	font-family: 'FontAwesome';
+	z-index: 0;
+}
+
+#dat-demo-settings .dat-demo-row select:hover {
+	background: rgba(255,255,255,0.05);
+}
+
+#dat-demo-settings .dat-demo-row select option {
+	color: #000;
+}
+
+.dat-demo-bull {
+	display: inline-block;
+	width: 24px;
+	height: 24px;
+	line-height: 24px;
+	background: transparent;
+	box-shadow: inset 0 0 0 1px rgba(255,255,255,0.2);
+	border-radius: 50%;
+	margin-bottom: 7px;
+	margin-left: 7px;
+	position: relative;
+	overflow: hidden;
+	border: 1px solid #232323;
+}
+
+.dat-demo-bull:hover {
+	box-shadow: inset 0 0 0 1px rgba(255,255,255,1);
+}
+
+.dat-demo-bull:nth-child(6n+1) {
+	margin-left: 0px;
+}
+
+.dat-demo-bull:before {
+	display: block;
+	position: absolute;
+	width: 50%;
+	right: 0px;
+	top: 0px;
+	height: 100%;
+	content: '';
+	z-index: 1;
+	background: rgba(0,0,0,0.2);
+}
+
+
+
+@media only screen and (max-width: 900px) {
+
+	#dat-demo-settings {
+		display: none!important;
+	}
+
+}
