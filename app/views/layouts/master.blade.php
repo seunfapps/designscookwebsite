@@ -4,17 +4,18 @@
 	<!-- Head Meta Data -->
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>Designscook | gettting your designs done right</title>
-	<link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
+	<link rel="shortcut icon" type="image/x-icon" href="{{ asset('images/favicon.ico') }}">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 	<!-- Head Stylesheets -->
-	<link rel="stylesheet" type="text/css" href="css/theme-reset.css" media="screen">
-	<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css" media="screen">
-	<link rel="stylesheet" type="text/css" href="css/dat-menu.css" media="screen">
-	<link rel="stylesheet" type="text/css" href="css/animate.css" media="screen">
-	<link rel="stylesheet" type="text/css" href="css/theme-style.css" media="screen">
-	<link rel="stylesheet" type="text/css" href="css/shortcodes.css" media="screen">
-	<link rel="stylesheet" type="text/css" href="css/responsive.css" media="screen">
+	 {{ HTML::style('css/theme-reset.css') }}
+	 {{ HTML::style('css/font-awesome.min.css') }}
+	 {{ HTML::style('css/dat-menu.css') }}
+	 {{ HTML::style('css/css/animate.css') }}
+	 {{ HTML::style('css/theme-style.css') }}
+	 {{ HTML::style('css/shortcodes.css') }}
+	 {{ HTML::style('css/responsive.css') }}
+    
 </head>
 <body>
 
