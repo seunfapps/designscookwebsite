@@ -29,7 +29,7 @@
 				
 				<!-- BEGIN .logo-image -->
 				<div class="logo-image">
-					<a href="/"><img src="images/designscook-logo-278-129.fw.png" alt="" /></a>
+					<a href="/"><img src="{{ asset('images/designscook-logo-278-129.fw.png') }}" alt="" /></a>
 				<!-- END .logo-image -->
 				</div>
 
@@ -62,8 +62,12 @@
                         <li><a href="#">Packages</a></li>
                         <li><a href="#">Collections</a></li>
                         <li><a href="#">FAQs</a></li>
-                        <li><div class="logReg"><a href="#">Login</a></div></li>
-                        <li><div class="logReg"><a href="#">Register</a></div></li>
+                        @if(!Auth::check())
+                        <li><div class="logReg"><a href="login">Log in</a></div></li>
+                        <li><div class="logReg"><a href="register">Register</a></div></li>
+                        @else
+                        	<li><div class="logReg"><a href="logout">Log out</a></div></li>
+                        	@endif
                         <li><div id="register_btn"><a href="#">Post A Job</a></div></li>
                         
                         <!--<li><a href="#">How It Works</a></li>

@@ -14,6 +14,8 @@
 Route::get('/', 'welcomeController@index');
 Route::get('login', 'welcomeController@auth');
 Route::get('register', 'welcomeController@register');
+Route::get('logout', 'welcomeController@logout');
+Route::get('forgotPassword', 'welcomeController@forgotPassword');
 Route::post('loggedin', 'welcomeController@login');
 Route::get('signup', 'usersController@create');
 Route::post('registerusers', 'usersController@store');

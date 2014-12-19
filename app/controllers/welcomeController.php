@@ -48,6 +48,18 @@ public function register()
 			return Redirect::back()->withInput(Input::except('passwd'))->withErrors($message);
 		}		
 		
-}
+	}
+
+	public function logout()
+	{
+		Auth::logout();
+		return Redirect::to('/');
+	}
+
+	
+	public function forgotPassword(){
+		
+	}
+
 
 }

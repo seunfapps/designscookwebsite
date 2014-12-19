@@ -2,6 +2,9 @@
 
 class usersController extends \BaseController {
 
+public function __construct() {
+    $this->beforeFilter('csrf', array('on'=>'post'));
+}
 	/**
 	 * Show the form for creating a new resource.
 	 *
@@ -29,8 +32,9 @@ class usersController extends \BaseController {
 			$user->phone_no = Input::get('phone');
 			$user->usertype = Input::get('usertype');
 			$user->password = Hash::make( Input::get('passwd') );
-			$user->save();
-
+			$result = $user->save();
+			
+				return Redirect::to('login')->withInput(Input::except('passwd'))->withErrors('You have been successfully registered.');
 		}
 		else{
 			return Redirect::back()->withInput(Input::except('passwd'))->withErrors($validation);
@@ -62,6 +66,9 @@ class usersController extends \BaseController {
 	public function edit($id)
 	{
 		//
+
+echo $id;
+
 	}
 
 
@@ -88,5 +95,9 @@ class usersController extends \BaseController {
 		//
 	}
 
+
+	public function forgotPassword(){
+		
+	}
 
 }

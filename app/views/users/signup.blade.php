@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section('pagetree')
-<li><a href="index.html">Homepage</a></li>
-					<li><span>Register</span></li>
+<li>{{HTML::link('/', 'Homepage')}}</li>
+<li><span>Register</span></li>
 @stop
 @section('content')
 <!-- some content here -->
