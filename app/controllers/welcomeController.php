@@ -11,6 +11,11 @@ class welcomeController extends \BaseController {
 	{
 		return View::make('welcome/index');
 	}
+	
+public function register()
+	{
+		return View::make('welcome/register');
+	}
 
 
 	/**
