@@ -207,7 +207,7 @@ a:active {
 }
 
 .header-bottom .right-info.with-basket {
-	margin-right: 180px;
+	margin-right: 210px;
 }
 
 .header-bottom .right-info {
@@ -527,15 +527,6 @@ a:active {
 	text-decoration: none;
 }
 
-#main-menu > ul > li > #register_btn a {
-	background-color: #A6BE29;
-}
-
-#main-menu > ul > li > .logReg a {
-	background-color: #fff;
-}
-
-
 #main-menu > ul > li a span {
 	display: block;
 	padding-right: 14px;
@@ -760,8 +751,7 @@ a:active {
 #content .block-title {
 	display: block;
 	text-align: center;
-	/*margin-bottom: 40px;*/
-	margin-bottom: 10px;
+	margin-bottom: 40px;
 }
 
 #content .block-title h2 {
@@ -4067,18 +4057,16 @@ span.required {
 	color: red;
 }
 
-/*form.login {
-   background: rgba(255, 255, 255, 0.33);
+form.login {
+    background: rgba(255, 255, 255, 0.33);
     padding: 32px;
-	/*padding: 10px;
     margin: 30px 0px;
-	/*margin: 10px 0px;
     border-radius: 4px;
     font-size: 13px;
 }
 
 form.login label {
- 	display: block;
+    display: block;
 }
 
 form.login input.input-text {
@@ -4092,8 +4080,6 @@ form.login input.input-text {
 
 .woocommerce-page form.login input#rememberme {
     margin-right: 4px;
-	/*margin-left: auto;
-	margin-right:auto;
 }
 
 p.form-row label {
@@ -4105,7 +4091,7 @@ p.form-row input.input-text {
     font-size: 15px;
     color: #333;
 }
-*/
+
 .addresses h3 {
     font-size: 18px;
     font-weight: 600;
@@ -5702,13 +5688,10 @@ span.required {
 
 form.login {
     background: rgba(255, 255, 255, 0.33);
-   /* padding: 32px;*/
- 	padding: 10px;
-  /* margin: 30px 0px;*/
-	margin: 10px 0px;
+    padding: 32px;
+    margin: 30px 0px;
     border-radius: 4px;
     font-size: 13px;
-	width: 100%;
 }
 
 form.login label {
@@ -5716,8 +5699,7 @@ form.login label {
 }
 
 form.login input.input-text {
-    width: 90%;
-	 /*width: 100%;*/
+    width: 100%;
 }
 
 .woocommerce-page form.login input.button {
@@ -5909,17 +5891,3 @@ textarea.input-text {
 	height: auto;
 }
 
-
-
-
-
-
-.margin-bottom-10px
-{
-	margin-bottom: 10px;
-}
-.centralize
-{
-	margin-left: auto;	
-	margin-right: auto;
-}

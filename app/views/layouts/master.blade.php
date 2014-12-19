@@ -28,46 +28,36 @@
 				
 				<!-- BEGIN .logo-image -->
 				<div class="logo-image">
-					<a href="/"><img src="images/designscook-logo-278-129.fw.png" alt="" /></a>
+					<a href="index.html"><img src="images/header-logo.png" alt="" /></a>
 				<!-- END .logo-image -->
 				</div>
 
 				<!-- BEGIN .social-icons -->
 				<div class="social-icons">
 					<div>
-						<a href="https://twitter.com/DesignsCook" target="_blank"><img src="images/social-twitter.png" alt="" /></a>
+						<a href="#" target="_blank"><img src="images/social-twitter.png" alt="" /></a>
 					</div>
 					<div>
-						<a href="https://www.facebook.com/pages/DesignsCook/1426586880962451?ref=hl" target="_blank"><img src="images/social-facebook.png" alt="" /></a>
+						<a href="#" target="_blank"><img src="images/social-facebook.png" alt="" /></a>
 					</div>
 					<div>
-						<a href="https://plus.google.com/u/0/115870390292957554586/posts" target="_blank"><img src="images/social-google.png" alt="" /></a>
+						<a href="#" target="_blank"><img src="images/social-google.png" alt="" /></a>
 					</div>
-					<!--<div class="header-search">
+					<div class="header-search">
 						<form action="#">
 							<input type="text" name="s" value="" />
 							<span><b>Search</b>Find content</span>
 							<input type="submit" value="s" />
 						</form>
-					</div>-->
+					</div>
 				<!-- END .social-icons -->
 				</div>
 
 				<!-- BEGIN #main-menu -->
 				<div id="main-menu">
 					<ul class="load-responsive" rel="Main Menu">
-						<!--<li><a href="#">Home</a></li>-->
-                        <li><a href="#">Categories</a></li>
-                        <li><a href="#">Packages</a></li>
-                        <li><a href="#">Collections</a></li>
-                        <li><a href="#">FAQs</a></li>
-                        <li><div class="logReg"><a href="#">Login</a></div></li>
-                        <li><div class="logReg"><a href="#">Register</a></div></li>
-                        <li><div id="register_btn"><a href="#">Post A Job</a></div></li>
-                        
-                        <!--<li><a href="#">How It Works</a></li>
-                        <li><a href="#">Contact Us</a></li>
-						<!--<li><a href="blog.html"><span>Blog</span></a>
+						<li><a href="index.html">Homepage</a></li>
+						<li><a href="blog.html"><span>Blog</span></a>
 							<ul class="sub-menu">
 								<li><a href="blog-sidebar.html">Blog With Sidebar</a></li>
 								<li><a href="post-single.html">Post Single</a></li>
@@ -91,7 +81,7 @@
 						</li>
 						<li><a href="oven.html">The Oven</a></li>
 						<li><a href="photo-gallery.html">Gallery</a></li>
-						<li><a href="contact-us.html">Contacts</a></li>-->
+						<li><a href="contact-us.html">Contacts</a></li>
 					</ul>
 				<!-- END #main-menu -->
 				</div>
@@ -104,12 +94,7 @@
 
 		<!-- BEGIN .header-bottom -->
 		<div class="header-bottom">
-			
-            <div class="right-info with-basket">
-                <!--	<a href="#" class="s-border-button" style="background-image:url(../images/panel-background.jpg);">Login</a>
-                    <a href="#" class="s-border-button" style="background-image:url(../images/panel-background.jpg);">Register</a>
-                    <a href="#" class="s-border-button" style="background-image:url(../images/panel-background.jpg);">Post a Job</a>-->
-			</div>
+			<!-- BEGIN .inner-wrapper -->
 			<div class="inner-wrapper">
 
 				<ul class="page-tree">
@@ -118,10 +103,45 @@
 
 				<div class="basket">
 					<!-- BEGIN .basket-content -->
-					
+					<div class="basket-content">
+						<ul class="items">
+							<li>
+								<div class="item-controls">
+									<a href="#" class="item-add">+</a>
+									<a href="#" class="item-del">-</a>
+								</div>
+								<a href="#"><img src="images/photos/image-1.jpg" alt="" /><b>Recusabo Sensibus</b><span><b class="item-qnt">2</b>QNT x<span class="item-price">$1,20</span></span></a>
+							</li>
+							<li>
+								<div class="item-controls">
+									<a href="#" class="item-add">+</a>
+									<a href="#" class="item-del">-</a>
+								</div>
+								<a href="#"><img src="images/photos/image-2.jpg" alt="" /><b>Possim Accusata Erroribus</b><span><b class="item-qnt">43</b>QNT x<span class="item-price">$2,50</span></span></a>
+							</li>
+						</ul>
+						<div>
+							<span>Subtotal</span>
+							<span class="right cart-total">$530.99</span>
+						</div>
+						<div class="split">
+							<a href="#" class="action-button size6">View cart</a>
+							<a href="#" class="action-button size6" style="background-color:#85ab2a;">Checkout</a>
+							<div class="clear-float"></div>
+						</div>
+					<!-- END .basket-content -->
+					</div>
+					<a href="#basket-toggle" class="basket-toggle">
+						<span><b>32</b> item(s) - <b>$530.99</b></span>
+					</a>
+					<span class="basket-new">
+						<span>New item in basket</span>
+					</span>
 				</div>
 
-				
+				<div class="right-info with-basket">
+					<span>We are open <b>everyday</b> from 10am till <b>7pm</b></span>
+				</div>
 
 			<!-- END .inner-wrapper -->
 			</div>
