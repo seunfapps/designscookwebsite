@@ -1,21 +1,40 @@
 @extends('layouts.master')
 @section('pagetree')
 <li><a href="index.html">Homepage</a></li>
-					<li><span>Login</span></li>
+<li><span>Login</span></li>
 @stop
 @section('content')
-<!-- some content here -->
-<h1>Log in</h1>
-{{ Form::open(['action'=>'welcomeController@login', 'class'=>'login']) }}	
+<div class="page-block lightcolor">
+	<div class="inner-wrapper">
 
-@if ($errors->any())
-        {{ implode('', $errors->all('<div class="woocommerce-error">:message</div>')) }}
-@endif
-{{Form::email('email', '', ['placeholder'=>'Email', 'class'=>'input-text', 'required'=>'true'])}}
-{{Form::password('passwd', ['placeholder'=>'*****', 'type'=>'password', 'class'=>'input-text', 'required'=>'true'])}}
-{{Form::checkbox('rememberme', '', ['id'=>'rememberme'])}}<label for="rememberme" style="display:inline-block; padding:6px;">Remember me</label>
-
-	<a href="">Forgot Password?</a>
-	<input type="submit" name="submit" value="Login" class='button'>
-{{ Form::close() }}
+		<div class="split dat-scrollnimate" data-animation="bounceIn">
+    
+		<div class="size4" style="margin-left: 33%;">
+        	<div class="block-title"><h2>Log In</h2></div>
+            	<div align="center">
+            {{ Form::open(['action'=>'welcomeController@login', 'class'=>'login']) }}	
+            
+            @if ($errors->any())
+                    {{ implode('', $errors->all('<div class="woocommerce-error">:message</div>')) }}
+            @endif
+            <div class="margin-bottom-10px">
+           	 {{Form::email('email', '', ['placeholder'=>'Email', 'class'=>'input-text', 'required'=>'true'])}}
+            </div>
+            <div class="margin-bottom-10px">
+            {{Form::password('passwd', ['placeholder'=>'*****', 'type'=>'password', 'class'=>'input-text', 'required'=>'true'])}}
+            </div>
+            <div class="margin-bottom-10px">
+            {{Form::checkbox('rememberme', '', ['id'=>'rememberme'])}}<label for="rememberme" style="display:inline-block;><span style="padding:6px;">&nbsp;Remember me</span></label>
+         
+            
+                <a href="" style="display:inline-block">Forgot Password?</a>
+                </div>
+                <input type="submit" name="submit" value="Login" class='button'>
+              
+            {{ Form::close() }}
+            </div>
+           </div>
+        </div>
+    </div>
+</div>
 @stop
