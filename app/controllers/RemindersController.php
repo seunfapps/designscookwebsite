@@ -25,7 +25,7 @@ class RemindersController extends Controller {
 				return Redirect::back()->with('error', Lang::get($response));
 
 			case Password::REMINDER_SENT:
-				return Redirect::back()->with('status', Lang::get($response));
+				return Redirect::back()->with('status', 'An email with the password reset has been sent.');
 		}
 	}
 
@@ -49,6 +49,7 @@ class RemindersController extends Controller {
 	 */
 	public function postReset()
 	{
+		
 		$credentials = Input::only(
 			'email', 'password', 'password_confirmation', 'token'
 		);
@@ -59,16 +60,21 @@ class RemindersController extends Controller {
 
 			$user->save();
 		});
+		
 
 		switch ($response)
 		{
 			case Password::INVALID_PASSWORD:
+				return Redirect::back()->with('error','Invalid password' );
+			
 			case Password::INVALID_TOKEN:
+				return Redirect::to('/')->with('status', 'Link has expired');
 			case Password::INVALID_USER:
-				return Redirect::back()->with('error', Lang::get($response));
+
+				return Redirect::back()->with('error', 'This email address does not exist in our system.');
 
 			case Password::PASSWORD_RESET:
-				return Redirect::to('/');
+				return Redirect::to('login')->with('status', 'You have successfully reset your password');
 		}
 	}
 

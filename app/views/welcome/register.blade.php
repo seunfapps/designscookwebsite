@@ -4,7 +4,7 @@
 <li><span>Register</span></li>
 @stop
 @section('content')
-<div class="page-block lightcolor">
+<div class="page-block">
 	<div class="inner-wrapper">
 
 		<div class="split dat-scrollnimate" data-animation="bounceIn">
@@ -19,7 +19,7 @@
             @endif
             
             <div class="margin-bottom-10px">{{Form::radio('usertype', 'customer',null, ['id'=>'customer', 'required'=>'true'])}} <label for="customer">Customer</label>{{Form::radio('usertype', 'designer',null, ['id'=>'designer', 'required'=>'true'])}} <label for="designer">Designer</label> <br></div>
-            
+
             <div class="margin-bottom-10px">
            	 {{Form::text('fname', '', ['placeholder'=>'First Name', 'class'=>'input-text', 'required'=>'true'])}}
             </div>

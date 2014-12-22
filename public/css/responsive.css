@@ -126,7 +126,7 @@
 		width: 90%;
 	}
 
-	.header-bottom .right-info.with-basket {
+	.header-bottom .right-info.with-basket,.header-top .right-info.with-basket {
 		display: none!important;
 	}
 
@@ -134,7 +134,7 @@
 		font-size: 22px;
 	}
 
-	.header-bottom .basket {
+	.header-bottom .basket, .header-top .basket {
 		left: 50%;
 		margin-left: -100px;
 	}

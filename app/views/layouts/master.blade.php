@@ -11,7 +11,7 @@
 	 {{ HTML::style('css/theme-reset.css') }}
 	 {{ HTML::style('css/font-awesome.min.css') }}
 	 {{ HTML::style('css/dat-menu.css') }}
-	 {{ HTML::style('css/css/animate.css') }}
+	 {{ HTML::style('css/animate.css') }}
 	 {{ HTML::style('css/theme-style.css') }}
 	 {{ HTML::style('css/shortcodes.css') }}
 	 {{ HTML::style('css/responsive.css') }}
@@ -36,13 +36,13 @@
 				<!-- BEGIN .social-icons -->
 				<div class="social-icons">
 					<div>
-						<a href="https://twitter.com/DesignsCook" target="_blank"><img src="images/social-twitter.png" alt="" /></a>
+						<a href="https://twitter.com/DesignsCook" target="_blank"><img src="{{ asset('images/social-twitter.png') }}" alt="" /></a>
 					</div>
 					<div>
-						<a href="https://www.facebook.com/pages/DesignsCook/1426586880962451?ref=hl" target="_blank"><img src="images/social-facebook.png" alt="" /></a>
+						<a href="https://www.facebook.com/pages/DesignsCook/1426586880962451?ref=hl" target="_blank"><img src="{{ asset('images/social-facebook.png') }}" alt="" /></a>
 					</div>
 					<div>
-						<a href="https://plus.google.com/u/0/115870390292957554586/posts" target="_blank"><img src="images/social-google.png" alt="" /></a>
+						<a href="https://plus.google.com/u/0/115870390292957554586/posts" target="_blank"><img src="{{ asset('images/social-google.png') }}" alt="" /></a>
 					</div>
 					<!--<div class="header-search">
 						<form action="#">
@@ -63,12 +63,12 @@
                         <li><a href="#">Collections</a></li>
                         <li><a href="#">FAQs</a></li>
                         @if(!Auth::check())
-                        <li><div class="logReg"><a href="login">Log in</a></div></li>
-                        <li><div class="logReg"><a href="register">Register</a></div></li>
+                        <li><div class="logReg">{{HTML::link('login','Log in')}}</div></li>
+                        <li><div class="logReg">{{HTML::link('register','Register')}}</div></li>
                         @else
-                        	<li><div class="logReg"><a href="logout">Log out</a></div></li>
+                        	<li><div class="logReg">{{HTML::link('logout','Log out')}}</div></li>
                         	@endif
-                        <li><div id="register_btn"><a href="#">Post A Job</a></div></li>
+                        <li><div id="register_btn">{{HTML::link('#','Post A Job')}}</div></li>
                         
                         <!--<li><a href="#">How It Works</a></li>
                         <li><a href="#">Contact Us</a></li>
@@ -296,14 +296,21 @@
 		var _datMenuSearch = true;
 	</script>
 
-	<script src="jscript/jquery-1.10.2.min.js"></script>
-	<script src="jscript/iscroll.js"></script>
-	<script src="jscript/modernizr.custom.50878.js"></script>
+	{{ HTML::script('jscript/jquery-1.10.2.min.js')}}
+	{{ HTML::script('jscript/iscroll.js')}}
+	{{ HTML::script('jscript/modernizr.custom.50878.js')}}
 
-	<script src="jscript/flowtype.js"></script>
-	<script src="jscript/jquery.knob.js"></script>
-	<script src="jscript/theme-script.js"></script>
-	<script src="jscript/dat-menu.js"></script>
+	{{ HTML::script('jscript/flowtype.js')}}
+	{{ HTML::script('jscript/jquery.knob.js')}}
+	{{ HTML::script('jscript/theme-script.js')}}
+	{{ HTML::script('jscript/dat-menu.js')}}
+@if (Session::has('status'))
+	
+<script>
+	alert('<?php echo Session::get('status') ?>');
+</script>
+{{Session::forget('status')}}
 
+@endif
 </body>
 </html>

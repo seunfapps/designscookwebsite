@@ -1,3 +1,0 @@
-{{Form::button('Register')}}
-{{Form::button('Login')}}
-{{Form::button('Post a job')}}

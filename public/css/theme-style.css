@@ -170,24 +170,24 @@ a:active {
 
 
 
-.header-bottom {
+.header-bottom, .header-top  {
 	display: block;
 	height: 64px;
 	background: url(../images/header-bottom.png) repeat-x top center;
 	color: #efeadf;
 }
 
-.header-bottom .inner-wrapper {
+.header-bottom .inner-wrapper,.header-top .inner-wrapper  {
 	position: relative;
 }
 
-.header-bottom .page-tree {
+.header-bottom .page-tree, .header-top .page-tree {
 	display: block;
 	float: left;
 	font-size: 0;
 }
 
-.header-bottom .page-tree > li {
+.header-bottom .page-tree > li, .header-top .page-tree > li {
 	font-size: 14px;
 	display: inline-block;
 	color: #efeadf;
@@ -198,7 +198,7 @@ a:active {
 	cursor: default;
 }
 
-.header-bottom .page-tree > li:first-child {
+.header-bottom .page-tree > li:first-child,.header-top .page-tree > li:first-child {
 	background: url(../images/page-tree-house.png) no-repeat left center;
 }
 

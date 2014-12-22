@@ -4,7 +4,7 @@
 <li><span>Login</span></li>
 @stop
 @section('content')
-<div class="page-block lightcolor">
+<div class="page-block">
 	<div class="inner-wrapper">
 
 		<div class="split dat-scrollnimate" data-animation="bounceIn">
@@ -26,7 +26,7 @@
             <div class="margin-bottom-10px">
             {{Form::checkbox('rememberme', '', ['id'=>'rememberme'])}}
             <label for="rememberme" style="display:inline-block;"><span style="padding:6px;">&nbsp;Remember me</span></label>
-            {{HTML::link('forgotPassword', 'Forgot Password?',['style'=>'display:inline-block;'])}}
+            {{HTML::link('password/reset', 'Forgot Password?',['style'=>'display:inline-block;'])}}
             </div>
             {{Form::submit('Login', ['class'=>'button'])}}
             

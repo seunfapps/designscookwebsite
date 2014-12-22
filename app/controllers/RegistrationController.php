@@ -1,10 +1,18 @@
 <?php
 
-class usersController extends \BaseController {
+class RegistrationController extends \BaseController {
 
-public function __construct() {
-    $this->beforeFilter('csrf', array('on'=>'post'));
-}
+	/**
+	 * Display a listing of the resource.
+	 *
+	 * @return Response
+	 */
+	public function index()
+	{
+		//
+	}
+
+
 	/**
 	 * Show the form for creating a new resource.
 	 *
@@ -12,7 +20,7 @@ public function __construct() {
 	 */
 	public function create()
 	{
-		return View::make('users/signup');
+		//
 	}
 
 
@@ -23,26 +31,7 @@ public function __construct() {
 	 */
 	public function store()
 	{
-		$validation = Validator::make(Input::all(), User::$rules, User::$messages);
-		if($validation->passes())
-		{
-			$user = new User;
-			$user->name = Input::get('fname');
-			$user->email = Input::get('email');
-			$user->phone_no = Input::get('phone');
-			$user->usertype = Input::get('usertype');
-			$user->password = Hash::make( Input::get('passwd') );
-			$result = $user->save();
-
-			
-			
-			return Redirect::to('login')->withInput(Input::except('passwd'))->withErrors('You have been successfully registered.');
-		}
-		else{
-			return Redirect::back()->withInput(Input::except('passwd'))->withErrors($validation);
-
-		}
-			
+		//
 		
 	}
 
@@ -68,9 +57,6 @@ public function __construct() {
 	public function edit($id)
 	{
 		//
-
-echo $id;
-
 	}
 
 

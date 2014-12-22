@@ -15,7 +15,12 @@ Route::get('/', 'welcomeController@index');
 Route::get('login', 'welcomeController@auth');
 Route::get('register', 'welcomeController@register');
 Route::get('logout', 'welcomeController@logout');
-Route::get('forgotPassword', 'welcomeController@forgotPassword');
 Route::post('loggedin', 'welcomeController@login');
 Route::get('signup', 'usersController@create');
-Route::post('registerusers', 'usersController@store');
+Route::post('registeruser', 'usersController@store');
+Route::get('password/reset', array('uses' => 'RemindersController@getRemind', 'as'  => 'password.remind'));
+Route::get('password/reset/{token}', array('uses' => 'RemindersController@getReset', 'as'  => 'password.reset'));
+Route::post('password/reset', array('uses' => 'RemindersController@postRemind', 'as'  => 'password.request'));
+Route::post('password/reset/{token}', array('uses' => 'RemindersController@postReset', 'as'  => 'password.update'));
+
+
