@@ -18,7 +18,16 @@
                     {{ implode('', $errors->all('<div class="woocommerce-error">:message</div>')) }}
             @endif
             
-            <div class="margin-bottom-10px">{{Form::radio('usertype', 'customer',null, ['id'=>'customer', 'required'=>'true'])}} <label for="customer">Customer</label>{{Form::radio('usertype', 'designer',null, ['id'=>'designer', 'required'=>'true'])}} <label for="designer">Designer</label> <br></div>
+			 <div class="margin-bottom-10px">
+            	<div style="display:inline-block">
+
+                	<input type="radio" name="user_type" id="rad_customer" value="Customer" style="margin-right:5px;"/>Customer
+          
+                    
+                    <input type="radio" name="user_type" id="rad_customer" value="Designer" style="margin-left: 5px;"/>Designer
+                
+                </div>
+            </div>
 
             <div class="margin-bottom-10px">
            	 {{Form::text('fname', '', ['placeholder'=>'First Name', 'class'=>'input-text', 'required'=>'true'])}}
