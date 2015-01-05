@@ -1,0 +1,25 @@
+To: kesaoluwafunmilola@gmail.com
+Subject: 
+Message-ID: <a7053426a15bff2d9ace523d34c28e4c@localhost>
+Date: Thu, 25 Dec 2014 18:51:46 +0000
+From: Designscook Team <no_reply@designscook.com.ng>
+MIME-Version: 1.0
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html>
+<html lang=3D"en-US">
+=09<head>
+=09=09<meta charset=3D"utf-8">
+=09</head>
+=09<body>
+=09=09<h2>Password Reset</h2>
+
+=09=09<div>
+=09=09=09To reset your password, complete this form: http://localhost:8000/=
+password/reset/50af611eb58a42757d5868c6ab77ad56accd59dd.<br/>
+=09=09=09This link will expire in 10 minutes.
+=09=09</div>
+=09</body>
+</html>
+

@@ -1,0 +1,25 @@
+To: kesaoluwafunmilola@gmail.com
+Subject: 
+Message-ID: <0406a01c498ef87318a12edf245d85ef@localhost>
+Date: Thu, 25 Dec 2014 17:57:59 +0000
+From: 
+MIME-Version: 1.0
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html>
+<html lang=3D"en-US">
+=09<head>
+=09=09<meta charset=3D"utf-8">
+=09</head>
+=09<body>
+=09=09<h2>Password Reset</h2>
+
+=09=09<div>
+=09=09=09To reset your password, complete this form: http://localhost:8000/=
+password/reset/ae8bd022251ef42721b471cb90fb0030cadfb1fd.<br/>
+=09=09=09This link will expire in 10 minutes.
+=09=09</div>
+=09</body>
+</html>
+

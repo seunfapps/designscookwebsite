@@ -12,7 +12,7 @@
 		<div class="size4" style="margin-left: 33%;">
         	<div class="block-title"><h2>Register</h2></div>
             	<div align="center">
-           {{ Form::open(['action'=>'usersController@store','class'=>'login']) }}
+           {{ Form::open(['action'=>'users.register','class'=>'login']) }}
             
             @if ($errors->any())
                     {{ implode('', $errors->all('<div class="woocommerce-error">:message</div>')) }}
@@ -35,7 +35,8 @@
             <div class="margin-bottom-10px">
             {{Form::password('passwd', ['placeholder'=>'Password', 'type'=>'password', 'class'=>'input-text', 'required'=>'true'])}}
             </div>
-                      
+            
+            
                 
                 <input type="submit" name="submit" value="Register" class='button'>
               

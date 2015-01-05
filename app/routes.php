@@ -12,12 +12,13 @@
 */
 
 Route::get('/', 'welcomeController@index');
-Route::get('login', 'welcomeController@auth');
-Route::get('register', 'welcomeController@register');
-Route::get('logout', 'welcomeController@logout');
-Route::post('loggedin', 'welcomeController@login');
-Route::get('signup', 'usersController@create');
-Route::post('registeruser', 'usersController@store');
+Route::get('login', 'usersController@auth');
+Route::get('register', 'usersController@register');
+Route::post('register',  array('uses' => 'usersController@store', 'as'  => 'users.register'));
+Route::get('logout', 'usersController@logout');
+Route::post('login', array('uses' => 'usersController@login', 'as'  => 'users.login'));
+Route::get('register/verify', 'usersController@confirm');
+Route::post('register/verify/{token}', 'usersController@confirm');
 Route::get('password/reset', array('uses' => 'RemindersController@getRemind', 'as'  => 'password.remind'));
 Route::get('password/reset/{token}', array('uses' => 'RemindersController@getReset', 'as'  => 'password.reset'));
 Route::post('password/reset', array('uses' => 'RemindersController@postRemind', 'as'  => 'password.request'));

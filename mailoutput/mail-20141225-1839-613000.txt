@@ -1,0 +1,25 @@
+To: funmi@designscook.com.ng
+Subject: 
+Message-ID: <593faec64613aca80e5ab5cfdbd6de13@localhost>
+Date: Thu, 25 Dec 2014 18:39:09 +0000
+From: Designscook Team <no_reply@designscook.com.ng>
+MIME-Version: 1.0
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html>
+<html lang=3D"en-US">
+=09<head>
+=09=09<meta charset=3D"utf-8">
+=09</head>
+=09<body>
+=09=09<h2>Password Reset</h2>
+
+=09=09<div>
+=09=09=09To reset your password, complete this form: http://localhost:8000/=
+password/reset/0028338e9ac18cfbe041fb4c07115d1422d499ab.<br/>
+=09=09=09This link will expire in 10 minutes.
+=09=09</div>
+=09</body>
+</html>
+

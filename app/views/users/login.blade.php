@@ -12,7 +12,7 @@
 		<div class="size4" style="margin-left: 33%;">
         	<div class="block-title"><h2>Log In</h2></div>
             	<div align="center">
-            {{ Form::open(['action'=>'welcomeController@login', 'class'=>'login']) }}	
+            {{ Form::open(['action'=>'users.login', 'class'=>'login']) }}	
             
             @if ($errors->any())
                     {{ implode('', $errors->all('<div class="woocommerce-error">:message</div>')) }}

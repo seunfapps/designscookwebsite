@@ -3,6 +3,7 @@
         Options -MultiViews
     </IfModule>
 
+    DirectoryIndex index.php
     RewriteEngine On
 
     # Redirect Trailing Slashes...
