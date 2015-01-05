@@ -170,24 +170,24 @@ a:active {
 
 
 
-.header-bottom, .header-top  {
+.header-bottom {
 	display: block;
 	height: 64px;
 	background: url(../images/header-bottom.png) repeat-x top center;
 	color: #efeadf;
 }
 
-.header-bottom .inner-wrapper,.header-top .inner-wrapper  {
+.header-bottom .inner-wrapper {
 	position: relative;
 }
 
-.header-bottom .page-tree, .header-top .page-tree {
+.header-bottom .page-tree {
 	display: block;
 	float: left;
 	font-size: 0;
 }
 
-.header-bottom .page-tree > li, .header-top .page-tree > li {
+.header-bottom .page-tree > li {
 	font-size: 14px;
 	display: inline-block;
 	color: #efeadf;
@@ -198,7 +198,19 @@ a:active {
 	cursor: default;
 }
 
-.header-bottom .page-tree > li:first-child,.header-top .page-tree > li:first-child {
+#categories .page-tree > li {
+	font-size: 14px;
+	display: block;
+	color: #5d4d43;
+	text-transform: uppercase;
+	font-family: 'Ropa Sans', sans-serif;
+	padding: 0px 10px 5px 22px;
+   	border-bottom: url(../images/page-block-line.png);
+	background: url(../images/footer-star.png) no-repeat left center;
+	cursor: default;
+}
+
+.header-bottom .page-tree > li:first-child {
 	background: url(../images/page-tree-house.png) no-repeat left center;
 }
 
@@ -207,7 +219,7 @@ a:active {
 }
 
 .header-bottom .right-info.with-basket {
-	margin-right: 180px;
+	margin-right: 210px;
 }
 
 .header-bottom .right-info {
@@ -890,8 +902,8 @@ a:active {
 
 .post-blocks > div > .comment-button b {
 	display: block;
-	margin-left: 32px;
-	font-size: 12px;
+	margin-left: 0px;
+	font-size: 24px;
 }
 
 .post-blocks > div > .comment-button span {
@@ -1176,6 +1188,11 @@ a.hover-fade:hover:before {
 	margin: -20px -20px 20px -20px;
 }
 
+#categories .panel-block
+{
+	display: inline-block;
+}
+
 .woocommerce .panel-block .article-header img.article-photo {
 	max-width: none;
 }
@@ -1449,7 +1466,7 @@ input[type=submit]:hover {
 .comment-form p textarea,
 .comment-form p input[type=text] {
 	width: 65%;
-	margin-left: 29%!important;
+	/*margin-left: 29%!important;*/
 }
 
 .comment-form p textarea {
@@ -1710,6 +1727,22 @@ input[type=submit]:hover {
 }
 
 .widget > ul li:before {
+	display: inline-block;
+	padding-right: 9px;
+	content: '\f101';
+	font-family: 'FontAwesome';
+}
+/*******CUSTOM STYLE FOR UL/LI DESIGNS COOK******/
+#categories  ul {
+	display: block;
+}
+
+#categories  ul li {
+	display: block;
+	padding-bottom: 5px;
+}
+
+#categories  ul li:before {
 	display: inline-block;
 	padding-right: 9px;
 	content: '\f101';
@@ -5923,3 +5956,17 @@ textarea.input-text {
 	margin-left: auto;	
 	margin-right: auto;
 }
+#categories .panel-block > h3 {
+    font-weight: normal;
+    font-family: "Fauna One",serif;
+    position: relative;
+    padding-bottom: 10px;
+    background: url("../images/split-line-1.png") repeat-x scroll center bottom transparent;
+    z-index: 0;
+}
+
+.border-dotted
+{
+	border-bottom: 1px dotted rgba(0,0,0,0.3);
+}
+
