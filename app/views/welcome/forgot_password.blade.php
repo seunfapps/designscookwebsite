@@ -1,11 +1,9 @@
 @extends('layouts.master')
 @section('pagetree')
-<li><a href="index.html">Homepage</a></li>
-<li><span>Login</span></li>
+<li>{{HTML::link('/', 'Homepage')}}</li>
+<li><span>Forgot Password</span></li>
 @stop
 @section('content')
-<div class="page-block lightcolor">
-	<div class="inner-wrapper">
 
 		<div class="split dat-scrollnimate" data-animation="bounceIn">
     
@@ -24,15 +22,11 @@
            	 {{Form::email('email', '', ['placeholder'=>'Email', 'class'=>'input-text', 'required'=>'true'])}}
             </div>
             
-           
-            
-                
                 <input type="submit" name="submit" value="Submit" class='button'>
               
             {{ Form::close() }}
             </div>
            </div>
         </div>
-    </div>
-</div>
+ 
 @stop

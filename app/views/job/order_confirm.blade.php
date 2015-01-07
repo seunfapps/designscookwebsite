@@ -1,7 +1,9 @@
 @extends('layouts.master')
 @section('pagetree')
-<li><a href="index.html">Homepage</a></li>
-<li><span>Login</span></li>
+<li>{{HTML::link('/', 'Homepage')}}</li>
+<li>{{HTML::link('job/post', 'Post a job')}}</li>
+<li>{{HTML::link('job/details/'.$id , 'Post a job')}}</li>
+<li><span>Confirm Order</span></li>
 @stop
 @section('content')
 

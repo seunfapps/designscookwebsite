@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class DesignCategories extends Migration {
+class CreatePasswordRemindersTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,12 +12,11 @@ class DesignCategories extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('design_categories', function(Blueprint $table)
+		Schema::create('password_reminders', function(Blueprint $table)
 		{
-			$table->increments('id');
-			$table->string('name');
-			$table->string('description');
-			$table->timestamps();
+			$table->string('email')->index();
+			$table->string('token')->index();
+			$table->timestamp('created_at');
 		});
 	}
 
@@ -28,7 +27,7 @@ class DesignCategories extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('design_categories');
+		Schema::drop('password_reminders');
 	}
 
 }

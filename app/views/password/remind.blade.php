@@ -4,17 +4,36 @@
 <li><span>Forgot Password</span></li>
 @stop
 @section('content')
-@if (Session::has('error'))
-	{{Session::get('error')}}
-	{{trans(Session::get('reason'))}}
-@elseif(Session::has('status'))
-	{{Session::get('status')}}
-@endif
+<div class="page-block">
+	<div class="inner-wrapper">
+
+		<div class="split dat-scrollnimate" data-animation="bounceIn">
+    
+		<div class="size4" style="margin-left: 33%;">
+        	<div class="block-title"><h2>Forgot Password</h2></div>
+            	<div align="center">
+
 
 {{ Form::open(array('route'=>'password.request')) }}	
-
-	{{Form::label('', 'Enter the email you used to register. We will send you a link to reset your password.', [ 'class'=>''])}}<br>
-	{{Form::email('email', '', ['placeholder'=>'Email', 'class'=>'input-text', 'required'=>'true'])}}
-	{{Form::submit('Reset Password')}}<br>
-{{ Form::close() }}
+  @if (Session::has('error'))
+	
+   <div class="woocommerce-error">{{Session::get('error')}}</div>
+	   {{trans(Session::get('reason'))}}
+ 
+  @endif
+          <p>Enter the e-mail you used to register, we will send you a link to reset your password.</p>
+            
+             <div class="margin-bottom-10px">
+           	 {{Form::email('email', '', ['placeholder'=>'Email', 'class'=>'input-text', 'required'=>'true'])}}
+            </div>
+            
+			{{Form::submit('Reset Password')}}<br>
+  
+              
+            {{ Form::close() }}
+            </div>
+           </div>
+        </div>
+    </div>
+</div>
 @stop

@@ -9,7 +9,7 @@
         <div>
             Thanks for creating an account with DesignsCook.
             Please click on:<br /><br />
-            {{ HTML::link( $clickUrl ) }} <br /><br />
+            {{ URL::to('register/verify', array($token)) }}<br />
             to confirm your account.<br/>
 
         </div>

@@ -68,7 +68,7 @@
                         @else
                         	<li><div class="logReg">{{HTML::link('logout','Log out')}}</div></li>
                         	@endif
-                        <li><div id="register_btn">{{HTML::link('#','Post A Job')}}</div></li>
+                        <li><div id="register_btn">{{HTML::link('job/post','Post A Job')}}</div></li>
                         
                         <!--<li><a href="#">How It Works</a></li>
                         <li><a href="#">Contact Us</a></li>
@@ -139,7 +139,16 @@
 		<section class="content-wrapper">
 		<div id="container" class="full-width">
 			<div id="content">
+				<div class="page-block">
+	<!-- BEGIN .inner-wrapper -->
+	<div class="inner-wrapper">
+
 			@yield('content')
+
+	<!-- END .inner-wrapper -->
+	</div>
+<!-- END .page-block -->
+</div>
 			</div>
 		</div>
 

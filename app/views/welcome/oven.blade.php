@@ -4,7 +4,7 @@
 <li><span>Login</span></li>
 @stop
 @section('content')
-<div class="inner-wrapper">
+
     
         <div class="block-title"><h2>The Oven</h2></div>
         	<div class="split gallery-blocks">
@@ -34,5 +34,5 @@
 							</div>
 
             
-</div>
+
 @stop

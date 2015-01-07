@@ -1,14 +1,11 @@
 @extends('layouts.master')
 @section('pagetree')
 
-	<li><span>Homepage</span></li>
+<li><span>Homepage</span></li>
 @stop
 @section('content')
 <!-- BEGIN #container -->
 <!-- BEGIN .page-block -->
-<div class="page-block">
-	<!-- BEGIN .inner-wrapper -->
-	<div class="inner-wrapper">
 
 		<!-- BEGIN .omnomnom-slider -->
 		<div class="omnomnom-slider">
@@ -314,9 +311,4 @@
 				</div>
 			</div>
 		</div>
-
-	<!-- END .inner-wrapper -->
-	</div>
-<!-- END .page-block -->
-</div>
 @stop

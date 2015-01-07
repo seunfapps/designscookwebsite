@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Project extends Migration {
+class DesignSubcategories extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -13,20 +13,16 @@ class Project extends Migration {
 	public function up()
 	{
 		//
-		Schema::create('projects', function(Blueprint $table)
+		Schema::create('design_subcategories', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->string('usertype');
 			$table->string('name');
-			$table->string('username');
-			$table->string('email');
-			$table->string('ip_address');
-			$table->string('country');
-			$table->string('phone_no');
-			$table->string('password');
-			$table->rememberToken();
+			$table->integer('category_id');
+			$table->decimal('price');
 			$table->timestamps();
 		});
+
+
 	}
 
 	/**
@@ -37,7 +33,7 @@ class Project extends Migration {
 	public function down()
 	{
 		//
-		Schema::drop('projects');
+		Schema::drop('design_subcategories');
 	}
 
 }

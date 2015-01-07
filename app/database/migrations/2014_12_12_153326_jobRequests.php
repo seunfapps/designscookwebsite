@@ -18,9 +18,10 @@ class JobRequests extends Migration {
 			$table->integer('customer_id');
 			$table->string('status');
 			$table->string('title');
-			$table->string('detail');
+			$table->string('description');
+			$table->string('file');
 			$table->string('designers_by_id');
-			$table->string('categories_by_id');
+			$table->string('subcategory_id');
 			$table->timestamps();
 		});
 	}

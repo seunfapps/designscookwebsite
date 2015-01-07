@@ -4,8 +4,6 @@
 <li><span>Register</span></li>
 @stop
 @section('content')
-<div class="page-block">
-	<div class="inner-wrapper">
 
 		<div class="split dat-scrollnimate" data-animation="bounceIn">
     
@@ -17,9 +15,15 @@
             @if ($errors->any())
                     {{ implode('', $errors->all('<div class="woocommerce-error">:message</div>')) }}
             @endif
-            
-            <div class="margin-bottom-10px">{{Form::radio('usertype', 'customer',null, ['id'=>'customer', 'required'=>'true'])}} <label for="customer">Customer</label>{{Form::radio('usertype', 'designer',null, ['id'=>'designer', 'required'=>'true'])}} <label for="designer">Designer</label> <br></div>
 
+            <div class="margin-bottom-10px">
+                <div style="display:inline-block">
+                    {{Form::radio('user_type', 'Customer',null, ['id'=>'customer', 'required'=>'true', 'style'=>'margin-right:5px;'])}}<label for="customer" style='display:inline-block;'>Customer</label>
+                    {{Form::radio('user_type', 'Designer',null, ['id'=>'designer', 'required'=>'true', 'style'=>'margin-right:5px;'])}}<label for="designer" style='display:inline-block;'>Designer</label> 
+                </div>
+            </div>
+            
+            
             <div class="margin-bottom-10px">
            	 {{Form::text('fname', '', ['placeholder'=>'First Name', 'class'=>'input-text', 'required'=>'true'])}}
             </div>
@@ -29,11 +33,12 @@
             </div>
             
              <div class="margin-bottom-10px">
-            {{Form::text('phone', '', ['placeholder'=>'Phone Number', 'class'=>'input-text'])}}
+                <input type='tel' placeholder='Phone Number' class='input-text' required='true'>
+            
             </div>
 
             <div class="margin-bottom-10px">
-            {{Form::password('passwd', ['placeholder'=>'Password', 'type'=>'password', 'class'=>'input-text', 'required'=>'true'])}}
+            {{Form::password('password', ['placeholder'=>'Password', 'type'=>'password', 'class'=>'input-text', 'required'=>'true','autocomplete'=>'off'])}}
             </div>
             
             
@@ -44,6 +49,5 @@
             </div>
            </div>
         </div>
-    </div>
-</div>
+ 
 @stop

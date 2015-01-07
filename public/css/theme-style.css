@@ -1387,6 +1387,7 @@ a.hover-fade:hover:before {
 
 
 textarea,
+.input-text,
 input[type=password],
 input[type=text],input[type=email] {
 	background: #f7f1e5;
@@ -1400,7 +1401,7 @@ input[type=text],input[type=email] {
 	font-family: Arial;
 }
 
-textarea:focus,
+textarea:focus,.input-text:focus,
 input[type=password]:focus,
 input[type=text]:focus {
 	background: #F8F5EF;

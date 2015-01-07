@@ -4,7 +4,7 @@
 <li><span>Login</span></li>
 @stop
 @section('content')
-<div class="inner-wrapper">
+
     <div class="block-title"><h2>Confirm Order</h2></div>
     	
     	<div class="comment-form">
@@ -19,5 +19,5 @@
 			</p>
 		</div>    
             
-</div>
+
 @stop

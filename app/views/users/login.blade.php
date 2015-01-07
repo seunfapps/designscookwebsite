@@ -4,8 +4,6 @@
 <li><span>Login</span></li>
 @stop
 @section('content')
-<div class="page-block">
-	<div class="inner-wrapper">
 
 		<div class="split dat-scrollnimate" data-animation="bounceIn">
     
@@ -35,6 +33,5 @@
             </div>
            </div>
         </div>
-    </div>
-</div>
+
 @stop

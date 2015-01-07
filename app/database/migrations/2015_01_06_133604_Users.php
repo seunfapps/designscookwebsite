@@ -12,18 +12,18 @@ class Users extends Migration {
 	 */
 	public function up()
 	{
-		//
 		Schema::create('users', function(Blueprint $table)
 		{
 			$table->increments('id');
 			$table->string('user_type');
 			$table->string('name');
-			$table->string('username');
-			$table->string('email');
+			$table->string('email')->unique();
 			$table->string('ip_address');
-			$table->string('country');
+			$table->string('country')->nullable();
 			$table->string('phone_no');
 			$table->string('password');
+			$table->string('confirmed')->default(0);
+			$table->string('confirmation_code')->nullable();
 			$table->rememberToken();
 			$table->timestamps();
 		});
@@ -36,12 +36,7 @@ class Users extends Migration {
 	 */
 	public function down()
 	{
-		//
-	Schema::drop('users');
+		Schema::drop('users');
 	}
-
- 	public function user(){
- 		return $this->morphTo();
- 	}
 
 }
