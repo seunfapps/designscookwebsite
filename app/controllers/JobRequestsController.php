@@ -22,20 +22,19 @@ class JobRequestsController extends \BaseController {
 	{
 		//
 
-		$categories = Category::all();
-		
-		return View::make('job/post_a_job',array('categories' => $categories));
+		$categories = Category::all();		
+		return View::make('job/post_a_job',array('categories' => $categories))->withInput();
 	}
 
 
-	public function details($id)
+	public function brief($id)
 	{
 		//
 
 		if($id){
 			$subcategory = SubCategory::find($id);
-			Session::put('id',$id);
-			return View::make('job/job_details',array('name' => $subcategory->name, 'price' => $subcategory->price,'id'=>$id));
+			Session::put('id',$id);			
+			return View::make('job/job_brief',array('name' => $subcategory->name, 'price' => $subcategory->price,'id'=>$id));
 		}
 		
 	}
@@ -57,10 +56,11 @@ class JobRequestsController extends \BaseController {
 	 *
 	 * @return Response
 	 */
-	public function confirm()
+	public function details()
 	{
 		//
-		return View::make('job/order_confirm', array('id' => Session::get('id')));
+		$job_details = Session::get('job_details');
+		return View::make('job/job_details',['job_details'=>$job_details] );
 
 	}
 
@@ -83,7 +83,7 @@ class JobRequestsController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update()
+	public function updatebrief()
 	{
 		//
 		$destinationPath = '';
@@ -92,16 +92,20 @@ class JobRequestsController extends \BaseController {
 			$file = Input::file('upload');
 			$destinationPath = public_path().'/uploads/';
 			$filename = str_random(6).'_'.$file->getClientOriginalName();
-			$uploadSuccess =  $file->move($destinationPath,$filename);
+			$file->move($destinationPath,$filename);
 		}
-		$job = JobRequest::create([
-			'title' => Input::get('title'),
+		$subcategory = SubCategory::find(Session::get('id'));
+
+		$job_details = array('title' => Input::get('title'),
 			'description' => Input::get('description'),
 			'file'=>$destinationPath.':'.$filename,
-			]);
-		Input::flash();
-
-		return Redirect::to('job/confirm')->withInput(Input::all());
+			'subcategory_id' => Session::get('id'),
+			'design_name'=> $subcategory->name,
+			'category'=> $subcategory->category->name,
+			'cost'=>$subcategory->price, );
+			
+		Session::put('job_details',$job_details);
+		return Redirect::to('job/details');
 	}
 
 

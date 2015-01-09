@@ -22,6 +22,7 @@ class JobRequests extends Migration {
 			$table->string('file');
 			$table->string('designers_by_id');
 			$table->string('subcategory_id');
+			$table->decimal('cost');
 			$table->timestamps();
 		});
 	}

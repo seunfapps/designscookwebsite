@@ -67,7 +67,7 @@
                         <li><div class="logReg">{{HTML::link('register','Register')}}</div></li>
                         @else
                         	<li><div class="logReg">{{HTML::link('logout','Log out')}}</div></li>
-                        	@endif
+                        @endif
                         <li><div id="register_btn">{{HTML::link('job/post','Post A Job')}}</div></li>
                         
                         <!--<li><a href="#">How It Works</a></li>

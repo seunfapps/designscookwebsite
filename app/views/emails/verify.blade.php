@@ -7,9 +7,11 @@
         <h2>Verify Your Email Address</h2>
 
         <div>
+            Hi {{$name}},<br><br>
+
             Thanks for creating an account with DesignsCook.
             Please click on:<br /><br />
-            {{ URL::to('register/verify', array($token)) }}<br />
+            {{ URL::to('register/verify', array($token)) }}<br><br>
             to confirm your account.<br/>
 
         </div>
