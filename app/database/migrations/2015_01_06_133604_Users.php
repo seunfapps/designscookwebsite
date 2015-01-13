@@ -15,16 +15,15 @@ class Users extends Migration {
 		Schema::create('users', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->string('usertype');
+			$table->string('user_type');
 			$table->string('name');
-			$table->string('username')->unique();
 			$table->string('email')->unique();
 			$table->string('ip_address');
-			$table->string('country');
+			$table->string('country')->nullable();
 			$table->string('phone_no');
 			$table->string('password');
-			$table->string('confirmed')->default();
-			$table->string('confirmation_code');
+			$table->string('confirmed')->default(0);
+			$table->string('confirmation_code')->nullable();
 			$table->rememberToken();
 			$table->timestamps();
 		});

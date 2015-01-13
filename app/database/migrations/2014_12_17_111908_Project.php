@@ -37,7 +37,7 @@ class Project extends Migration {
 	public function down()
 	{
 		//
-		Schema::drop('users');
+		Schema::drop('projects');
 	}
 
 }

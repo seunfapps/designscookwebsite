@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class DesignCategories extends Migration {
+class DesignSubcategories extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,12 +12,17 @@ class DesignCategories extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('design_categories', function(Blueprint $table)
+		//
+		Schema::create('design_subcategories', function(Blueprint $table)
 		{
 			$table->increments('id');
 			$table->string('name');
+			$table->integer('category_id');
+			$table->decimal('price');
 			$table->timestamps();
 		});
+
+
 	}
 
 	/**
@@ -27,7 +32,8 @@ class DesignCategories extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('design_categories');
+		//
+		Schema::drop('design_subcategories');
 	}
 
 }

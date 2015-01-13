@@ -26,16 +26,15 @@ public function __construct() {
 			$user->name = Input::get('fname');
 			$user->email = Input::get('email');
 			$user->phone_no = Input::get('phone');
-			$user->usertype = Input::get('usertype');
-			$user->password = Hash::make( Input::get('passwd') );
+			$user->user_type = Input::get('user_type');
+			$user->password = Hash::make( Input::get('password') );
 
-			for($code_length=25, $newcode='';strlen($newcode) < $code_length; $newcode .= chr(!rand(0,2) ?rand(48,57):(!rand(0,1) ? rand(65,90):rand(97,122))));
-				$user->confirmation_code = $newcode;
+			$newcode = generateConfirmationCode();
+			$user->confirmation_code = $newcode;
 			$result = $user->save();
-
-			$user = User::where('email', '=',Input::get('email'))->first();
+			//$user = User::where('email', '=',Input::get('email'))->first();
 			$data  = array('email' => Input::get('email'),
-			'clickUrl'=> URL::to('register/verify/'.$newcode.':'.$user->id ));
+			'token'=>$newcode.':'.$user->id,'name'=>$user->name );
 
 			Mail::queue('emails.verify',$data, function($message)
 			{
@@ -43,23 +42,30 @@ public function __construct() {
 
 			});
 			
-			return Redirect::to('login')->withInput(Input::except('passwd'))->withErrors('Thanks for registering. A link has been sent to your email.');
+			return Redirect::to('login')->withInput(Input::except('password'))->withErrors('Thanks for registering. A link has been sent to your email.');
 		}
 		else{
 			return Redirect::back()->withInput(Input::except('passwd'))->withErrors($validation);
 		}
 	}
 
+	public function generateConfirmationCode(){
+
+		for($code_length=25, $newcode='';strlen($newcode) < $code_length; $newcode .= chr(!rand(0,2) ?rand(48,57):(!rand(0,1) ? rand(65,90):rand(97,122))));
+		return $newcode;
+	}
 
 	public function confirm($confirmation_code){
 		$code = explode(":", $confirmation_code);
-		echo $code[0];
 		$user= User::find($code[1]);
 		if ($user && $user->confirmation_code == $code[0]) {
 			$user->confirmed = 1;
 			$user->confirmation_code = null;
 			$user->save();
+			Auth::login($user);
+			return Redirect::to('/')->with('status', 'Your account has been successfully confirmed.');
 		}
+		return Redirect::to('/')->with('status', 'Link has expired');
 	}
 	/**
 	 * Display the specified resource.
@@ -115,6 +121,8 @@ echo $id;
 	{
 		if(Auth::check()){
 			return View::make('welcome/index');
+		}elseif (Auth::viaRemember()){
+			return Redirect::back();
 		}else{
 			return View::make('users/login');	
 		}
@@ -123,21 +131,51 @@ echo $id;
 
 	public function login()
 	{
+
 		$email  = Input::get('email');
 		$passwd = Input::get('passwd');
 		$rememberme = Input::get('rememberme');
 		Input::flashExcept('passwd');
-		if(Auth::attempt(array('email' => $email, 'password'=>$passwd),$rememberme))
+
+		if(Auth::attempt(array('email' => $email, 'password'=>$passwd, 'confirmed'=> 1),$rememberme))
 		{
 			return Redirect::back();
 		}
+		elseif(Auth::validate(array('email' => $email, 'password'=>$passwd)))
+		{
+			$user = User::where('email','=',$email)->first();
+			$message = "Your account has not been confirmed.";
+
+			$resetCode =true;
+
+			Session::put('resetCode',$resetCode);
+			Session::put('id',$user->id);
+			return Redirect::back()->withInput(Input::except('passwd'))->withErrors($message);
+		}
 		else{
 			$message = "Your email or password is wrong";
-			return Redirect::back()->withInput(Input::except('passwd'))->withErrors($message);
+			return Redirect::back()->withInput(Input::except('passwd'))->withErrors($message);	
 		}		
 		
 	}
 
+	public function resetConfirmationCode($id){
+
+		$user = User::find($id);
+		$newcode = $this->generateConfirmationCode();
+		$user->confirmation_code = $newcode;
+		$user->save();
+		echo $user->email;
+		$data  = array('email' => $user->email,
+			'token'=>$newcode.':'.$user->id,'name'=>$user->name );
+		Mail::queue('emails.verify',$data, function($message) use ($user)
+			{
+				$message ->to($user->email)->subject('Email Confirmation Code');
+
+			});
+		$msg = "A link has been sent to your email.";
+		return Redirect::back()->withInput(Input::except('passwd'))->withErrors($msg);
+	}
 	public function logout()
 	{
 		Auth::logout();

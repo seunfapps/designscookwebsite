@@ -4,8 +4,6 @@
 <li><span>Login</span></li>
 @stop
 @section('content')
-<div class="inner-wrapper">
-    
         <div class="block-title"><h2>Pick A Category</h2></div>
         <div id="categories">
         	<div class="split">
@@ -83,6 +81,5 @@
                
        		</div>
         </div>
-            
-</div>
+ 
 @stop

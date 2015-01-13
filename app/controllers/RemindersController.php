@@ -67,16 +67,16 @@ class RemindersController extends Controller {
 		switch ($response)
 		{
 			case Password::INVALID_PASSWORD:
-				return Redirect::back()->with('error','Invalid password' );
+				return Redirect::back()->with('error','Invalid password' )->withInput(Input::except('password'));
 			
 			case Password::INVALID_TOKEN:
 				return Redirect::to('/')->with('status', 'Link has expired');
 			case Password::INVALID_USER:
 
-				return Redirect::back()->with('error', 'This email address does not exist in our system.');
+				return Redirect::back()->with('error', 'This email address does not exist in our system.')->withInput(Input::except('password'));
 
 			case Password::PASSWORD_RESET:
-				return Redirect::to('login')->with('status', 'You have successfully reset your password');
+				return Redirect::to('login')->with('status', 'You have successfully reset your password')->withInput(Input::except('password'));
 		}
 	}
 

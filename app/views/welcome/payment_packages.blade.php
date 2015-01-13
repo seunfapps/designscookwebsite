@@ -5,9 +5,7 @@
 @stop
 @section('content')
 
-						<!-- BEGIN .inner-wrapper -->
-						<div class="inner-wrapper">
-							
+					
 							<div class="block-title">
 								<h2>Business Packages</h2>
 								<span>We've got the business package to work for you as your business grows </span>
@@ -103,8 +101,6 @@
 								<a href="blog.html" class="s-big-button">View More Posts<i class="fa fa-chevron-right"></i></a>
 							</div>
 
-						<!-- END .inner-wrapper -->
-						</div>
-					<!-- END .page-block -->
+					
 					
 @stop

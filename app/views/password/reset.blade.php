@@ -5,16 +5,44 @@
 @stop
 
 @section('content')
-@if (Session::has('error'))
-	{{Session::get('error')}}
-  {{ trans(Session::get('reason')) }}
-@endif
-{{Form::open(array('route' => array('password.update', $token)))}}
 
-	{{Form::email('email', '', ['placeholder'=>'Email', 'class'=>'input-text', 'required'=>'true'])}}
-	{{Form::password('password', ['placeholder'=>'Password', 'type'=>'password', 'class'=>'input-text', 'required'=>'true'])}}
+	<div class="inner-wrapper">
+
+		<div class="split dat-scrollnimate" data-animation="bounceIn">
+    
+		<div class="size4" style="margin-left: 33%;">
+        	<div class="block-title"><h2>Reset</h2></div>
+            	<div align="center">
+{{Form::open(array('route' => array('password.update', $token)))}}
+            
+            @if (Session::has('error'))
+	
+   <div class="woocommerce-error">{{Session::get('error')}}</div>
+	   {{trans(Session::get('reason'))}}
+ 
+  @endif
+                     
+            <div class="margin-bottom-10px">
+           	 {{Form::email('email', '', ['placeholder'=>'Email', 'class'=>'input-text', 'required'=>'true'])}}
+            </div>
+            
+            <div class="margin-bottom-10px">
+           {{Form::password('password', ['placeholder'=>'Password', 'type'=>'password', 'class'=>'input-text', 'required'=>'true'])}}
+            </div>
+            
+            <div class="margin-bottom-10px">
 	{{Form::password('password_confirmation', ['placeholder'=>'Confirm Password', 'type'=>'password', 'class'=>'input-text', 'required'=>'true'])}}
-	{{Form::hidden('token',$token)}}
+            
+            </div>
+            
+               	{{Form::hidden('token',$token)}}
 	{{Form::submit('Submit')}}
+
+              
+            {{ Form::close() }}
+            </div>
+           </div>
+        </div>
+    </div>
 
 @stop
