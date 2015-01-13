@@ -81,7 +81,7 @@ background-image: -moz-linear-gradient(center bottom , rgba(140, 140, 140, 0.29)
 	                     @else
                         	<li>{{HTML::link('logout','Log out',['class'=>'mybutton'])}}</li>
                         @endif
-						<li><a href="#" class="mybutton" style="background: none repeat scroll 0% 0% #A6BE29; color:#fff">Post a Job</a></li>
+						<li>{{HTML::link('job/post','Post A Job',['class'=>'mybutton', 'style'=>'background: none repeat scroll 0% 0% #A6BE29; color:#fff'])}}
 					</ul>
 				<!-- END #main-menu -->
 				</div>

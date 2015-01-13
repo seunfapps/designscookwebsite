@@ -25,7 +25,7 @@ class JobRequestsController extends \BaseController {
 		Session::forget('uploaded_file');
 		Session::forget('job_details');
 		$categories = Category::all();		
-		return View::make('job/post_a_job',array('categories' => $categories));
+		return View::make('job/pick_category',array('categories' => $categories));
 	}
 
 	
