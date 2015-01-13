@@ -4,82 +4,91 @@
 <li><span>Login</span></li>
 @stop
 @section('content')
-        <div class="block-title"><h2>Pick A Category</h2></div>
-        <div id="categories">
-        	<div class="split">
-        		<div class="panel-block size3">
-                	<h3>Corporate</h3> 	
-                  <!--  <table class="table">
-                    	<tr><td>Logo</td></tr>
-                        <tr><td>Business Card</td></tr>
-                        <tr><td>Letter Head</td></tr>
-                        <tr><td>Name Tag</td></tr>
-                    </table>-->
-                    <ul>
-                    	<li>Logo</li>
-                        <li>Business Card</li>
-                        <li>Letter Head</li>
-                        <li>Name Tag</li>
-                        <li>Signage</li>
-                        <li>T-Shirt</li>
-                    </ul>
-         		</div>
-            	<div class="panel-block size8">
-                	<h3>Print</h3> 	
-                    <div class="split">
-                    	<div style="float:left;" class="size6">
-                        	<ul>
-                            	<li>Advertisement</li>
-                                <li>Book Cover</li>
-                                <li>Brochure</li>
-                                <li>Calendar</li>
-                                <li>Card</li>
-                                <li>CD Cover</li>
-                            </ul>
-                        </div>
-                        <div style="float:left;" class="size6">
-                        	<ul>
-                            	<li>Envelope</li>
-                                <li>Flyer</li>
-                                <li>Invitation</li>
-                                <li>Magazine</li>
-                                <li>Menu</li>
-                                <li>Poster</li>
-                            </ul>
-                        </div>
-                        <div style="clear:both"></div>
-                    </div>
-         		</div>
-       		</div>
-            
-            <div class="split">
-        		<div class="panel-block size5">
-                	<h3>Web</h3> 	
-                    <ul>
-                    	<li>Web Page</li>
-                        <li>Banner Ad</li>
-                        <li>Blog</li>
-                        <li>Icon</li>
-                        <li>Newsletter</li>
-                        <li>Facebook</li>
-                        <li>Twitter</li>
-                        <li>Wordpress</li>
-                    </ul>
-         		</div>
-            	<div class="panel-block size6">
-                	<h3>Graphics</h3> 	
-                    <ul>
-                    	<li>Graphic</li>
-                        <li>Art</li>
-                        <li>3D</li>
-                        <li>Illustration</li>
-                        <li>Photoshop</li>
-                        <li>PowerPoint</li>
-                        <li>Vector</li>
-                    </ul>
-         		</div>
-               
-       		</div>
-        </div>
- 
+
+<div class="inner-wrapper">
+							
+							<div class="block-title">
+								<h2>Pick A Category</h2>
+							
+							</div>
+
+							<div class="split post-blocks dat-scrollnimate" data-animation="flipInX" style="display:flex">
+								<div class="size3">
+									
+									<h3>Corporate</h3>
+									<!--<span class="date">September 20th, 2013</span>-->
+								  <p>
+                   				    <i class="fa fa-caret-right fa-1x"></i> &nbsp; Logo<br />
+                       				<i class="fa fa-caret-right fa-1x"></i> &nbsp; Business Card<br />
+                                        <i class="fa fa-caret-right fa-1x"></i> &nbsp; Letter Head<br />
+                                        <i class="fa fa-caret-right fa-1x"></i> &nbsp; Name Tag<br />
+                                        <i class="fa fa-caret-right fa-1x"></i> &nbsp; Signage<br />
+                                        <i class="fa fa-caret-right fa-1x"></i> &nbsp; T-Shirt<br />
+                                    </p>
+									
+								</div>
+                                
+                                <!-- another column -->
+								<div class="size3">
+									
+									<h3>Print</h3>
+									<!--<span class="date">September 20th, 2013</span>-->
+								  <p>
+                        				<i class="fa fa-caret-right fa-1x"></i> &nbsp; Advertisement<br />
+                                        <i class="fa fa-caret-right fa-1x"></i> &nbsp; Book Cover<br />
+                                        <i class="fa fa-caret-right fa-1x"></i> &nbsp; Brochure<br />
+                                        <i class="fa fa-caret-right fa-1x"></i> &nbsp; Calendar<br />
+                                        <i class="fa fa-caret-right fa-1x"></i> &nbsp; Card<br />
+                                        <i class="fa fa-caret-right fa-1x"></i> &nbsp; CD Cover<br />
+                                        <i class="fa fa-caret-right fa-1x"></i> &nbsp; Flyer<br />
+                                        <i class="fa fa-caret-right fa-1x"></i> &nbsp; Envelope<br />
+                                        <i class="fa fa-caret-right fa-1x"></i> &nbsp; Invitation<br />
+                                        <i class="fa fa-caret-right fa-1x"></i> &nbsp; Magazine<br />
+                                        <i class="fa fa-caret-right fa-1x"></i> &nbsp; Menu<br />
+                                        <i class="fa fa-caret-right fa-1x"></i> &nbsp; Poster<br />
+                                    </p>
+									
+								</div>
+                                
+                                <!-- another column -->
+								<div class="size3">
+									
+									<h3>Web</h3>
+									<!--<span class="date">September 20th, 2013</span>-->
+									<p>
+                        				<i class="fa fa-caret-right fa-1x"></i> &nbsp; Web Page<br />
+                                        <i class="fa fa-caret-right fa-1x"></i> &nbsp; Banner Ad<br />
+                                        <i class="fa fa-caret-right fa-1x"></i> &nbsp; Blog<br />
+                                        <i class="fa fa-caret-right fa-1x"></i> &nbsp; Icon<br />
+                                        <i class="fa fa-caret-right fa-1x"></i> &nbsp; Newsletter<br />
+                                        <i class="fa fa-caret-right fa-1x"></i> &nbsp; Facebook<br />
+                                        <i class="fa fa-caret-right fa-1x"></i> &nbsp; Twitter<br />
+                                        <i class="fa fa-caret-right fa-1x"></i> &nbsp; Wordpress<br />
+                                    </p>
+									
+								</div>
+                                
+                                <!-- another column -->
+								<div class="size3">
+									
+									<h3>Graphics</h3>
+									<!--<span class="date">September 20th, 2013</span>-->
+									<p>
+                        				<i class="fa fa-caret-right fa-1x"></i> &nbsp; Graphic<br />
+                                        <i class="fa fa-caret-right fa-1x"></i> &nbsp; Art<br />
+                                        <i class="fa fa-caret-right fa-1x"></i> &nbsp; 3D<br />
+                                        <i class="fa fa-caret-right fa-1x"></i> &nbsp; Illustration<br />
+                                        <i class="fa fa-caret-right fa-1x"></i> &nbsp; Photoshop<br />
+                                        <i class="fa fa-caret-right fa-1x"></i> &nbsp; PowerPoint<br />
+                                        <i class="fa fa-caret-right fa-1x"></i> &nbsp; Vector<br />	
+                                    </p>
+								</div>
+							</div>
+
+							<div class="additional-button">
+								<a href="blog.html" class="s-big-button">View More Posts<i class="fa fa-chevron-right"></i></a>
+							</div>
+
+						<!-- END .inner-wrapper -->
+						</div>
 @stop
