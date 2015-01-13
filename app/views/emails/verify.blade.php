@@ -10,10 +10,12 @@
             Hi {{$name}},<br><br>
 
             Thanks for creating an account with DesignsCook.
-            Please click on:<br /><br />
+            Please click on:<br><br>
             {{ URL::to('register/verify', array($token)) }}<br><br>
-            to confirm your account.<br/>
+            to confirm your account.<br><br>
 
+            Yours sincerely,
+            The DesignsCook team<br>
         </div>
 
     </body>

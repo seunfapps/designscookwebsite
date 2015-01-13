@@ -14,7 +14,7 @@
             	<div align="center">
 
 
-{{ Form::open(array('route'=>'password.request')) }}	
+{{ Form::open(array('route'=>'password.remind')) }}	
   @if (Session::has('error'))
 	
    <div class="woocommerce-error">{{Session::get('error')}}</div>
@@ -24,7 +24,7 @@
           <p>Enter the e-mail you used to register, we will send you a link to reset your password.</p>
             
              <div class="margin-bottom-10px">
-           	 {{Form::email('email', '', ['placeholder'=>'Email', 'class'=>'input-text', 'required'=>'true'])}}
+           	 {{Form::email('email',Input::old('email'), ['placeholder'=>'Email', 'class'=>'input-text', 'required'=>'true'])}}
             </div>
             
 			{{Form::submit('Reset Password')}}<br>

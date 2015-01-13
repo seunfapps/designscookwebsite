@@ -33,8 +33,8 @@
             </div>
             
              <div class="margin-bottom-10px">
-                <input type='tel' placeholder='Phone Number' name='phone' class='input-text' required='true'>
-            
+                <!-- <input type='tel' placeholder='Phone Number' name='phone' class='input-text' required='true'> -->
+            {{Form::number('phone', '', ['placeholder'=>'Phone Number', 'class'=>'input-text', 'required'=>'true'])}}
             </div>
 
             <div class="margin-bottom-10px">

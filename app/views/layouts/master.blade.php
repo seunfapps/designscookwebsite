@@ -4,17 +4,17 @@
 	<!-- Head Meta Data -->
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>Designscook | gettting your designs done right</title>
-	<link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
+	<link rel="shortcut icon" type="image/x-icon" href="{{ asset('images/favicon.ico') }}">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 	<!-- Head Stylesheets -->
-	<link rel="stylesheet" type="text/css" href="css/theme-reset.css" media="screen">
-	<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css" media="screen">
-	<link rel="stylesheet" type="text/css" href="css/dat-menu.css" media="screen">
-	<link rel="stylesheet" type="text/css" href="css/animate.css" media="screen">
-	<link rel="stylesheet" type="text/css" href="css/theme-style.css" media="screen">
-	<link rel="stylesheet" type="text/css" href="css/shortcodes.css" media="screen">
-	<link rel="stylesheet" type="text/css" href="css/responsive.css" media="screen">
+	{{ HTML::style('css/theme-reset.css') }}
+	 {{ HTML::style('css/font-awesome.min.css') }}
+	 {{ HTML::style('css/dat-menu.css') }}
+	 {{ HTML::style('css/animate.css') }}
+	 {{ HTML::style('css/theme-style.css') }}
+	 {{ HTML::style('css/shortcodes.css') }}
+	 {{ HTML::style('css/responsive.css') }}
     
     
     
@@ -43,20 +43,20 @@ background-image: -moz-linear-gradient(center bottom , rgba(140, 140, 140, 0.29)
 				
 				<!-- BEGIN .logo-image -->
 				<div class="logo-image">
-					<a href="index.html"><img src="images/designscook-logo-278-129.fw.png" alt="" /></a>
+					<a href="/"><img src="{{ asset('images/designscook-logo-278-129.fw.png') }}" alt="" /></a>
 				<!-- END .logo-image -->
 				</div>
 
 				<!-- BEGIN .social-icons -->
 				<div class="social-icons">
 					<div>
-						<a href="http://twitter.com/designscook" target="_blank"><img src="images/social-twitter.png" alt="" /></a>
+						<a href="http://twitter.com/designscook" target="_blank"><img src="{{ asset('images/social-twitter.png') }}" alt="" /></a>
 					</div>
 					<div>
-						<a href="https://www.facebook.com/pages/DesignsCook/1426586880962451" target="_blank"><img src="images/social-facebook.png" alt="" /></a>
+						<a href="https://www.facebook.com/pages/DesignsCook/1426586880962451?ref=hl" target="_blank"><img src="{{ asset('images/social-facebook.png') }}" alt="" /></a>
 					</div>
 					<div>
-						<a href="https://plus.google.com/115870390292957554586/posts" target="_blank"><img src="images/social-google.png" alt="" /></a>
+						<a href="https://plus.google.com/u/0/115870390292957554586/posts" target="_blank"><img src="{{ asset('images/social-google.png') }}" alt="" /></a>
 					</div>
 					<div class="header-search">
 						<form action="#">
@@ -71,35 +71,17 @@ background-image: -moz-linear-gradient(center bottom , rgba(140, 140, 140, 0.29)
 				<!-- BEGIN #main-menu -->
 				<div id="main-menu">
 					<ul class="load-responsive" rel="Main Menu">
-						<li><a href="index.html">Categories</a></li>
-						<!--<li><a href="blog.html"><span>Blog</span></a>
-							<ul class="sub-menu">
-								<li><a href="blog-sidebar.html">Blog With Sidebar</a></li>
-								<li><a href="post-single.html">Post Single</a></li>
-								<li><a href="post-single-no-comments.html">Post Single No Comments</a></li>
-							</ul>
-						</li>
-						<li><a href="shortcodes.html"><span>Features</span></a>
-							<ul class="sub-menu">
-								<li><a href="shortcodes.html"><span>Custom Shortcodes</span></a>
-									<ul class="sub-menu">
-										<li><a href="#">Buttons and Links</a></li>
-										<li><a href="#">Columns</a></li>
-										<li><a href="#">Contact Form</a></li>
-										<li><a href="#">Info Box</a></li>
-										<li><a href="#">Toggle</a></li>
-										<li><a href="#">Typography</a></li>
-									</ul>
-								</li>
-								<li><a href="#">Buy This Theme</a></li>
-							</ul>
-						</li>-->
-						<li><a href="payment_packages">Packages</a></li>
-						<li><a href="oven">The Oven</a></li>
+						<li>{{HTML::link('job/post','Categories')}}</li>
+						<li>{{HTML::link('job/packages','Packages')}}</li>
+						<li>{{HTML::link('','The Oven')}}</li>
 						<li><a href="/#faqs">FAQs</a></li>
-						<li><a href="#" class="mybutton">Register</a></li>
-						<li><a href="#" class="mybutton">Login</a></li>
-						<li><a href="#" class="mybutton" style="background: none repeat scroll 0% 0% #A6BE29; color:#fff">Post a Job</a></li>
+						 @if(!Auth::check())
+	                        <li>{{HTML::link('login','Log in',['class'=>'mybutton'])}}</li>
+	                        <li>{{HTML::link('register','Register',['class'=>'mybutton'])}}</li>
+	                     @else
+                        	<li>{{HTML::link('logout','Log out',['class'=>'mybutton'])}}</li>
+                        @endif
+						<li>{{HTML::link('job/post','Post A Job',['class'=>'mybutton', 'style'=>'background: none repeat scroll 0% 0% #A6BE29; color:#fff'])}}
 					</ul>
 				<!-- END #main-menu -->
 				</div>
@@ -116,46 +98,10 @@ background-image: -moz-linear-gradient(center bottom , rgba(140, 140, 140, 0.29)
 			<div class="inner-wrapper">
 
 				<ul class="page-tree">
-					@yield('pagetree');
+					@yield('pagetree')
 				</ul>
 
-				<div class="basket">
-					<!-- BEGIN .basket-content -->
-					<div class="basket-content">
-						<ul class="items">
-							<li>
-								<div class="item-controls">
-									<a href="#" class="item-add">+</a>
-									<a href="#" class="item-del">-</a>
-								</div>
-								<a href="#"><img src="images/photos/image-1.jpg" alt="" /><b>Recusabo Sensibus</b><span><b class="item-qnt">2</b>QNT x<span class="item-price">$1,20</span></span></a>
-							</li>
-							<li>
-								<div class="item-controls">
-									<a href="#" class="item-add">+</a>
-									<a href="#" class="item-del">-</a>
-								</div>
-								<a href="#"><img src="images/photos/image-2.jpg" alt="" /><b>Possim Accusata Erroribus</b><span><b class="item-qnt">43</b>QNT x<span class="item-price">$2,50</span></span></a>
-							</li>
-						</ul>
-						<div>
-							<span>Subtotal</span>
-							<span class="right cart-total">$530.99</span>
-						</div>
-						<div class="split">
-							<a href="#" class="action-button size6">View cart</a>
-							<a href="#" class="action-button size6" style="background-color:#85ab2a;">Checkout</a>
-							<div class="clear-float"></div>
-						</div>
-					<!-- END .basket-content -->
-					</div>
-					<a href="#basket-toggle" class="basket-toggle">
-						<span><b>32</b> item(s) - <b>=N=530.99</b></span>
-					</a>
-					<span class="basket-new">
-						<span>New item from oven</span>
-					</span>
-				</div>
+			
 
 				<div class="right-info with-basket">
 					<span>Need Help? &nbsp;<i class="fa fa-phone"></i> <b>0809-800-0901</b> &nbsp; <i class="fa fa-envelope"></i> <b>info@designscook.com</b> </span>
@@ -171,7 +117,16 @@ background-image: -moz-linear-gradient(center bottom , rgba(140, 140, 140, 0.29)
 		<section class="content-wrapper">
 		<div id="container" class="full-width">
 			<div id="content">
-			@yield('content')
+				<div class="page-block">
+					<!-- BEGIN .inner-wrapper -->
+					<div class="inner-wrapper">
+
+							@yield('content')
+
+					<!-- END .inner-wrapper -->
+					</div>
+				<!-- END .page-block -->
+				</div>
 			</div>
 		</div>
 
@@ -329,18 +284,21 @@ background-image: -moz-linear-gradient(center bottom , rgba(140, 140, 140, 0.29)
 	</script>
 
 	
-	
-    
 
-	<script src="jscript/jquery-1.10.2.min.js"></script>
-	<script src="jscript/iscroll.js"></script>
-	<script src="jscript/modernizr.custom.50878.js"></script>
+ 	{{ HTML::script('jscript/jquery-1.10.2.min.js')}}
+	{{ HTML::script('jscript/iscroll.js')}}
+	{{ HTML::script('jscript/modernizr.custom.50878.js')}}
 
-	<script src="jscript/flowtype.js"></script>
-	<script src="jscript/jquery.knob.js"></script>
-	<script src="jscript/theme-script.js"></script>
-	<script src="jscript/dat-menu.js"></script>
-    
-   
+	{{ HTML::script('jscript/flowtype.js')}}
+	{{ HTML::script('jscript/jquery.knob.js')}}
+	{{ HTML::script('jscript/theme-script.js')}}
+	{{ HTML::script('jscript/dat-menu.js')}}
+	@if (Session::has('status'))
+			
+		<script>
+			alert('<?php echo Session::get('status') ?>');
+		</script>
+		{{Session::forget('status')}}
+	@endif
 </body>
 </html>

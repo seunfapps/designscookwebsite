@@ -6,11 +6,14 @@ public function __construct() {
     $this->beforeFilter('csrf', array('on'=>'post'));
 }
 	/**
-	 * Show the form for creating a new resource.
+	 * Show the form for registering a new user.
 	 *
 	 * @return Response
 	 */
-
+	public function register()
+	{
+		return View::make('users/register');
+	}
 
 
 	/**
@@ -29,7 +32,7 @@ public function __construct() {
 			$user->user_type = Input::get('user_type');
 			$user->password = Hash::make( Input::get('password') );
 
-			$newcode = generateConfirmationCode();
+			$newcode = $this->generateConfirmationCode();
 			$user->confirmation_code = $newcode;
 			$result = $user->save();
 			//$user = User::where('email', '=',Input::get('email'))->first();
@@ -139,7 +142,7 @@ echo $id;
 
 		if(Auth::attempt(array('email' => $email, 'password'=>$passwd, 'confirmed'=> 1),$rememberme))
 		{
-			return Redirect::back();
+			return Redirect::intended('/');
 		}
 		elseif(Auth::validate(array('email' => $email, 'password'=>$passwd)))
 		{
@@ -176,16 +179,8 @@ echo $id;
 		$msg = "A link has been sent to your email.";
 		return Redirect::back()->withInput(Input::except('passwd'))->withErrors($msg);
 	}
-	public function logout()
-	{
-		Auth::logout();
-		return Redirect::to('/');
-	}
-
-	public function register()
-	{
-		return View::make('users/register');
-	}
+	
+	
 	public function forgotPassword(){
 		
 	}

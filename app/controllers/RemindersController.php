@@ -12,6 +12,9 @@ class RemindersController extends Controller {
 		return View::make('password.remind');
 	}
 
+	public function getRemindEmail($email){
+		return View::make('password/remind')->with('email', $email);
+	}
 	/**
 	 * Handle a POST request to remind a user of their password.
 	 *
@@ -56,11 +59,13 @@ class RemindersController extends Controller {
 			'email', 'password', 'password_confirmation', 'token'
 		);
 
+		
 		$response = Password::reset($credentials, function($user, $password)
 		{
 			$user->password = Hash::make($password);
 
 			$user->save();
+
 		});
 		
 
@@ -76,6 +81,16 @@ class RemindersController extends Controller {
 				return Redirect::back()->with('error', 'This email address does not exist in our system.')->withInput(Input::except('password'));
 
 			case Password::PASSWORD_RESET:
+				$user = User::where('email','=',Input::get('email'))->first();
+				$data = [
+					'name'=> $user->name,
+					'email'=>$user->email,
+				];
+				Mail::queue('emails.resetpasswordsuccess',$data, function($message)
+				{
+					$message ->to(Input::get('email'))->subject('DesignsCook Account password changed!');
+
+				});
 				return Redirect::to('login')->with('status', 'You have successfully reset your password')->withInput(Input::except('password'));
 		}
 	}
