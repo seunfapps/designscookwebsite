@@ -169,7 +169,7 @@ background-image: -moz-linear-gradient(center bottom , rgba(140, 140, 140, 0.29)
 
 		<!-- BEGIN .content-wrapper -->
 		<section class="content-wrapper">
-		<div id="container" class="full-width">
+		<div id="container" class="with-sidebar">
 			<div id="content">
 			@yield('content')
 			</div>
