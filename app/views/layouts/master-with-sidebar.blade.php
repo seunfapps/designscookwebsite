@@ -4,17 +4,17 @@
 	<!-- Head Meta Data -->
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>Designscook | gettting your designs done right</title>
-	<link rel="shortcut icon" type="image/x-icon" href="{{ asset('images/favicon.ico') }}">
+	<link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 	<!-- Head Stylesheets -->
-	{{ HTML::style('css/theme-reset.css') }}
-	 {{ HTML::style('css/font-awesome.min.css') }}
-	 {{ HTML::style('css/dat-menu.css') }}
-	 {{ HTML::style('css/animate.css') }}
-	 {{ HTML::style('css/theme-style.css') }}
-	 {{ HTML::style('css/shortcodes.css') }}
-	 {{ HTML::style('css/responsive.css') }}
+	<link rel="stylesheet" type="text/css" href="css/theme-reset.css" media="screen">
+	<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css" media="screen">
+	<link rel="stylesheet" type="text/css" href="css/dat-menu.css" media="screen">
+	<link rel="stylesheet" type="text/css" href="css/animate.css" media="screen">
+	<link rel="stylesheet" type="text/css" href="css/theme-style.css" media="screen">
+	<link rel="stylesheet" type="text/css" href="css/shortcodes.css" media="screen">
+	<link rel="stylesheet" type="text/css" href="css/responsive.css" media="screen">
     
     
     
@@ -43,20 +43,20 @@ background-image: -moz-linear-gradient(center bottom , rgba(140, 140, 140, 0.29)
 				
 				<!-- BEGIN .logo-image -->
 				<div class="logo-image">
-					<a href="/"><img src="{{ asset('images/designscook-logo-278-129.fw.png') }}" alt="" /></a>
+					<a href="index.html"><img src="images/designscook-logo-278-129.fw.png" alt="" /></a>
 				<!-- END .logo-image -->
 				</div>
 
 				<!-- BEGIN .social-icons -->
 				<div class="social-icons">
 					<div>
-						<a href="http://twitter.com/designscook" target="_blank"><img src="{{ asset('images/social-twitter.png') }}" alt="" /></a>
+						<a href="http://twitter.com/designscook" target="_blank"><img src="images/social-twitter.png" alt="" /></a>
 					</div>
 					<div>
-						<a href="https://www.facebook.com/pages/DesignsCook/1426586880962451?ref=hl" target="_blank"><img src="{{ asset('images/social-facebook.png') }}" alt="" /></a>
+						<a href="https://www.facebook.com/pages/DesignsCook/1426586880962451" target="_blank"><img src="images/social-facebook.png" alt="" /></a>
 					</div>
 					<div>
-						<a href="https://plus.google.com/u/0/115870390292957554586/posts" target="_blank"><img src="{{ asset('images/social-google.png') }}" alt="" /></a>
+						<a href="https://plus.google.com/115870390292957554586/posts" target="_blank"><img src="images/social-google.png" alt="" /></a>
 					</div>
 					<div class="header-search">
 						<form action="#">
@@ -71,17 +71,35 @@ background-image: -moz-linear-gradient(center bottom , rgba(140, 140, 140, 0.29)
 				<!-- BEGIN #main-menu -->
 				<div id="main-menu">
 					<ul class="load-responsive" rel="Main Menu">
-						<li>{{HTML::link('job/post','Categories')}}</li>
-						<li>{{HTML::link('job/packages','Packages')}}</li>
-						<li>{{HTML::link('','The Oven')}}</li>
+						<li><a href="index.html">Categories</a></li>
+						<!--<li><a href="blog.html"><span>Blog</span></a>
+							<ul class="sub-menu">
+								<li><a href="blog-sidebar.html">Blog With Sidebar</a></li>
+								<li><a href="post-single.html">Post Single</a></li>
+								<li><a href="post-single-no-comments.html">Post Single No Comments</a></li>
+							</ul>
+						</li>
+						<li><a href="shortcodes.html"><span>Features</span></a>
+							<ul class="sub-menu">
+								<li><a href="shortcodes.html"><span>Custom Shortcodes</span></a>
+									<ul class="sub-menu">
+										<li><a href="#">Buttons and Links</a></li>
+										<li><a href="#">Columns</a></li>
+										<li><a href="#">Contact Form</a></li>
+										<li><a href="#">Info Box</a></li>
+										<li><a href="#">Toggle</a></li>
+										<li><a href="#">Typography</a></li>
+									</ul>
+								</li>
+								<li><a href="#">Buy This Theme</a></li>
+							</ul>
+						</li>-->
+						<li><a href="payment_packages">Packages</a></li>
+						<li><a href="oven">The Oven</a></li>
 						<li><a href="/#faqs">FAQs</a></li>
-						 @if(!Auth::check())
-	                        <li>{{HTML::link('login','Log in',['class'=>'mybutton'])}}</li>
-	                        <li>{{HTML::link('register','Register',['class'=>'mybutton'])}}</li>
-	                     @else
-                        	<li>{{HTML::link('logout','Log out',['class'=>'mybutton'])}}</li>
-                        @endif
-						<li>{{HTML::link('job/post','Post A Job',['class'=>'mybutton', 'style'=>'background: none repeat scroll 0% 0% #A6BE29; color:#fff'])}}
+						<li><a href="#" class="mybutton">Register</a></li>
+						<li><a href="#" class="mybutton">Login</a></li>
+						<li><a href="#" class="mybutton" style="background: none repeat scroll 0% 0% #A6BE29; color:#fff">Post a Job</a></li>
 					</ul>
 				<!-- END #main-menu -->
 				</div>
@@ -98,10 +116,46 @@ background-image: -moz-linear-gradient(center bottom , rgba(140, 140, 140, 0.29)
 			<div class="inner-wrapper">
 
 				<ul class="page-tree">
-					@yield('pagetree')
+					@yield('pagetree');
 				</ul>
 
-			
+				<div class="basket">
+					<!-- BEGIN .basket-content -->
+					<div class="basket-content">
+						<ul class="items">
+							<li>
+								<div class="item-controls">
+									<a href="#" class="item-add">+</a>
+									<a href="#" class="item-del">-</a>
+								</div>
+								<a href="#"><img src="images/photos/image-1.jpg" alt="" /><b>Recusabo Sensibus</b><span><b class="item-qnt">2</b>QNT x<span class="item-price">$1,20</span></span></a>
+							</li>
+							<li>
+								<div class="item-controls">
+									<a href="#" class="item-add">+</a>
+									<a href="#" class="item-del">-</a>
+								</div>
+								<a href="#"><img src="images/photos/image-2.jpg" alt="" /><b>Possim Accusata Erroribus</b><span><b class="item-qnt">43</b>QNT x<span class="item-price">$2,50</span></span></a>
+							</li>
+						</ul>
+						<div>
+							<span>Subtotal</span>
+							<span class="right cart-total">$530.99</span>
+						</div>
+						<div class="split">
+							<a href="#" class="action-button size6">View cart</a>
+							<a href="#" class="action-button size6" style="background-color:#85ab2a;">Checkout</a>
+							<div class="clear-float"></div>
+						</div>
+					<!-- END .basket-content -->
+					</div>
+					<a href="#basket-toggle" class="basket-toggle">
+						<span><b>32</b> item(s) - <b>=N=530.99</b></span>
+					</a>
+					<span class="basket-new">
+						<span>New item from oven</span>
+					</span>
+				</div>
 
 				<div class="right-info with-basket">
 					<span>Need Help? &nbsp;<i class="fa fa-phone"></i> <b>0809-800-0901</b> &nbsp; <i class="fa fa-envelope"></i> <b>info@designscook.com</b> </span>
@@ -117,16 +171,7 @@ background-image: -moz-linear-gradient(center bottom , rgba(140, 140, 140, 0.29)
 		<section class="content-wrapper">
 		<div id="container" class="with-sidebar">
 			<div id="content">
-				<div class="page-block">
-					<!-- BEGIN .inner-wrapper -->
-					<div class="inner-wrapper">
-
-							@yield('content')
-
-					<!-- END .inner-wrapper -->
-					</div>
-				<!-- END .page-block -->
-				</div>
+			@yield('content')
 			</div>
 		</div>
 
@@ -149,9 +194,9 @@ background-image: -moz-linear-gradient(center bottom , rgba(140, 140, 140, 0.29)
 						<h3>Contact Information</h3>
 						<div>
 							
-							<p>Duo id choro blandit, est ea purto constituto vituperatoribus. Id mei quis aeterno, hinc detracto deseruisse quo ne nam. Id mei quis aeterno, hinc detracto deseruisse quo ne nam.</p>
-							<span class="big-icon"><i class="fa fa-phone"></i>&nbsp;&nbsp;8-453-234-1234</span>
-							<span class="big-icon"><i class="fa fa-envelope"></i>&nbsp;&nbsp;<a href="#">oven@oursite.com</a></span>
+							<p>For any enquiries, please feel free to call or send us a mail, we will respond to you within 48 hours.</p>
+							<span class="big-icon"><i class="fa fa-phone"></i>&nbsp;&nbsp;0809-800-0901</span>
+							<span class="big-icon"><i class="fa fa-envelope"></i>&nbsp;&nbsp;<a href="#">info@designscook.com</a></span>
 							
 						</div>
 					<!-- BEGIN .widget -->
@@ -159,51 +204,30 @@ background-image: -moz-linear-gradient(center bottom , rgba(140, 140, 140, 0.29)
 					
 					<!-- BEGIN .widget -->
 					<div class="widget size4">
-						<h3>Most Recent Posts</h3>
-						<div class="article-items">
-							
-							<div class="item">
-								<div class="item-photo">
-									<a href="#"><img src="images/photos/image-9.jpg" alt="" /></a>
-								</div>
-								<div class="item-content">
-									<h4><a href="post-single.html">Dicta nemore accusamus</a><a href="post-single.html#comments" class="comment-link"><i class="fa fa-comment"></i>163</a></h4>
-									<p>Duo id choro blandit, est ea constituto vituperatoribus quis aeterno...</p>
-								</div>
+						<h3>Contact Us</h3>
+						<div class="comment-form">
+								<p class="input-text">
+									<input type="text" placeholder="Name" class="input-text" />
+								</p>
+								<p class="form-email">
+									<input type="text" placeholder="E-mail" />
+								</p>
+								
+								<p class="form-comment">
+									<textarea placeholder="Your message here!"></textarea>
+								</p>
+								<p class="form-submit">
+									<input type="submit" value="Submit" />
+								</p>
+
 							</div>
-							
-							<div class="item">
-								<div class="item-photo">
-									<a href="#"><img src="images/photos/image-10.jpg" alt="" /></a>
-								</div>
-								<div class="item-content">
-									<h4><a href="post-single.html">Dicta nemore accusamus</a><a href="post-single.html#comments" class="comment-link"><i class="fa fa-comment"></i>163</a></h4>
-									<p>Duo id choro blandit, est ea constituto vituperatoribus quis aeterno...</p>
-								</div>
-							</div>
-							
-						</div>
 					<!-- BEGIN .widget -->
 					</div>
 					
 					<!-- BEGIN .widget -->
 					<div class="widget size4">
-						<h3>Latest Photo Galleries</h3>
-						<div class="photo-widget">
-							
-							<div class="item"><a href="photo-gallery-single.html"><img src="images/photos/image-11.jpg" alt="" /></a></div>
-							<div class="item"><a href="photo-gallery-single.html"><img src="images/photos/image-12.jpg" alt="" /></a></div>
-							<div class="item"><a href="photo-gallery-single.html"><img src="images/photos/image-13.jpg" alt="" /></a></div>
-							<div class="item"><a href="photo-gallery-single.html"><img src="images/photos/image-14.jpg" alt="" /></a></div>
-
-							<div class="item"><a href="photo-gallery-single.html"><img src="images/photos/image-15.jpg" alt="" /></a></div>
-							<div class="item"><a href="photo-gallery-single.html"><img src="images/photos/image-16.jpg" alt="" /></a></div>
-							<div class="item"><a href="photo-gallery-single.html"><img src="images/photos/image-17.jpg" alt="" /></a></div>
-							<div class="item"><a href="photo-gallery-single.html"><img src="images/photos/image-18.jpg" alt="" /></a></div>
-
-							<div class="clear-float"></div>
-							
-						</div>
+						<h3>About Us</h3>
+						<p>DesignsCook is an online design marketplace that provides logo, graphics, website, 3D and print designs services by providing access to freeleance graphic designers and design studios arounud the world. To showcase their design skills that can relate with what the clients want, with the aim to deliver services that will boost both small and large organizations</p>
 					<!-- BEGIN .widget -->
 					</div>
 
@@ -284,21 +308,18 @@ background-image: -moz-linear-gradient(center bottom , rgba(140, 140, 140, 0.29)
 	</script>
 
 	
+	
+    
 
- 	{{ HTML::script('jscript/jquery-1.10.2.min.js')}}
-	{{ HTML::script('jscript/iscroll.js')}}
-	{{ HTML::script('jscript/modernizr.custom.50878.js')}}
+	<script src="jscript/jquery-1.10.2.min.js"></script>
+	<script src="jscript/iscroll.js"></script>
+	<script src="jscript/modernizr.custom.50878.js"></script>
 
-	{{ HTML::script('jscript/flowtype.js')}}
-	{{ HTML::script('jscript/jquery.knob.js')}}
-	{{ HTML::script('jscript/theme-script.js')}}
-	{{ HTML::script('jscript/dat-menu.js')}}
-	@if (Session::has('status'))
-			
-		<script>
-			alert('<?php echo Session::get('status') ?>');
-		</script>
-		{{Session::forget('status')}}
-	@endif
+	<script src="jscript/flowtype.js"></script>
+	<script src="jscript/jquery.knob.js"></script>
+	<script src="jscript/theme-script.js"></script>
+	<script src="jscript/dat-menu.js"></script>
+    
+   
 </body>
 </html>
