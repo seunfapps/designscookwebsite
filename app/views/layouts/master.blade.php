@@ -104,7 +104,7 @@ background-image: -moz-linear-gradient(center bottom , rgba(140, 140, 140, 0.29)
 			
 
 				<div class="right-info with-basket">
-					<span>Need Help? &nbsp;<i class="fa fa-phone"></i> <b>0809-800-0901</b> &nbsp; <i class="fa fa-envelope"></i> <b>info@designscook.com</b> </span>
+					<span >Need Help? &nbsp;<i class="fa fa-phone"></i> <a href='tel:0809-800-0901' style='color:#efeadf;'>0809-800-0901</a> &nbsp; <i class="fa fa-envelope"></i> <a href='mailto:info@designscook.com' style='color:#efeadf;'>info@designscook.com</a> </span>
 				</div>
 
 			<!-- END .inner-wrapper -->

@@ -29,12 +29,22 @@ public function __construct() {
 			$user->name = Input::get('fname');
 			$user->email = Input::get('email');
 			$user->phone_no = Input::get('phone');
-			$user->user_type = Input::get('user_type');
+			$user->user_type = strtolower(Input::get('user_type'));
 			$user->password = Hash::make( Input::get('password') );
 
 			$newcode = $this->generateConfirmationCode();
 			$user->confirmation_code = $newcode;
 			$result = $user->save();
+			if($user->user_type == 'designer'){
+				$designer = new Designer;
+				$designer->user_id = $user->id;
+				$designer->save();
+
+			}elseif($user->user_type == 'customer'){
+				$customer = new Customer;
+				$customer->user_id = $user->id;
+				$customer->save();
+			}
 			//$user = User::where('email', '=',Input::get('email'))->first();
 			$data  = array('email' => Input::get('email'),
 			'token'=>$newcode.':'.$user->id,'name'=>$user->name );
@@ -142,7 +152,7 @@ echo $id;
 
 		if(Auth::attempt(array('email' => $email, 'password'=>$passwd, 'confirmed'=> 1),$rememberme))
 		{
-			return Redirect::intended('/');
+			return Redirect::intended('user/dashboard');
 		}
 		elseif(Auth::validate(array('email' => $email, 'password'=>$passwd)))
 		{
@@ -162,6 +172,14 @@ echo $id;
 		
 	}
 
+	public function dashboard(){
+		if(Auth::check()){
+			$jobs = JobRequest::all();
+			$categories = Category::all();
+			return View::make('users/'.Auth::user()->user_type.'/dashboard',['jobs'=>$jobs,'categories'=>$categories]);
+		}
+		return Redirect::to('login')->with('status', 'Please login or create a new account.');
+	}
 	public function resetConfirmationCode($id){
 
 		$user = User::find($id);

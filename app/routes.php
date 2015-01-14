@@ -25,6 +25,7 @@ Route::get('logout', function(){
   Session::flush(); //delete the session
   return Redirect::to('login'); //redirect to login page
 });
+Route::get('user/dashboard',['before'=>'auth', 'uses'=>'usersController@dashboard'] );
 Route::get('register/verify/{token}', 'usersController@confirm');
 Route::get('register/code/{id}', 'usersController@resetConfirmationCode');
 Route::get('password/remind/', array('uses' => 'RemindersController@getRemind', 'as'  => 'password.remind'));
@@ -39,6 +40,6 @@ Route::get('job/packages', function(){
 Route::get('job/brief/{id}', array('uses' => 'JobRequestsController@brief', 'as'  => 'job.brief'));
 Route::post('job/brief', array('uses' => 'JobRequestsController@updatebrief', 'as'  => 'job.brief'));
 Route::get('job/details', array('uses' => 'JobRequestsController@details', 'as'  => 'job.details'));
-Route::get('category/create', array('uses' => 'CategoriesController@create', 'as'  => 'category.create'));
+Route::get('category/create', array('before'=>'isAdmin','uses' => 'CategoriesController@create', 'as'  => 'category.create'));
 Route::post('category/create', array('uses' => 'CategoriesController@store', 'as'  => 'category.create'));
  

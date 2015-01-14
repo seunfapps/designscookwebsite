@@ -86,3 +86,12 @@ Route::filter('csrf', function()
 		throw new Illuminate\Session\TokenMismatchException;
 	}
 });
+
+Route::filter('isAdmin',function(){
+	if(Auth::check()){
+		if(Auth::user()->user_type !== 'admin'){
+			return Redirect::to('/');
+		}
+	}
+	return Redirect::to('login');
+});
