@@ -1463,13 +1463,12 @@ input[type=submit]:hover {
 .comment-form p textarea,
 .comment-form p input {
 	display: block;
-	/*margin-left: 23%!important;*/
+	margin-left: 23%!important;
 }
 
 .comment-form p textarea,
 .comment-form p input[type=text] {
-	/*width: 65%*/
-	width: 90%;
+	width: 65%;
 	/*margin-left: 29%!important;*/
 }
 
@@ -5967,6 +5966,7 @@ textarea.input-text {
 
 
 
+
 .margin-bottom-10px
 {
 	margin-bottom: 10px;
@@ -5990,14 +5990,3 @@ textarea.input-text {
 	border-bottom: 1px dotted rgba(0,0,0,0.3);
 }
 
-
-/*.footer-contact input[type="text"]
-{
-	width: 90%;
-	margin-bottom: 10px;
-}
-.footer-contact textarea  
-{
-	width: 90%;
-	margin-bottom: 10px;
-}*/
