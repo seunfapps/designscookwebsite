@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section('pagetree')
 <li>{{HTML::link('/', 'Homepage')}}</li>
-<li><span>Post a job</span></li>
+<li><span>Post a project</span></li>
 @stop
 @section('content')
 
@@ -20,7 +20,7 @@
                                 foreach($subcategories as $subcategory){
                                     ?>
                                 
-                                <i class="fa fa-caret-right fa-1x"></i> &nbsp; {{HTML::link('job/brief/'.$subcategory->id, $subcategory->name)}}</li><br />
+                                <i class="fa fa-caret-right fa-1x"></i> &nbsp; {{HTML::link('project/brief/'.$subcategory->id, $subcategory->name)}}</li><br />
                                     <?php
                                 }
                             ?>

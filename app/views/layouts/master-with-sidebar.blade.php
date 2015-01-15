@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+t<!DOCTYPE html>
 <html>
 <head>
 	<!-- Head Meta Data -->
@@ -71,8 +71,8 @@ background-image: -moz-linear-gradient(center bottom , rgba(140, 140, 140, 0.29)
 				<!-- BEGIN #main-menu -->
 				<div id="main-menu">
 					<ul class="load-responsive" rel="Main Menu">
-						<li>{{HTML::link('job/post','Categories')}}</li>
-						<li>{{HTML::link('job/packages','Packages')}}</li>
+						<li>{{HTML::link('project/post','Categories')}}</li>
+						<li>{{HTML::link('project/packages','Packages')}}</li>
 						<li>{{HTML::link('','The Oven')}}</li>
 						<li><a href="/#faqs">FAQs</a></li>
 						 @if(!Auth::check())
@@ -81,7 +81,7 @@ background-image: -moz-linear-gradient(center bottom , rgba(140, 140, 140, 0.29)
 	                     @else
                         	<li>{{HTML::link('logout','Log out',['class'=>'mybutton'])}}</li>
                         @endif
-						<li>{{HTML::link('job/post','Post A Job',['class'=>'mybutton', 'style'=>'background: none repeat scroll 0% 0% #A6BE29; color:#fff'])}}
+						<li>{{HTML::link('project/post','Post A Job',['class'=>'mybutton', 'style'=>'background: none repeat scroll 0% 0% #A6BE29; color:#fff'])}}
 					</ul>
 				<!-- END #main-menu -->
 				</div>

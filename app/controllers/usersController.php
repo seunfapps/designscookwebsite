@@ -2,6 +2,24 @@
 
 class usersController extends \BaseController {
 
+	public function dashboard(){
+		if(Auth::check()){
+			$user = Auth::user();
+			switch ($user->user_type) {
+				case 'designer':
+					$jobs = JobRequest::all();
+					$categories = Category::all();
+					return View::make('users/'.$user->user_type.'/dashboard',['jobs'=>$jobs,'categories'=>$categories]);	
+				case 'customer':
+					$projects = JobRequest::where();
+					return View::make('users/'.$user->user_type.'/dashboard',['projects'=>$projects,'categories'=>$categories]);	
+				default:
+					# code...
+					break;
+			}		
+		}
+		return Redirect::to('login')->with('status', 'Please login or create a new account.');
+	}
 	/**
 	 * Show the form for registering a new user.
 	 *
@@ -103,8 +121,7 @@ class usersController extends \BaseController {
 	{
 		//
 
-echo $id;
-
+		
 	}
 
 
@@ -144,23 +161,7 @@ echo $id;
 	}
 
 	public function login()
-	{
-
-		$email  = Input::get('email');
-		$passwd = Input::get('passwd');
-		$rememberme = Input::get('rememberme');
-		Input::flashExcept('passwd');
-
-		if(Auth::attempt(array('email' => $email, 'password'=>$passwd),$rememberme))
-		{
-			return Redirect::intended('user/dashboard');
-		}
-		elseif(Auth::validate(array('email' => $email, 'password'=>$passwd)))
-		{
-			$user = User::where('email','=',$email)->first();
-			$message = "Your account has not been confirmed.";
-
-			$resetCode =true;
+	{			$resetCode =true;
 
 			Session::put('resetCode',$resetCode);
 			Session::put('id',$user->id);
@@ -169,18 +170,10 @@ echo $id;
 		else{
 			$message = "Your email or password is wrong";
 			return Redirect::back()->withInput(Input::except('passwd'))->withErrors($message);	
-		}		
-		
+		}				
 	}
 
-	public function dashboard(){
-		if(Auth::check()){
-			$jobs = JobRequest::all();
-			$categories = Category::all();
-			return View::make('users/'.Auth::user()->user_type.'/dashboard',['jobs'=>$jobs,'categories'=>$categories]);
-		}
-		return Redirect::to('login')->with('status', 'Please login or create a new account.');
-	}
+	
 	public function resetConfirmationCode($id){
 
 		$user = User::find($id);
