@@ -1596,7 +1596,7 @@ return array(
     'User' => $baseDir . '/app/models/User.php',
     'UserFeedbacks' => $baseDir . '/app/database/migrations/2014_12_12_153347_userFeedbacks.php',
     'UserReviews' => $baseDir . '/app/database/migrations/2014_12_12_153259_userReviews.php',
-    'Users' => $baseDir . '/app/database/migrations/2015_01_06_133604_Users.php',
+    'Users' => $baseDir . '/app/database/migrations/2014_12_06_133604_Users.php',
     'Whoops\\Exception\\ErrorException' => $vendorDir . '/filp/whoops/src/Whoops/Exception/ErrorException.php',
     'Whoops\\Exception\\Formatter' => $vendorDir . '/filp/whoops/src/Whoops/Exception/Formatter.php',
     'Whoops\\Exception\\Frame' => $vendorDir . '/filp/whoops/src/Whoops/Exception/Frame.php',
