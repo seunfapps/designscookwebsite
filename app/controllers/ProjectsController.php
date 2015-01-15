@@ -1,6 +1,6 @@
 <?php
 
-class JobRequestsController extends \BaseController {
+class ProjectsController extends \BaseController {
 
 	/**
 	 * Display a listing of the resource.
@@ -23,25 +23,25 @@ class JobRequestsController extends \BaseController {
 	{
 		//
 		Session::forget('uploaded_file');
-		Session::forget('job_details');
+		Session::forget('project_details');
 		$categories = Category::all();		
-		return View::make('job/pick_category',array('categories' => $categories));
+		return View::make('project/pick_category',array('categories' => $categories));
 	}
 
 	
 	public function brief($id)
 	{
 		//
-			$job_request = new JobRequest;
-			if(Session::has('job_details')){
-				$job_details = Session::pull('job_details');
-				$job_request->title = $job_details ['title'];
-				$job_request->description = $job_details ['description'];
+			$project = new Project;
+			if(Session::has('project_details')){
+				$project_details = Session::pull('project_details');
+				$project->title = $project_details ['title'];
+				$project->description = $project_details ['description'];
 				
 			}
 			$subcategory = SubCategory::find($id);
 			Session::put('id',$id);						
-			return View::make('job/job_brief',array('job_request'=> $job_request,'name' => $subcategory->name, 'price' => $subcategory->price,'id'=>$id));
+			return View::make('project/project_brief',array('project'=> $project,'name' => $subcategory->name, 'price' => $subcategory->price,'id'=>$id));
 	}
 /**
 	 * Update the specified resource in storage.
@@ -63,7 +63,7 @@ class JobRequestsController extends \BaseController {
 		}
 		$subcategory = SubCategory::find(Session::get('id'));
 
-		$job_details = array('title' => Input::get('title'),
+		$project_details = array('title' => Input::get('title'),
 			'description' => Input::get('description'),
 			'file'=>$destinationPath.':'.$filename,
 			'subcategory_id' => Session::get('id'),
@@ -71,9 +71,9 @@ class JobRequestsController extends \BaseController {
 			'category'=> $subcategory->category->name,
 			'cost'=>$subcategory->price, );
 		
-		Session::put('job_details',$job_details);
-		Session::put('intended', 'job/details');
-		return Redirect::to('job/details');
+		Session::put('project_details',$project_details);
+		Session::put('intended', 'project/details');
+		return Redirect::to('project/details');
 	}
 	/**
 	 * Store a newly created resource in storage.
@@ -97,11 +97,11 @@ class JobRequestsController extends \BaseController {
 	public function details()
 	{
 		//
-		if(Session::has('job_details')){
-			$job_details = Session::get('job_details');
-			return View::make('job/job_details',['job_details'=>$job_details] );
+		if(Session::has('project_details')){
+			$project_details = Session::get('project_details');
+			return View::make('project/project_details',['project_details'=>$project_details] );
 		}else{
-			return Redirect::to(job/post);
+			return Redirect::to(project/post);
 		}
 	}
 
