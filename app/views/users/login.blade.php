@@ -24,13 +24,10 @@
             <div class="margin-bottom-10px">
             {{Form::checkbox('rememberme', '', ['id'=>'rememberme'])}}
             <label for="rememberme" style="display:inline-block;"><span style="padding:6px;">&nbsp;Remember me</span></label>
-            {{HTML::link('password/remind', 'Forgot Password?',['style'=>'display:inline-block;'])}}
+            
             </div>
-            @if(Session::has('resetCode'))
-               {{HTML::link('register/code/'.Session::get('id'), 'Click this link to receive a new confirmation link.')}}
-                <?php Session::remove('resetCode');?>
-            @endif
             {{Form::submit('Login', ['class'=>'button'])}}
+            <div>{{HTML::link('password/remind', 'Forgot Password?',['style'=>'display:inline-block;'])}} or {{HTML::link('register','Create an account')}}</div>
             
               
             {{ Form::close() }}

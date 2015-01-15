@@ -4,17 +4,14 @@
         <meta charset="utf-8">
     </head>
     <body>
-        <h2>Thanks for registering</h2>
-
+        
         <div>
             Hi {{$name}}, <br><br>
 
-            Thanks for creating an account with DesignsCook.<br><br>
+            Thank you for contacting us. Someone on our team will get back to you shortly.<br><br>
 
             Yours Sincerely, <br>
             DesignsCook Team
-
         </div>
-
     </body>
 </html>

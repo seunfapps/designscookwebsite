@@ -31,7 +31,10 @@ class Designers extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('designers');
+		Schema::table('designers', function($table){
+    		$table->drop_index('designers_user_id_foreign');
+	    	$table->drop_foreign('designers_user_id_foreign');
+		});
 	}
 
 }

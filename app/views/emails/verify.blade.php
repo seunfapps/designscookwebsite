@@ -14,7 +14,7 @@
             {{ URL::to('register/verify', array($token)) }}<br><br>
             to confirm your account.<br><br>
 
-            Yours sincerely,
+            Yours sincerely,<br>
             The DesignsCook team<br>
         </div>
 
