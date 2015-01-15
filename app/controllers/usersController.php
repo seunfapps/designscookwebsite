@@ -2,9 +2,6 @@
 
 class usersController extends \BaseController {
 
-public function __construct() {
-    $this->beforeFilter('csrf', array('on'=>'post'));
-}
 	/**
 	 * Show the form for registering a new user.
 	 *
@@ -12,6 +9,7 @@ public function __construct() {
 	 */
 	public function register()
 	{
+		Auth::logout();
 		return View::make('users/register');
 	}
 
@@ -29,23 +27,37 @@ public function __construct() {
 			$user->name = Input::get('fname');
 			$user->email = Input::get('email');
 			$user->phone_no = Input::get('phone');
-			$user->user_type = Input::get('user_type');
+			$user->user_type = strtolower(Input::get('user_type'));
 			$user->password = Hash::make( Input::get('password') );
 
 			$newcode = $this->generateConfirmationCode();
 			$user->confirmation_code = $newcode;
 			$result = $user->save();
+			if($user->user_type == 'designer'){
+				$designer = new Designer;
+				$designer->user_id = $user->id;
+				$designer->save();
+
+			}elseif($user->user_type == 'customer'){
+				$customer = new Customer;
+				$customer->user_id = $user->id;
+				$customer->save();
+			}
 			//$user = User::where('email', '=',Input::get('email'))->first();
 			$data  = array('email' => Input::get('email'),
 			'token'=>$newcode.':'.$user->id,'name'=>$user->name );
 
-			Mail::queue('emails.verify',$data, function($message)
+			Mail::queue('emails.thankyou',$data, function($message)
 			{
 				$message ->to(Input::get('email'))->subject('Welcome!');
 
 			});
-			
-			return Redirect::to('login')->withInput(Input::except('password'))->withErrors('Thanks for registering. A link has been sent to your email.');
+			Auth::login($user);
+			if(Session::has('intended')){				
+				return Redirect::to(Session::get('intended'))->withInput(Input::except('password'))->withErrors('Thanks for registering.');	
+			}else{
+				return Redirect::to('login')->withInput(Input::except('password'))->withErrors('Thanks for registering.');
+			}
 		}
 		else{
 			return Redirect::back()->withInput(Input::except('passwd'))->withErrors($validation);
@@ -53,7 +65,6 @@ public function __construct() {
 	}
 
 	public function generateConfirmationCode(){
-
 		for($code_length=25, $newcode='';strlen($newcode) < $code_length; $newcode .= chr(!rand(0,2) ?rand(48,57):(!rand(0,1) ? rand(65,90):rand(97,122))));
 		return $newcode;
 	}
@@ -123,7 +134,7 @@ echo $id;
 	public function auth()
 	{
 		if(Auth::check()){
-			return View::make('welcome/index');
+			return Redirect::to('/');
 		}elseif (Auth::viaRemember()){
 			return Redirect::back();
 		}else{
@@ -140,9 +151,9 @@ echo $id;
 		$rememberme = Input::get('rememberme');
 		Input::flashExcept('passwd');
 
-		if(Auth::attempt(array('email' => $email, 'password'=>$passwd, 'confirmed'=> 1),$rememberme))
+		if(Auth::attempt(array('email' => $email, 'password'=>$passwd),$rememberme))
 		{
-			return Redirect::intended('/');
+			return Redirect::intended('user/dashboard');
 		}
 		elseif(Auth::validate(array('email' => $email, 'password'=>$passwd)))
 		{
@@ -162,6 +173,14 @@ echo $id;
 		
 	}
 
+	public function dashboard(){
+		if(Auth::check()){
+			$jobs = JobRequest::all();
+			$categories = Category::all();
+			return View::make('users/'.Auth::user()->user_type.'/dashboard',['jobs'=>$jobs,'categories'=>$categories]);
+		}
+		return Redirect::to('login')->with('status', 'Please login or create a new account.');
+	}
 	public function resetConfirmationCode($id){
 
 		$user = User::find($id);

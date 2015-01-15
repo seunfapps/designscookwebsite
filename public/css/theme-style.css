@@ -1389,6 +1389,7 @@ a.hover-fade:hover:before {
 
 
 textarea,
+input[type=number],
 input[type=password],
 input[type=text],input[type=email] {
 	background: #f7f1e5;
@@ -1467,6 +1468,9 @@ input[type=submit]:hover {
 
 .comment-form p textarea,
 .comment-form p input[type=text] {
+<<<<<<< HEAD
+	width: 65%;
+=======
 	width: 65%
 	/*width: 90%;*/
 	/*margin-left: 29%!important;*/
@@ -1526,6 +1530,7 @@ input[type=submit]:hover {
 .contact-footer p input[type=text] {
 	/*width: 65%*/
 	width: 90%;
+>>>>>>> 8c00c28931fc1ecbaabcafab32b3e1c6063b9607
 	/*margin-left: 29%!important;*/
 }
 
@@ -6029,6 +6034,7 @@ textarea.input-text {
 
 
 
+
 .margin-bottom-10px
 {
 	margin-bottom: 10px;
@@ -6052,6 +6058,8 @@ textarea.input-text {
 	border-bottom: 1px dotted rgba(0,0,0,0.3);
 }
 
+<<<<<<< HEAD
+=======
 
 
 table.table-customer-projects tr
@@ -6100,3 +6108,4 @@ table.table-customer-projects
 	width: 90%;
 	margin-bottom: 10px;
 }*/
+>>>>>>> 8c00c28931fc1ecbaabcafab32b3e1c6063b9607

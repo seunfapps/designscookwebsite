@@ -387,7 +387,7 @@
 
 
 										</div>
-										<p>Vel ne integre vivendo. Ut cum essent facilisi scriptorem. Ponderum percipitur no qui, ut vim duis veritus. Id dicit deseruisse has, mel augue.</p>
+										
 									</div>
 									<div class="size6">
 										<div class="wp-caption aligncenter"><a href="images/photos/image-23.jpg"><img class="size-full wp-image-31" alt="" src="images/photos/image-23.jpg" /></a><p class="wp-caption-text">Ad assum tibique eum, sed diam scripta eruditi in.</p></div>

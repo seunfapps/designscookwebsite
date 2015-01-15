@@ -72,6 +72,7 @@ class JobRequestsController extends \BaseController {
 			'cost'=>$subcategory->price, );
 		
 		Session::put('job_details',$job_details);
+		Session::put('intended', 'job/details');
 		return Redirect::to('job/details');
 	}
 	/**
@@ -79,22 +80,17 @@ class JobRequestsController extends \BaseController {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function payment()
 	{
-		//
-		echo "I am here";
-		if(Auth::check()){
-
-		}else{
-
-		}
+		//integrate to payment platform
+		
+		echo "Please pay";
 
 		
 	}
 
 
 	/**
-
 	 *
 	 * @return Response
 	 */

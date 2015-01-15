@@ -31,18 +31,4 @@
                 @endforeach
             @endif 
         </div>
-        <div>
-            @if(!Auth::check())
-                {{ Form::open(['action'=>'users.login', 'class'=>'login']) }}   
-                 <div class="margin-bottom-10px">
-                    {{Form::email('email', '', ['placeholder'=>'Email', 'class'=>'input-text', 'required'=>'true'])}}
-                </div>
-                
-                {{Form::submit('Proceed to job details', ['class'=>'button'])}}  
-                {{ Form::close() }}
-                
-            @endif
-        </div>
-
-
 @stop
