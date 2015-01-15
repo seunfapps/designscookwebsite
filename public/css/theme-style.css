@@ -1468,14 +1468,82 @@ input[type=submit]:hover {
 
 .comment-form p textarea,
 .comment-form p input[type=text] {
+<<<<<<< HEAD
 	width: 65%;
+=======
+	width: 65%
+	/*width: 90%;*/
 	/*margin-left: 29%!important;*/
 }
+
 
 .comment-form p textarea {
 	height: 70px;
 	margin-bottom: 15px;
 }
+
+
+/*******FOOTER CONTACT US*******/
+.contact-footer {
+	display: block;
+	width: 100%;
+	max-width: 470px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.contact-footer .required {
+	display: inline-block;
+	padding-left: 5px;
+	font-weight: bold;
+	color: #c84c09;
+	font-size: 17px;
+	line-height: inherit;
+}
+
+.contact-footer p {
+	text-align: center;
+	display: block;
+	margin-bottom: 10px;
+}
+
+.contact-footer p.form-info {
+	margin-bottom: 30px;
+}
+
+.contact-footer p label {
+	display: block;
+	float: left;
+	width: 20%;
+	text-align: right;
+	position: relative;
+	line-height: 31px;
+}
+
+.contact-footer p textarea,
+.contact-footer p input {
+	display: block;
+	/*margin-left: 23%!important;*/
+}
+
+.contact-footer p textarea,
+.contact-footer p input[type=text] {
+	/*width: 65%*/
+	width: 90%;
+>>>>>>> 8c00c28931fc1ecbaabcafab32b3e1c6063b9607
+	/*margin-left: 29%!important;*/
+}
+
+
+.contact-footer p textarea {
+	height: 70px;
+	margin-bottom: 15px;
+}
+
+/********END FOOTER CONCTACT*************/
+
+
+
 
 
 .photo-gallery-single {
@@ -5990,3 +6058,54 @@ textarea.input-text {
 	border-bottom: 1px dotted rgba(0,0,0,0.3);
 }
 
+<<<<<<< HEAD
+=======
+
+
+table.table-customer-projects tr
+{
+	background:#f5f0e5;	
+}
+
+table.table-customer-projects tr:nth-child(odd)
+{
+	background: transparent;	
+}
+table.table-customer-projects tr th
+{
+	border:none;
+	border-bottom: 2px solid rgba(0,0,0,0.04);
+	/*vertical-align:middle;*/	
+}
+
+table.table-customer-projects th 
+{
+	font-weight:bold;
+	background:#f5f0e5;
+	text-align:left;
+}
+table.table-customer-projects th,
+table.table-customer-projects td
+{
+	border:none;
+	padding: 10px;
+	font0size: 18px;
+}
+
+table.table-customer-projects
+{
+	width: 100%;
+	margin-bottom:30px;	
+}
+
+/*.footer-contact input[type="text"]
+{
+	width: 90%;
+	margin-bottom: 10px;
+}
+.footer-contact textarea  
+{
+	width: 90%;
+	margin-bottom: 10px;
+}*/
+>>>>>>> 8c00c28931fc1ecbaabcafab32b3e1c6063b9607

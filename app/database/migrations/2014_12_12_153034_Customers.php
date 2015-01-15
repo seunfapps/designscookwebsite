@@ -28,7 +28,9 @@ class Customers extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('customers');
+		Schema::table('customers', function($table){
+    		$table->drop_index('customers_user_id_foreign');
+	    	$table->drop_foreign('customers_user_id_foreign');
+		});
 	}
-
 }

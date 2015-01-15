@@ -4,17 +4,16 @@
         <meta charset="utf-8">
     </head>
     <body>
-        <h2>Thanks for registering</h2>
-
+        
         <div>
-            Hi {{$name}}, <br><br>
+            Hi, <br><br>
 
-            Thanks for creating an account with DesignsCook.<br><br>
+            Thank you for subscribing to our newsletter.<br><br>
+
+            To unsubscribe, please click on this {{HTML::link($unsubscribe, 'link')}}<br>
 
             Yours Sincerely, <br>
             DesignsCook Team
-
         </div>
-
     </body>
 </html>

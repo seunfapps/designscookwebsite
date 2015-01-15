@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section('pagetree')
-<li><a href="index.html">Homepage</a></li>
-<li><span>Login</span></li>
+<li>{{HTML::link('/', 'Homepage')}}</li>
+<li><span>Packages</span></li>
 @stop
 @section('content')
 
@@ -17,7 +17,7 @@
 								<div class="size3">
 									<a href="post-single.html" class="hover-fade">
 										<span class="hover-img"><i>Read More</i></span>
-										<img src="images/photos/image-3.jpg" alt="" />
+										<img src="{{asset('images/photos/image-3.jpg')}}" alt="" />
 									</a>
 									<h3><a href="#">Basic Package</a></h3>
 									
@@ -37,7 +37,7 @@
 								<div class="size3">
 									<a href="post-single.html" class="hover-fade">
 										<span class="hover-img"><i>Read More</i></span>
-										<img src="images/photos/image-4.jpg" alt="" />
+										<img src="{{asset('images/photos/image-4.jpg')}}" alt="" />
 									</a>
 									<h3><a href="post-single.html">Startup Package</a></h3>
 									
@@ -59,7 +59,7 @@
 								<div class="size3">
 									<a href="post-single.html" class="hover-fade">
 										<span class="hover-img"><i>Read More</i></span>
-										<img src="images/photos/image-5.jpg" alt="" />
+										<img src="{{asset('images/photos/image-5.jpg')}}" alt="" />
 									</a>
 									<h3><a href="post-single.html">Business Package</a></h3>
 									
@@ -84,7 +84,7 @@
 								<div class="size3">
 									<a href="post-single.html" class="hover-fade">
 										<span class="hover-img"><i>Read More</i></span>
-										<img src="images/photos/image-5.jpg" alt="" />
+										<img src="{{asset('images/photos/image-5.jpg')}}" alt="" />
 									</a>
 									<h3><a href="post-single.html">Business Package Plus</a></h3>
 									
@@ -107,9 +107,7 @@
 								</div>
 							</div>
 
-							<div class="additional-button">
-								<a href="blog.html" class="s-big-button">View More Posts<i class="fa fa-chevron-right"></i></a>
-							</div>
+							
 
 						<!-- END .inner-wrapper -->
 						</div>

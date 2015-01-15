@@ -39,12 +39,9 @@
 
             <div class="margin-bottom-10px">
             {{Form::password('password', ['placeholder'=>'Password', 'type'=>'password', 'class'=>'input-text', 'required'=>'true','autocomplete'=>'off'])}}
-            </div>
-            
-            
-                
-                <input type="submit" name="submit" value="Register" class='button'>
-              
+            </div>           
+            {{Form::submit('Register', ['class'=>'button'])}}
+            <div>Already registered? {{HTML::link('login','Click to login')}}</div>
             {{ Form::close() }}
             </div>
            </div>
