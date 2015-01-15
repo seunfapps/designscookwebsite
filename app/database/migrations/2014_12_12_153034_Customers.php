@@ -15,8 +15,6 @@ class Customers extends Migration {
 		Schema::create('customers', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->integer('user_id')->unsigned()->index();
-			$table->foreign('user_id')->references('id')->on('roles')->onDelete('cascade');
 			$table->timestamps();
 		});
 	}
@@ -28,9 +26,8 @@ class Customers extends Migration {
 	 */
 	public function down()
 	{
-		Schema::table('customers', function($table){
-    		$table->drop_index('customers_user_id_foreign');
-	    	$table->drop_foreign('customers_user_id_foreign');
-		});
+		Schema::drop('customers');
+
 	}
+
 }

@@ -7,6 +7,7 @@
 
 
 <div class="inner-wrapper">
+	<h4>Hi {{$name}}</h4>
 					<aside id="sidebar">
 					
 							<!-- BEGIN .widget -->
@@ -15,7 +16,7 @@
 									<a href="#" target="_blank"><img src="images/no-banner-300x250.jpg" alt="" /></a>
 								</div>-->
 							<!-- END .widget -->
-							<h4>Hi {{$name}}</h4>
+							
 							<div class="widget">
 								<h3>My Projects</h3>
                                 <h4>&nbsp;&nbsp;On going</h4>
@@ -49,7 +50,7 @@
                                 </thead>
                                 <tbody>
                                 	<?php $count = 0; ?>
-                                	@if($projects->any())
+                                	@if (!$projects->isEmpty())
                                 		@foreach($projects as $project)
                                 	<tr>
                                     	<td>{{$count++}}</td>
@@ -58,7 +59,9 @@
                                     </tr>
                                     	@endforeach
                                     @else
+                                    <tr>
                                     	You have no projects
+                                    <tr>
                                     @endif
                                     
                                 </tbody>

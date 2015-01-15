@@ -32,7 +32,7 @@ class ProjectsController extends \BaseController {
 	public function brief($id)
 	{
 		//
-			$project = new Project;
+			$project = new Customer_Project;
 			if(Session::has('project_details')){
 				$project_details = Session::pull('project_details');
 				$project->title = $project_details ['title'];

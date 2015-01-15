@@ -5,14 +5,14 @@ class usersController extends \BaseController {
 	public function dashboard(){
 		if(Auth::check()){
 			$user = Auth::user();
-			switch ($user->user_type) {
-				case 'designer':
-					$jobs = JobRequest::all();
+			switch ($user->userable_type) {
+				case 'Designer':
+					$projects = CustomerProject::all();
 					$categories = Category::all();
-					return View::make('users/'.$user->user_type.'/dashboard',['jobs'=>$jobs,'categories'=>$categories]);	
-				case 'customer':
-					$projects = JobRequest::where();
-					return View::make('users/'.$user->user_type.'/dashboard',['projects'=>$projects,'categories'=>$categories]);	
+					return View::make('users/designer/dashboard',['projects'=>$projects,'categories'=>$categories]);	
+				case 'Customer':
+					$projects = $user->userable->projects;
+					return View::make('users/customer/dashboard',['projects'=>$projects,'name'=>$user->name]);	
 				default:
 					# code...
 					break;
@@ -45,21 +45,19 @@ class usersController extends \BaseController {
 			$user->name = Input::get('fname');
 			$user->email = Input::get('email');
 			$user->phone_no = Input::get('phone');
-			$user->user_type = strtolower(Input::get('user_type'));
 			$user->password = Hash::make( Input::get('password') );
 
 			$newcode = $this->generateConfirmationCode();
 			$user->confirmation_code = $newcode;
-			$result = $user->save();
-			if($user->user_type == 'designer'){
+			if(Input::get('user_type') == 'Designer'){
 				$designer = new Designer;
-				$designer->user_id = $user->id;
 				$designer->save();
+				$designer->user()->save($user);
 
-			}elseif($user->user_type == 'customer'){
+			}elseif(Input::get('user_type') == 'Customer'){
 				$customer = new Customer;
-				$customer->user_id = $user->id;
 				$customer->save();
+				$customer->user()->save($user);
 			}
 			//$user = User::where('email', '=',Input::get('email'))->first();
 			$data  = array('email' => Input::get('email'),
@@ -74,7 +72,7 @@ class usersController extends \BaseController {
 			if(Session::has('intended')){				
 				return Redirect::to(Session::get('intended'))->withInput(Input::except('password'))->withErrors('Thanks for registering.');	
 			}else{
-				return Redirect::to('login')->withInput(Input::except('password'))->withErrors('Thanks for registering.');
+				return Redirect::to('user/dashboard')->withInput(Input::except('password'))->withErrors('Thanks for registering.');
 			}
 		}
 		else{
@@ -162,6 +160,20 @@ class usersController extends \BaseController {
 
 	public function login()
 	{			$resetCode =true;
+				$email  = Input::get('email');
+		$passwd = Input::get('passwd');
+		$rememberme = Input::get('rememberme');
+		Input::flashExcept('passwd');
+
+		if(Auth::attempt(array('email' => $email, 'password'=>$passwd),$rememberme))
+		{
+			return Redirect::intended('user/dashboard');
+		}
+		elseif(Auth::validate(array('email' => $email, 'password'=>$passwd)))
+		{
+			$user = User::where('email','=',$email)->first();
+			$message = "Your account has not been confirmed.";
+
 
 			Session::put('resetCode',$resetCode);
 			Session::put('id',$user->id);
