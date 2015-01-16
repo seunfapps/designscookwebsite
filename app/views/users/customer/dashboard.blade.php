@@ -40,6 +40,8 @@
 						</aside>
 						<!-- BEGIN .content-block -->
 						<div class="content-block">
+							<?php $count = 0; ?>
+                                	@if (!$projects->isEmpty())
 							<table class="table-customer-projects">
                             	<thead>
                                 	<tr>
@@ -49,8 +51,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                	<?php $count = 0; ?>
-                                	@if (!$projects->isEmpty())
+                                	
                                 		@foreach($projects as $project)
                                 	<tr>
                                     	<td>{{$count++}}</td>
@@ -58,16 +59,11 @@
                                         <td>$project->created_at</td>
                                     </tr>
                                     	@endforeach
-                                    @else
-                                    <tr>
-                                    	You have no projects
-                                    <tr>
-                                    @endif
-                                    
                                 </tbody>
                             </table>
-							
-							
+                             @else
+							<div>You have no projects</div>
+							 @endif
 
 						<!-- END .content-block -->
 						</div>
