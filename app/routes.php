@@ -33,15 +33,15 @@ Route::get('password/remindemail/{email}', array('uses' => 'RemindersController@
 Route::get('password/reset/{token}', array('uses' => 'RemindersController@getReset', 'as'  => 'password.reset'));
 Route::post('password/remind', array('uses' => 'RemindersController@postRemind', 'as'  => 'password.remind'));
 Route::post('password/reset', array('uses' => 'RemindersController@postReset', 'as'  => 'password.update'));
-Route::get('job/post', array('uses' => 'JobRequestsController@create', 'as'  => 'job.post'));
-Route::get('job/packages', function(){
+Route::get('project/post', array('uses' => 'ProjectsController@create', 'as'  => 'project.post'));
+Route::get('business_packages', function(){
 	return View::make('welcome/payment_packages');
 });
-Route::get('job/brief/{id}', array('uses' => 'JobRequestsController@brief', 'as'  => 'job.brief'));
-Route::post('job/brief', array('uses' => 'JobRequestsController@updatebrief', 'as'  => 'job.brief'));
-Route::get('job/details', array('uses' => 'JobRequestsController@details', 'as'  => 'job.details'));
+Route::get('project/brief/{id}', array('uses' => 'ProjectsController@brief', 'as'  => 'project.brief'));
+Route::post('project/brief', array('uses' => 'ProjectsController@updatebrief', 'as'  => 'project.brief'));
+Route::get('project/details', array('uses' => 'ProjectsController@details', 'as'  => 'project.details'));
 Route::group(['before'=>'auth'], function(){
- Route::post('job/payment', array('uses' => 'JobRequestsController@payment'));      
+ Route::post('project/payment', array('uses' => 'ProjectsController@payment'));      
 });
 Route::get('category/create', array('before'=>'isAdmin','uses' => 'CategoriesController@create', 'as'  => 'category.create'));
 Route::post('category/create', array('uses' => 'CategoriesController@store', 'as'  => 'category.create'));
