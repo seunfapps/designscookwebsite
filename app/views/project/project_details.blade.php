@@ -12,28 +12,35 @@
         {{Form::open(array('action'=>'ProjectsController@payment'))}}
 		    <p class="form-name">
             	<label for="">Project Title</label>
+               {{$project_details['title']}} 
             </p>
-            <p class="form-comment">
+             <div class="clear-float"></div>
+           <!--  <p class="form-comment">
             	{{$project_details['title']}}            
-            </p>
+            </p> -->
             <p class="form-name">
             <label for="">Design Name</label>
+                {{$project_details ['design_name']}}
             </p>
-            <p class="form-comment">
+            <div class="clear-float"></div>
+           <!--  <p class="form-comment">
             	{{$project_details ['design_name']}}            
-            </p>
+            </p> -->
             <p class="form-name">
-            <label for="">Design Category</label>
+            <label for="">Category</label>
+            {{$project_details ['category']}} 
             </p>
-            <p class="form-comment">
+             <div class="clear-float"></div>
+           <!--  <p class="form-comment">
             	{{$project_details ['category']}}            
-            </p>
+            </p> -->
             <p class="form-name">
             <label for="">Cost</label>
+            {{$project_details ['cost']}}
             </p>
-            <p class="form-comment">
+           <!--  <p class="form-comment">
             	{{$project_details ['cost']}}            
-            </p>
+            </p> -->
             <p class="form-submit">
                 {{Form::submit('Proceed to payment')}}                        
             </p>
