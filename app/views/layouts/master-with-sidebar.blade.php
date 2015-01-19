@@ -1,4 +1,4 @@
-t<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
 	<!-- Head Meta Data -->
@@ -32,7 +32,6 @@ background-image: -moz-linear-gradient(center bottom , rgba(140, 140, 140, 0.29)
     
 </head>
 <body>
-
 	<!-- BEGIN #wrapper -->
 	<div id="wrapper" class="wide">
 
@@ -72,16 +71,28 @@ background-image: -moz-linear-gradient(center bottom , rgba(140, 140, 140, 0.29)
 				<div id="main-menu">
 					<ul class="load-responsive" rel="Main Menu">
 						<li>{{HTML::link('project/post','Categories')}}</li>
-						<li>{{HTML::link('project/packages','Packages')}}</li>
+						<li>{{HTML::link('business_packages','Packages')}}</li>
 						<li>{{HTML::link('','The Oven')}}</li>
 						<li><a href="/#faqs">FAQs</a></li>
 						 @if(!Auth::check())
 	                        <li>{{HTML::link('login','Log in',['class'=>'mybutton'])}}</li>
 	                        <li>{{HTML::link('register','Register',['class'=>'mybutton'])}}</li>
+	                        <li>{{HTML::link('project/post','Post A Project',['class'=>'mybutton', 'style'=>'background: none repeat scroll 0% 0% #A6BE29; color:#fff'])}}
 	                     @else
-                        	<li>{{HTML::link('logout','Log out',['class'=>'mybutton'])}}</li>
+	                     	<li><a href="" class='mybutton'><span>My Account</span></a>
+							<ul class="sub-menu">
+								<li>{{HTML::link('user/dashboard','My Profile')}}</li>
+								<li>{{HTML::link('logout','Log out')}}</li>
+							</ul>
+						</li>
+                        	
+                        	 @if(Auth::user()->userable_type == 'Designer')
+	                        	<li>{{HTML::link('project/post','Browse Projects',['class'=>'mybutton', 'style'=>'background: none repeat scroll 0% 0% #A6BE29; color:#fff'])}}
+	                        @elseif(Auth::user()->userable_type == 'Customer')
+								<li>{{HTML::link('project/post','Post A Project',['class'=>'mybutton', 'style'=>'background: none repeat scroll 0% 0% #A6BE29; color:#fff'])}}
+							@endif
                         @endif
-						<li>{{HTML::link('project/post','Post A Job',['class'=>'mybutton', 'style'=>'background: none repeat scroll 0% 0% #A6BE29; color:#fff'])}}
+                       
 					</ul>
 				<!-- END #main-menu -->
 				</div>
@@ -103,7 +114,7 @@ background-image: -moz-linear-gradient(center bottom , rgba(140, 140, 140, 0.29)
 
 			
 
-				<div class="right-info with-basket">
+				<div class="right-info">
 					<span >Need Help? &nbsp;<i class="fa fa-phone"></i> <a href='tel:0809-800-0901' style='color:#efeadf;'>0809-800-0901</a> &nbsp; <i class="fa fa-envelope"></i> <a href='mailto:info@designscook.com' style='color:#efeadf;'>info@designscook.com</a> </span>
 				</div>
 
@@ -117,21 +128,13 @@ background-image: -moz-linear-gradient(center bottom , rgba(140, 140, 140, 0.29)
 		<section class="content-wrapper">
 		<div id="container" class="with-sidebar">
 			<div id="content">
-				<div class="page-block">
-					<!-- BEGIN .inner-wrapper -->
-					<div class="inner-wrapper">
-
-							@yield('content')
-
-					<!-- END .inner-wrapper -->
-					</div>
-				<!-- END .page-block -->
-				</div>
+				@yield('content')
 			</div>
 		</div>
 
 		<!-- END .content-wrapper -->
 		</section>
+
 
 
 
@@ -147,67 +150,41 @@ background-image: -moz-linear-gradient(center bottom , rgba(140, 140, 140, 0.29)
 					<!-- BEGIN .widget -->
 					<div class="widget size4">
 						<h3>Contact Information</h3>
-						<div>
-							
-							<p>Duo id choro blandit, est ea purto constituto vituperatoribus. Id mei quis aeterno, hinc detracto deseruisse quo ne nam. Id mei quis aeterno, hinc detracto deseruisse quo ne nam.</p>
-							<span class="big-icon"><i class="fa fa-phone"></i>&nbsp;&nbsp;8-453-234-1234</span>
-							<span class="big-icon"><i class="fa fa-envelope"></i>&nbsp;&nbsp;<a href="#">oven@oursite.com</a></span>
-							
+						<div>							
+							<p>For any enquiries, please feel free to call or send us a mail, we will respond to you within 48 hours.</p>
+							<span class="big-icon"><i class="fa fa-phone"></i>&nbsp;&nbsp;<a href="tel:08098000901">0809-800-0901</a></span>
+							<span class="big-icon"><i class="fa fa-envelope"></i>&nbsp;&nbsp;<a href="mailto:info@designscook.com">info@designscook.com</a></span>
 						</div>
 					<!-- BEGIN .widget -->
 					</div>
 					
 					<!-- BEGIN .widget -->
 					<div class="widget size4">
-						<h3>Most Recent Posts</h3>
-						<div class="article-items">
+						<h3>Contact Us</h3>
+						<div class="comment-form">
+							{{Form::open(['action'=>'welcomeController@contactus'])}}
+							<p class="input-text">
+								{{Form::text('name','', ['placeholder'=>'Name', 'class'=>'input-text', 'required'=>'true'])}}
+							</p>
+							<p class="form-email">
+								{{Form::email('email','', ['placeholder'=>'Email', 'class'=>'input-text','required'=>'true'])}}
+							</p>
 							
-							<div class="item">
-								<div class="item-photo">
-									<a href="#"><img src="images/photos/image-9.jpg" alt="" /></a>
-								</div>
-								<div class="item-content">
-									<h4><a href="post-single.html">Dicta nemore accusamus</a><a href="post-single.html#comments" class="comment-link"><i class="fa fa-comment"></i>163</a></h4>
-									<p>Duo id choro blandit, est ea constituto vituperatoribus quis aeterno...</p>
-								</div>
-							</div>
-							
-							<div class="item">
-								<div class="item-photo">
-									<a href="#"><img src="images/photos/image-10.jpg" alt="" /></a>
-								</div>
-								<div class="item-content">
-									<h4><a href="post-single.html">Dicta nemore accusamus</a><a href="post-single.html#comments" class="comment-link"><i class="fa fa-comment"></i>163</a></h4>
-									<p>Duo id choro blandit, est ea constituto vituperatoribus quis aeterno...</p>
-								</div>
-							</div>
-							
+							<p class="form-comment">
+								{{Form::textarea('message','', ['placeholder'=>'Your message here', 'class'=>'input-text', 'required'=>'true'])}}
+							</p>
+							<p class="form-submit">
+								{{Form::submit('Submit')}}
+							</p>
+							{{Form::close()}}
 						</div>
-					<!-- BEGIN .widget -->
 					</div>
 					
 					<!-- BEGIN .widget -->
 					<div class="widget size4">
-						<h3>Latest Photo Galleries</h3>
-						<div class="photo-widget">
-							
-							<div class="item"><a href="photo-gallery-single.html"><img src="images/photos/image-11.jpg" alt="" /></a></div>
-							<div class="item"><a href="photo-gallery-single.html"><img src="images/photos/image-12.jpg" alt="" /></a></div>
-							<div class="item"><a href="photo-gallery-single.html"><img src="images/photos/image-13.jpg" alt="" /></a></div>
-							<div class="item"><a href="photo-gallery-single.html"><img src="images/photos/image-14.jpg" alt="" /></a></div>
-
-							<div class="item"><a href="photo-gallery-single.html"><img src="images/photos/image-15.jpg" alt="" /></a></div>
-							<div class="item"><a href="photo-gallery-single.html"><img src="images/photos/image-16.jpg" alt="" /></a></div>
-							<div class="item"><a href="photo-gallery-single.html"><img src="images/photos/image-17.jpg" alt="" /></a></div>
-							<div class="item"><a href="photo-gallery-single.html"><img src="images/photos/image-18.jpg" alt="" /></a></div>
-
-							<div class="clear-float"></div>
-							
-						</div>
-					<!-- BEGIN .widget -->
-					</div>
-
-					<div class="clear-float"></div>
+						<h3>About Us</h3>
+						<p>DesignsCook is an online design marketplace that provides logo, graphics, website, 3D and print designs services by providing access to freeleance graphic designers and design studios arounud the world. To showcase their design skills that can relate with what the clients want, with the aim to deliver services that will boost both small and large organizations</p>	
+					</div>				
 
 				<!-- END .footer-widgets -->
 				</div>
@@ -216,16 +193,17 @@ background-image: -moz-linear-gradient(center bottom , rgba(140, 140, 140, 0.29)
 				<div class="footer-subscribe">
 
 					<div class="footer-social right">
-						<a href="#" target="_blank"><img src="images/footer-social-twitter.png" alt="" /></a>
-						<a href="#" target="_blank"><img src="images/footer-social-facebook.png" alt="" /></a>
-						<a href="#" target="_blank"><img src="images/footer-social-google.png" alt="" /></a>
+						<a href="http://twitter.com/designscook" target="_blank"><img src="{{ asset('images/social-twitter.png') }}" alt="" /></a>
+						<a href="https://www.facebook.com/pages/DesignsCook/1426586880962451?ref=hl" target="_blank"><img src="{{ asset('images/social-facebook.png') }}" alt="" /></a>
+						<a href="https://plus.google.com/u/0/115870390292957554586/posts" target="_blank"><img src="{{ asset('images/social-google.png') }}" alt="" /></a>
 					</div>
 
 					<div class="footer-subscribe-form right">
-						<form action="#" method="get">
-							<input type="text" value="" placeholder="Your e-mail" />
-							<input type="submit" value="Subscribe" />
-						</form>
+						{{Form::open(['action'=>'welcomeController@subscribe'])}}
+							{{Form::email('subscription_email','', ['placeholder'=>'Your email', 'class'=>'input-text', 'required'=>'true'])}}
+							{{Form::submit('Subscribe')}}
+						{{Form::close()}}
+						{{$errors->first('subscription_email','<p>:message</p>')}}
 					</div>
 					
 					<div class="info-msg">
@@ -236,23 +214,13 @@ background-image: -moz-linear-gradient(center bottom , rgba(140, 140, 140, 0.29)
 				<!-- END .footer-subscribe -->
 				</div>
 
-				<!-- BEGIN .footer-menu -->
-				<div class="footer-menu">
-					<ul>
-						<li><a href="#">Partners</a></li>
-						<li><a href="#">The Oven</a></li>
-						<li><a href="#">Contact Us</a></li>
-						<li><a href="#">Terms &amp; Conditions</a></li>
-					</ul>
-				<!-- END .footer-menu -->
-				</div>
 
 				<!-- BEGIN .footer-copyright -->
 				<div class="footer-copyright">
 					
 					<p>
 						&copy; <script>var now = new Date(); document.write(now.getFullYear())</script> 
-						<a href="">designscook.com</a> . All rights reserved
+						<a href="">designscook.com.ng</a> . All rights reserved
 					</p>
 
 				<!-- END .footer-copyright -->

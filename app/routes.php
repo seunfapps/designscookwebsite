@@ -41,6 +41,7 @@ Route::get('project/brief/{id}', array('uses' => 'ProjectsController@brief', 'as
 Route::post('project/brief', array('uses' => 'ProjectsController@updatebrief', 'as'  => 'project.brief'));
 Route::get('project/details', array('uses' => 'ProjectsController@details', 'as'  => 'project.details'));
 Route::group(['before'=>'auth'], function(){
+	Route::get('project/payment', array('uses' => 'ProjectsController@payment'));     
  Route::post('project/payment', array('uses' => 'ProjectsController@payment'));      
 });
 Route::get('category/create', array('before'=>'isAdmin','uses' => 'CategoriesController@create', 'as'  => 'category.create'));

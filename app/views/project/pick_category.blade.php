@@ -5,30 +5,38 @@
 @stop
 @section('content')
 
-    
-       <div class="block-title">
-            <h2>Pick A Category</h2>                            
-        </div>
-        <div class="split post-blocks dat-scrollnimate" data-animation="flipInX" style="display:flex">
-            @if (!$categories->isEmpty())
-                @foreach($categories as $category)
-                    <div class="size3">
-                        <h3>{{$category->name}}</h3>
-                        <p>
-                            <?php
-                                $subcategories = $category->subcategories ;
-                                foreach($subcategories as $subcategory){
-                                    ?>
-                                
-                                <i class="fa fa-caret-right fa-1x"></i> &nbsp; {{HTML::link('project/brief/'.$subcategory->id, $subcategory->name)}}</li><br />
-                                    <?php
-                                }
-                            ?>
+    <div class="page-block">
+        <!-- BEGIN .inner-wrapper -->
+        <div class="inner-wrapper">
 
-                        </p>
+                             
+           <div class="block-title">
+                <h2>Pick A Category</h2>                            
+            </div>
+            <div class="split post-blocks dat-scrollnimate" data-animation="flipInX" style="display:flex">
+                @if (!$categories->isEmpty())
+                    @foreach($categories as $category)
+                        <div class="size3">
+                            <h3>{{$category->name}}</h3>
+                            <p>
+                                <?php
+                                    $subcategories = $category->subcategories ;
+                                    foreach($subcategories as $subcategory){
+                                        ?>
+                                    
+                                    <i class="fa fa-caret-right fa-1x"></i> &nbsp; {{HTML::link('project/brief/'.$subcategory->id, $subcategory->name)}}</li><br />
+                                        <?php
+                                    }
+                                ?>
 
-                    </div>                    
-                @endforeach
-            @endif 
+                            </p>
+
+                        </div>                    
+                    @endforeach
+                @endif 
+            </div>
+        <!-- END .inner-wrapper -->
         </div>
+    <!-- END .page-block -->
+    </div>
 @stop

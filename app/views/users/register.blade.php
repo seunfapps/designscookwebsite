@@ -17,10 +17,8 @@
             @endif
 
             <div class="margin-bottom-10px">
-                <div style="display:inline-block">
-                    {{Form::radio('user_type', 'Customer',null, ['id'=>'customer', 'required'=>'true', 'style'=>'margin-right:5px;'])}}<label for="customer" style='display:inline-block;'>Customer</label>
-                    {{Form::radio('user_type', 'Designer',null, ['id'=>'designer', 'required'=>'true', 'style'=>'margin-right:5px;'])}}<label for="designer" style='display:inline-block;'>Designer</label> 
-                </div>
+                    {{Form::radio('user_type', 'Customer',null, ['id'=>'customer', 'required'=>'true', 'style'=>'margin-right:5px;'])}}<label for="customer" style='display:inline-block;'><span style='padding:0 10px 0 0;'>CUSTOMER</span></label>
+                    {{Form::radio('user_type', 'Designer',null, ['id'=>'designer', 'required'=>'true', 'style'=>'margin-right:5px;'])}}<label for="designer" style='display:inline-block;'><span style='padding:0 10px 0 0;'>DESIGNER</span></label> 
             </div>
             
             
@@ -39,9 +37,11 @@
 
             <div class="margin-bottom-10px">
             {{Form::password('password', ['placeholder'=>'Password', 'type'=>'password', 'class'=>'input-text', 'required'=>'true','autocomplete'=>'off'])}}
-            </div>           
+            </div>    
+            <div class="margin-bottom-10px">       
             {{Form::submit('Register', ['class'=>'button'])}}
-            <div>Already registered? {{HTML::link('login','Click to login')}}</div>
+            </div>
+            <div class="margin-bottom-10px">Already registered? {{HTML::link('login','Click to login')}}</div>
             {{ Form::close() }}
             </div>
            </div>

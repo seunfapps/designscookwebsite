@@ -32,7 +32,6 @@ background-image: -moz-linear-gradient(center bottom , rgba(140, 140, 140, 0.29)
     
 </head>
 <body>
-
 	<!-- BEGIN #wrapper -->
 	<div id="wrapper" class="wide">
 
@@ -78,10 +77,22 @@ background-image: -moz-linear-gradient(center bottom , rgba(140, 140, 140, 0.29)
 						 @if(!Auth::check())
 	                        <li>{{HTML::link('login','Log in',['class'=>'mybutton'])}}</li>
 	                        <li>{{HTML::link('register','Register',['class'=>'mybutton'])}}</li>
+	                        <li>{{HTML::link('project/post','Post A Project',['class'=>'mybutton', 'style'=>'background: none repeat scroll 0% 0% #A6BE29; color:#fff'])}}
 	                     @else
-                        	<li>{{HTML::link('logout','Log out',['class'=>'mybutton'])}}</li>
+	                     	<li><a href="" class='mybutton'><span>My Account</span></a>
+							<ul class="sub-menu">
+								<li>{{HTML::link('user/dashboard','My Profile')}}</li>
+								<li>{{HTML::link('logout','Log out')}}</li>
+							</ul>
+						</li>
+                        	
+                        	 @if(Auth::user()->userable_type == 'Designer')
+	                        	<li>{{HTML::link('project/post','Browse Projects',['class'=>'mybutton', 'style'=>'background: none repeat scroll 0% 0% #A6BE29; color:#fff'])}}
+	                        @elseif(Auth::user()->userable_type == 'Customer')
+								<li>{{HTML::link('project/post','Post A Project',['class'=>'mybutton', 'style'=>'background: none repeat scroll 0% 0% #A6BE29; color:#fff'])}}
+							@endif
                         @endif
-						<li>{{HTML::link('project/post','Post A Project',['class'=>'mybutton', 'style'=>'background: none repeat scroll 0% 0% #A6BE29; color:#fff'])}}
+                       
 					</ul>
 				<!-- END #main-menu -->
 				</div>
@@ -117,16 +128,7 @@ background-image: -moz-linear-gradient(center bottom , rgba(140, 140, 140, 0.29)
 		<section class="content-wrapper">
 		<div id="container" class="full-width">
 			<div id="content">
-				<div class="page-block">
-					<!-- BEGIN .inner-wrapper -->
-					<div class="inner-wrapper">
-
-							@yield('content')
-
-					<!-- END .inner-wrapper -->
-					</div>
-				<!-- END .page-block -->
-				</div>
+				@yield('content')
 			</div>
 		</div>
 
