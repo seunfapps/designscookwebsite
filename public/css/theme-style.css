@@ -531,7 +531,7 @@ a:active {
 #main-menu > ul > li a {
 	display: block;
 	color: #5d4d43;
-	font-size: 17px;
+	font-size: 15px;
 	font-weight: normal;
 	font-family: 'Ropa Sans', sans-serif;
 	padding: 6px 12px 5px 12px;
@@ -2049,7 +2049,7 @@ input[type=submit]:hover {
 	padding-top: 4px;
 }
 
-#footer .footer-subscribe .footer-subscribe-form input[type="text"] {
+#footer .footer-subscribe .footer-subscribe-form input[type="text"],#footer .footer-subscribe .footer-subscribe-form input[type="email"] {
 	background: #332a25;
 	color: #685d57;
 	padding: 9px 15px;
@@ -5824,12 +5824,12 @@ span.required {
 form.login {
     background: rgba(255, 255, 255, 0.33);
    /* padding: 32px;*/
- 	padding: 10px;
+ 	padding: 20px;
   /* margin: 30px 0px;*/
 	margin: 10px 0px;
     border-radius: 4px;
     font-size: 13px;
-	width: 100%;
+	
 }
 
 form.login label {
@@ -6109,3 +6109,20 @@ table.table-customer-projects
 	margin-bottom: 10px;
 }*/
 >>>>>>> 8c00c28931fc1ecbaabcafab32b3e1c6063b9607
+
+ .comment-inner .s-border-button {
+	display: inline-block;
+	position: absolute;
+	left: 0px;
+	text-align: center;
+	top: 90px;
+	width: 46px;
+	line-height: 100%;
+	opacity: 0.3;
+	filter: alpha(opacity=30);
+}
+
+.categories-inner:hover .s-border-button {
+	opacity: 1;
+	filter: alpha(opacity=100);
+}

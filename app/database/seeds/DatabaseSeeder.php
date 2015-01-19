@@ -11,13 +11,22 @@ class DatabaseSeeder extends Seeder {
 	{
 		Eloquent::unguard();
 
-		$this->call('CategoryTableSeeder');
-		$this->call('SubCategoryTableSeeder');
+		// $this->call('CategoryTableSeeder');
+		// $this->call('SubCategoryTableSeeder');
+		$this->call('ProjectTableSeeder');
 
 	}
 
 }
-
+class ProjectTableSeeder extends Seeder{
+	public function run()
+	{
+		DB::table('projects')->delete();
+		CustomerProject::create(array('cost'=>1200,'subcategory_id' => 1,'customer_id'=>1,'title'=>'My logo design', 'description'=>'Blah blah blah Blah blah blahBlah blah blahBlah blah blahBlah blah blahBlah blah blahBlah blah blahBlah blah blah'));
+		CustomerProject::create(array('cost'=>1200,'subcategory_id' => 1,'customer_id'=>1,'title'=>'My logo design', 'description'=>'Blah blah blah Blah blah blahBlah blah blahBlah blah blahBlah blah blahBlah blah blahBlah blah blahBlah blah blah'));
+		CustomerProject::create(array('cost'=>1200,'subcategory_id' => 1,'customer_id'=>1,'title'=>'My logo design', 'description'=>'Blah blah blah Blah blah blahBlah blah blahBlah blah blahBlah blah blahBlah blah blahBlah blah blahBlah blah blah'));
+	}
+}
 class CategoryTableSeeder extends Seeder{
 	public function run()
 	{

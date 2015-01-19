@@ -32,16 +32,18 @@ class ProjectsController extends \BaseController {
 	public function brief($id)
 	{
 		//
-			$project = new Customer_Project;
+			$project = new CustomerProject;
+			$uploaded_file = '';
 			if(Session::has('project_details')){
 				$project_details = Session::pull('project_details');
+				$uploaded_file = $Session::pull('uploaded_file');
 				$project->title = $project_details ['title'];
 				$project->description = $project_details ['description'];
 				
 			}
 			$subcategory = SubCategory::find($id);
 			Session::put('id',$id);						
-			return View::make('project/project_brief',array('project'=> $project,'name' => $subcategory->name, 'price' => $subcategory->price,'id'=>$id));
+			return View::make('project/project_brief',array('project'=> $project,'uploaded_file'=>$uploaded_file, 'name' => $subcategory->name, 'price' => $subcategory->price,'id'=>$id));
 	}
 /**
 	 * Update the specified resource in storage.
@@ -70,7 +72,10 @@ class ProjectsController extends \BaseController {
 			'design_name'=> $subcategory->name,
 			'category'=> $subcategory->category->name,
 			'cost'=>$subcategory->price, );
-		
+		if(Auth::check()){
+			$user = Auth::user();
+			
+		}
 		Session::put('project_details',$project_details);
 		Session::put('intended', 'project/details');
 		return Redirect::to('project/details');
