@@ -91,7 +91,7 @@
 					</div>
 
 <!-- BEGIN .page-block -->
-<div class="page-block lightcolor">
+<div class="page-block">
 						<!-- BEGIN .inner-wrapper -->
 						<div class="inner-wrapper">
 
@@ -197,7 +197,7 @@
                         				<i class="fa fa-check fa-1x"></i> &nbsp; 2 Revisions<br />
                         				Duration: 5 working days<br />
                                     </p>
-									<a href="post-single.html#comments" class="comment-button"><i class="fa fa-comments"></i><b>40 comments</b><span>Leave a comment</span></a>
+									<!-- <a href="post-single.html#comments" class="comment-button"><i class="fa fa-comments"></i><b>40 comments</b><span>Leave a comment</span></a> -->
 									<a href="post-single.html" class="s-border-button right">Read More</a>
 									<div class="clear-float"></div>
 								</div>

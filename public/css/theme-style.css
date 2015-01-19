@@ -1389,7 +1389,6 @@ a.hover-fade:hover:before {
 
 
 textarea,
-input[type=number],
 input[type=password],
 input[type=text],input[type=email] {
 	background: #f7f1e5;
@@ -1468,9 +1467,6 @@ input[type=submit]:hover {
 
 .comment-form p textarea,
 .comment-form p input[type=text] {
-<<<<<<< HEAD
-	width: 65%;
-=======
 	width: 65%
 	/*width: 90%;*/
 	/*margin-left: 29%!important;*/
@@ -1527,10 +1523,10 @@ input[type=submit]:hover {
 }
 
 .contact-footer p textarea,
-.contact-footer p input[type=text] {
+.contact-footer p input[type=text],
+.contact-footer p input[type=email] {
 	/*width: 65%*/
 	width: 90%;
->>>>>>> 8c00c28931fc1ecbaabcafab32b3e1c6063b9607
 	/*margin-left: 29%!important;*/
 }
 
@@ -2049,7 +2045,12 @@ input[type=submit]:hover {
 	padding-top: 4px;
 }
 
+<<<<<<< HEAD
 #footer .footer-subscribe .footer-subscribe-form input[type="text"],#footer .footer-subscribe .footer-subscribe-form input[type="email"] {
+=======
+#footer .footer-subscribe .footer-subscribe-form input[type="text"], 
+input[type="email"]{
+>>>>>>> 84245e631d319928ff44755360088f16db5dd54a
 	background: #332a25;
 	color: #685d57;
 	padding: 9px 15px;
@@ -6034,7 +6035,6 @@ textarea.input-text {
 
 
 
-
 .margin-bottom-10px
 {
 	margin-bottom: 10px;
@@ -6058,8 +6058,6 @@ textarea.input-text {
 	border-bottom: 1px dotted rgba(0,0,0,0.3);
 }
 
-<<<<<<< HEAD
-=======
 
 
 table.table-customer-projects tr
@@ -6107,6 +6105,7 @@ table.table-customer-projects
 {
 	width: 90%;
 	margin-bottom: 10px;
+<<<<<<< HEAD
 }*/
 >>>>>>> 8c00c28931fc1ecbaabcafab32b3e1c6063b9607
 
@@ -6126,3 +6125,6 @@ table.table-customer-projects
 	opacity: 1;
 	filter: alpha(opacity=100);
 }
+=======
+}*/
+>>>>>>> 84245e631d319928ff44755360088f16db5dd54a
