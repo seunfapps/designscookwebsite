@@ -17,9 +17,9 @@
 								<div class="size3">
 									<a href="post-single.html" class="hover-fade">
 										<span class="hover-img"><i>Read More</i></span>
-										<img src="images/photos/image-3.jpg" alt="" />
+										<img src="{{asset('images/photos/image-3.jpg')}}" alt="" />
 									</a>
-									<h3><a href="post-single.html">Basic Package</a></h3>
+									<h3><a href="#">Basic Package</a></h3>
 									
 									<p>
                     				    <i class="fa fa-check fa-1x"></i> &nbsp; 4 logo design concepts<br />
@@ -42,9 +42,9 @@
 								<div class="size3">
 									<a href="post-single.html" class="hover-fade">
 										<span class="hover-img"><i>Read More</i></span>
-										<img src="images/photos/image-4.jpg" alt="" />
+										<img src="{{asset('images/photos/image-4.jpg')}}" alt="" />
 									</a>
-									<h3><a href="post-single.html">Startup Package</a></h3>
+									<h3><a href="#">Startup Package</a></h3>
 									
 									<p>
                         				<i class="fa fa-check fa-1x"></i> &nbsp; 4 logo design concepts<br />
@@ -69,9 +69,9 @@
 								<div class="size3">
 									<a href="post-single.html" class="hover-fade">
 										<span class="hover-img"><i>Read More</i></span>
-										<img src="images/photos/image-5.jpg" alt="" />
+										<img src="{{asset('images/photos/image-5.jpg')}}" alt="" />
 									</a>
-									<h3><a href="post-single.html">Business Package</a></h3>
+									<h3><a href="#">Business Package</a></h3>
 									
 									<p>
                         <i class="fa fa-check fa-1x"></i> &nbsp; 4 logo design concepts<br />
@@ -90,18 +90,17 @@
 										<div class="clear-float"></div> 
                                     </div>
 
-									<a href="#" class="comment-button"><i class="fa"></i><b></b></a>
 									
 									<!-- <div class="clear-float"></div> -->
 								</div>
                                 
                                 <!-- another column -->
 								<div class="size3">
-									<a href="post-single.html" class="hover-fade">
+									<a href="#" class="hover-fade">
 										<span class="hover-img"><i>Read More</i></span>
 										<img src="images/photos/image-5.jpg" alt="" />
 									</a>
-									<h3><a href="post-single.html">Business Package Plus</a></h3>
+									<h3><a href="#">Business Package Plus</a></h3>
 									
 									<p>
                         <i class="fa fa-check fa-1x"></i> &nbsp; 4 logo design concepts<br />
@@ -118,7 +117,7 @@
 
                                     <div id = "price-block">
 										<b style="margin-left:20px; font-size:24px;">N10,000</b>
-										<a href="#" class="s-button right" style="margin-right:20px;">Buy</a>
+										<a href="#" class="s-button right" style="margin-right:20px;margin-bottom:20px;">Buy</a>
 										<div class="clear-float"></div>
                                     </div>
 
