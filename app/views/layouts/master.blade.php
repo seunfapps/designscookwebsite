@@ -257,7 +257,7 @@ background-image: -moz-linear-gradient(center bottom , rgba(140, 140, 140, 0.29)
  	{{ HTML::script('jscript/jquery-1.10.2.min.js')}}
 	{{ HTML::script('jscript/iscroll.js')}}
 	{{ HTML::script('jscript/modernizr.custom.50878.js')}}
-
+	{{ HTML::script('jscript/jquery-1.10.2.min.js')}}
 	{{ HTML::script('jscript/flowtype.js')}}
 	{{ HTML::script('jscript/jquery.knob.js')}}
 	{{ HTML::script('jscript/theme-script.js')}}

@@ -9,6 +9,34 @@ class usersController extends \BaseController {
 				case 'Designer':
 					$projects = CustomerProject::all();
 					$categories = Category::all();
+					return View::make('users/designer/dashboard',['categories'=>$categories])->nest('child','users/designer/cust_projects',['projects'=>$projects]);	
+				case 'Customer':
+					$projects = $user->userable->projects;
+					return View::make('users/customer/dashboard')->nest('child','users/customer/cust_projects',['projects'=>$projects,'name'=>$user->name]);	
+				default:
+					# code...
+					break;
+			}		
+		}
+		return Redirect::to('login')->with('status', 'Please login or create a new account.');
+	}
+
+	public function cust_projects($status){
+		if(Request::ajax()){
+			$projects = CustomerProject::where('status','=',$status)->get();
+			$view =  View::make('users/designer/cust_projects',['projects'=> $projects]);
+			return $view;
+		}else{
+			$projects = '';
+		if(Auth::check()){
+			$user = Auth::user();
+			switch ($user->userable_type) {
+				case 'Designer':
+					if(empty($status)){
+						$projects = CustomerProject::all();	
+					}else{
+						$projects = CustomerProject::where('status','=',$status);
+					}
 					return View::make('users/designer/dashboard',['projects'=>$projects,'categories'=>$categories]);	
 				case 'Customer':
 					$projects = $user->userable->projects;
@@ -18,8 +46,11 @@ class usersController extends \BaseController {
 					break;
 			}		
 		}
-		return Redirect::to('login')->with('status', 'Please login or create a new account.');
+		}
+		
+		
 	}
+
 	/**
 	 * Show the form for registering a new user.
 	 *
