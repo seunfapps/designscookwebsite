@@ -6,7 +6,7 @@
 	<title>Designscook | gettting your designs done right</title>
 	<link rel="shortcut icon" type="image/x-icon" href="{{ asset('images/favicon.ico') }}">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
+	<meta name="_token" content="{{ csrf_token() }}"/>
 	<!-- Head Stylesheets -->
 	{{ HTML::style('css/theme-reset.css') }}
 	 {{ HTML::style('css/font-awesome.min.css') }}
@@ -256,7 +256,7 @@ background-image: -moz-linear-gradient(center bottom , rgba(140, 140, 140, 0.29)
  	{{ HTML::script('jscript/jquery-1.10.2.min.js')}}
 	{{ HTML::script('jscript/iscroll.js')}}
 	{{ HTML::script('jscript/modernizr.custom.50878.js')}}
-
+	{{ HTML::script('jscript/jquery-1.10.2.min.js')}}
 	{{ HTML::script('jscript/flowtype.js')}}
 	{{ HTML::script('jscript/jquery.knob.js')}}
 	{{ HTML::script('jscript/theme-script.js')}}

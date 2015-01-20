@@ -7,27 +7,10 @@
 <div class="inner-wrapper">
 	<h4>Hi {{$name}}</h4>
 	<aside id="sidebar">
-					
-		<!-- BEGIN .widget -->
-		<!--<div class="widget">
-			<div class="wi-banner">
-				<a href="#" target="_blank"><img src="images/no-banner-300x250.jpg" alt="" /></a>
-			</div>-->
-		<!-- END .widget -->
-		
 		<div class="widget">
 			<h3>My Projects</h3>
             <h4>&nbsp;&nbsp;On going</h4>
             <h4>&nbsp;&nbsp;Closed</h4>
-            
-           
-			<!--<ul>
-				<li><a href="#">Worth A Thousand Words</a></li>
-				<li><a href="#">Elements</a></li>
-				<li><a href="#">More Tags</a></li>
-				<li><a href="#">HTML</a></li>
-				<li><a href="#">Links</a></li>
-			</ul>-->
 		<!-- BEGIN .widget -->
 		</div>
 
