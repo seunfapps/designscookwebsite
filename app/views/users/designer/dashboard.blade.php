@@ -10,7 +10,7 @@
 <aside id="sidebar">
     
 	<div class="widget accordion">
-		<div class="accordion-tab active"><a href="#"><h3 >Projects</h3></a>
+		<div class="accordion-tab active"><a href="#"></a><h3 ><a class='status' href="#">Projects</a></h3>
     		<div class="accordion-block">
         	    <h4>&nbsp;&nbsp;<a id='open' class='status' href="#">Open</a></h4>
         	    <h4>&nbsp;&nbsp;<a id='closed' class='status' href="#">Closed</a></h4>
@@ -18,7 +18,7 @@
 	    </div>
         
 	    
-		<div class="accordion-tab"><a href="#"><h3 >My Profile</h3></a>
+		<div class="accordion-tab"><a href="#"></a><h3 ><a href="#">My Profile</a></h3>
 	    	<div class="accordion-block">
 	    		<h4>&nbsp;&nbsp;<a href="#">Update Profile</a></h4>
 	    		<h4>&nbsp;&nbsp;<a href="#">Change Password</a></h4>
@@ -32,7 +32,7 @@
 
 	<div class="content-block" >
     <div class="margin-bottom-10px" >
-       <span >Category</span> {{Form::select('category',$categories,'',['id'=>'category'])}}
+       <span >Category</span> {{Form::select('category',$categories,'',['id'=>'category', 'onChange'=>'reload(this);'])}}
 
     </div>
     <div class="clear-float"></div>
@@ -49,10 +49,8 @@
 	{{ HTML::script('jscript/jquery-1.10.2.min.js')}}
 
 	<script>
-        
-       
+        var status = '';
         $(function(){
-
             $(".status").on('click',function(e){
                 e.preventDefault();
                 document.getElementById('waitImageSidebar').style.position = "absolute";
@@ -65,11 +63,14 @@
                     $("#waitImageSidebar").hide();
                     $("#result").show();
                 });
-                $('#result').load(window.location.origin+ '/user/projects/'+ e.target.id, " #result");
+                status = e.target.id;
+                reload();
                 return false;
             });
-           
-
-        });//end of document ready function
+        });
+        function reload(){
+                cat = $('#category').val();
+                $('#result').load(window.location.origin+ '/user/projects/'+cat.toString()+'/'+ status.toString(), " #result");
+        }
     </script>						
 @stop
