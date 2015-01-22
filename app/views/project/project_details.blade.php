@@ -10,33 +10,34 @@
     <div class="block-title"><h2>Project Details</h2></div>
     	<div class="comment-form">
         {{Form::open(array('action'=>'ProjectsController@payment'))}}
-        <table cellpadding="10">
-            <tr>
-                <td class="labelAlignRight">Project Title</td>
-                <td class="dataAlignLeft">{{$project_details['title']}}</td>
-            </tr>
-            <tr>
-           
-                <td class="labelAlignRight">Design Type</td>
-                <td class="dataAlignLeft"><span>{{$project_details ['design_name']}}</span></td>
-           
-            </tr>
-            <tr>
-              
-                <td class ="labelAlignRight"><span >Category</span></td>
-                <td class="dataAlignLeft"><span >{{$project_details ['category']}} </span></td>
-               
-            </tr>
-            <tr>
-                <td class = "labelAlignRight"><span >Cost</span></td>
-                <td class="dataAlignLeft"><span>{{$project_details ['cost']}}</span></td>
-            </tr>
-           
-        </table>
-		    
-               
-               
-          
+		    <p class="form-name">
+            	<label for="">Project Title</label>
+               {{$project_details['title']}} 
+            </p>
+             <div class="clear-float"></div>
+           <!--  <p class="form-comment">
+            	{{$project_details['title']}}            
+            </p> -->
+            <p class="form-name">
+            <label for="">Design Name</label>
+                {{$project_details ['design_name']}}
+            </p>
+            <div class="clear-float"></div>
+           <!--  <p class="form-comment">
+            	{{$project_details ['design_name']}}            
+            </p> -->
+            <p class="form-name">
+            <label for="">Category</label>
+            {{$project_details ['category']}} 
+            </p>
+             <div class="clear-float"></div>
+           <!--  <p class="form-comment">
+            	{{$project_details ['category']}}            
+            </p> -->
+            <p class="form-name">
+            <label for="">Cost</label>
+            {{$project_details ['cost']}}
+            </p>
            <!--  <p class="form-comment">
             	{{$project_details ['cost']}}            
             </p> -->
@@ -45,6 +46,7 @@
             </p>
 
             {{Form::close()}}
-        </div>   
+        </div>
+	</div>    
 
 @stop
