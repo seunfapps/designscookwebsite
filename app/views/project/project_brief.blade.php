@@ -21,7 +21,7 @@
             </p>
             <p class="form-comment">
             <label for="">Description<span class="required">*</span></label>
-            {{Form::textarea('description', Input::old('description'), ['placeholder'=>'Some information that may come in handy for designers', 'class'=>'input-text', 'required'=>'true'])}}
+            {{Form::textarea('description', Input::old('description'), ['placeholder'=>'Some information that may come in handy for designers',  'required'=>'true'])}}
             </p>
             <p class="form-name">
             <label for="">File(Optional)<span class="required"></span></label>
