@@ -70,7 +70,7 @@
         });
         function reload(){
                 cat = $('#category').val();
-                $('#result').load(window.location.origin+ '/user/projects/'+cat.toString()+'/'+ status.toString(), " #result");
+                $('#result').load(window.location.origin+ '/designer/projects/'+cat.toString()+'/'+ status.toString(), " #result");
         }
     </script>						
 @stop
