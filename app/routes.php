@@ -27,8 +27,8 @@ Route::post('register',  array('uses' => 'usersController@store', 'as'  => 'user
 Route::post('subscribe', 'welcomeController@subscribe');
 Route::get('designer/dashboard{page?}',['before'=>'auth', 'uses'=>'DesignersController@dashboard'] );
 Route::get('user/dashboard{page?}',['before'=>'auth', 'uses'=>'usersController@dashboard'] );
-Route::get('user/projects/{category}/{status?}','usersController@cust_projects');
-Route::get('user/project/changestatus/{id}/','ProjectsController@changestatus');
+Route::get('designer/projects/{category}/{status?}','DesignersController@cust_projects');
+Route::get('designer/project/changestatus/{id}/','ProjectsController@changestatus');
 Route::get('register/verify/{token}', 'usersController@confirm');
 Route::get('register/code/{id}', 'usersController@resetConfirmationCode');
 Route::get('password/remind/', array('uses' => 'RemindersController@getRemind', 'as'  => 'password.remind'));

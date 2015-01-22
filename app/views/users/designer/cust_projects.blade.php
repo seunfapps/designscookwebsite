@@ -3,9 +3,15 @@
 	@foreach($projects as $project)
 		<!-- <div class=""> -->
 			<div class="panel-block">
-				<a href="#">
 				<div class="article-header">
-					<h1>{{$project->title}}</h1>
+					<h3>{{$project->title}}
+					@if($project->status == 'open')
+						<i class="fa fa-unlock right"></i>
+					@else
+						<i class="fa fa-lock right"></i>
+					@endif
+					</h3>
+					<h6><i>{{$project->category_name}}</i></h6>
 					<div class="theicoon">
 						<a href="#"><i class="fa fa-user"></i><span>{{$project->customer->user->name}}<i>Author of the Project</i></span></a>
 						<a href="#"><i class="fa fa-users"></i><span><?php if($project->designers_by_id == ''){
@@ -14,15 +20,16 @@
 						echo count($designers_id);}
 						?> Entries<i>Designers Interested</i></span></a>
 						<a href="#"><i class="fa fa-calendar-o"></i><span>{{$project->created_at}}<i>Date when project was submitted</i></span></a>
+
+
 					</div>
 				</div>
-				</a>
 			<p >
 				{{substr( $project->description,0,70)}} ...
 				@if(Auth::user()->userable->projects->contains($project->id))
-					{{HTML::link('#','Following',['class'=>'s-button right fol', 'id'=> $project->id , 'style'=>'margin-right:20px;'])}}
+				<a href="#" id = {{$project->id}}  class ='s-button right fol' style='margin-right:20px;'>Following</a>
 				@else
-					{{HTML::link('#','Follow',['class'=>'s-button right fol', 'id'=> $project->id , 'style'=>'margin-right:20px;'])}}
+					<a href="#" id = {{$project->id}}  class ='s-button right fol' style='margin-right:20px;'>Follow</a>
 				@endif
 			</p>
 			
@@ -30,7 +37,7 @@
 	@endforeach
 
 @else
-<h2 align='center'>There are no {{strtolower($projectstatus)}} project</h2>
+<h2 align='center'>There are no {{strtolower($projectstatus)}} project in this category</h2>
 @endif
 <img src="{{ asset('images/ajax-loader.gif') }}" alt="Please wait..." title="Please wait..." class="right" id="waitImage" style="display: none;" />
 
@@ -54,11 +61,11 @@
 	            });
                 $.ajax({
                     type: "GET",
-                    url : window.location.origin+ '/user/project/changestatus/'+ e.target.id,
+                    url : window.location.origin+ '/designer/project/changestatus/'+ e.target.id,
                     data : null,
                     success : function(data){
                         console.log(data);
-                        $('#result').load(window.location.origin+ '/user/projects/'+ '{{empty($projectstatus) ? "":$projectstatus}}', " #result");
+                       reload();
                     }
                 });
                 return false;

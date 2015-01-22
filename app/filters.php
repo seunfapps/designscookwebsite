@@ -90,7 +90,7 @@ Route::filter('csrf', function()
 
 Route::filter('isAdmin',function(){
 	if(Auth::check()){
-		if(Auth::user()->user_type !== 'admin'){
+		if(Auth::user()->userable_type !== 'Admin'){
 			return Redirect::to('/');
 		}
 	}
