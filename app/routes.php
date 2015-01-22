@@ -10,22 +10,25 @@
 | and give it the Closure to execute when that URI is requested.
 |
 */
-Route::group(['before'=>'auth'], function(){
- Route::post('job/store', array('uses' => 'JobRequestsController@store','as'=>'job.store'));      
- Route::get('job/store', array('uses' => 'JobRequestsController@store','as'=>'job.store'));     
-    });
+
 
 Route::get('/', 'welcomeController@index');
+Route::post('contactus', 'welcomeController@contactus');
 Route::get('login', 'usersController@auth');
-Route::post('login', array('uses' => 'usersController@login', 'as'  => 'users.login'));
-Route::get('register', 'usersController@register');
-Route::post('register',  array('uses' => 'usersController@store', 'as'  => 'users.register'));
+Route::post('login', array('before'=>'guest|csrf', 'uses' => 'usersController@login', 'as'  => 'users.login'));
 Route::get('logout', function(){
   Auth::logout(); //logout the current user
   Session::flush(); //delete the session
   return Redirect::to('login'); //redirect to login page
 });
-Route::get('user/dashboard',['before'=>'auth', 'uses'=>'usersController@dashboard'] );
+
+Route::get('register', 'usersController@register');
+Route::post('register',  array('uses' => 'usersController@store', 'as'  => 'users.register'));
+Route::post('subscribe', 'welcomeController@subscribe');
+Route::get('designer/dashboard{page?}',['before'=>'auth', 'uses'=>'DesignersController@dashboard'] );
+Route::get('user/dashboard{page?}',['before'=>'auth', 'uses'=>'usersController@dashboard'] );
+Route::get('designer/projects/{category}/{status?}','DesignersController@cust_projects');
+Route::get('designer/project/changestatus/{id}/','ProjectsController@changestatus');
 Route::get('register/verify/{token}', 'usersController@confirm');
 Route::get('register/code/{id}', 'usersController@resetConfirmationCode');
 Route::get('password/remind/', array('uses' => 'RemindersController@getRemind', 'as'  => 'password.remind'));
@@ -33,13 +36,17 @@ Route::get('password/remindemail/{email}', array('uses' => 'RemindersController@
 Route::get('password/reset/{token}', array('uses' => 'RemindersController@getReset', 'as'  => 'password.reset'));
 Route::post('password/remind', array('uses' => 'RemindersController@postRemind', 'as'  => 'password.remind'));
 Route::post('password/reset', array('uses' => 'RemindersController@postReset', 'as'  => 'password.update'));
-Route::get('job/post', array('uses' => 'JobRequestsController@create', 'as'  => 'job.post'));
-Route::get('job/packages', function(){
+Route::get('project/post', array('uses' => 'ProjectsController@create', 'as'  => 'project.post'));
+Route::get('business_packages', function(){
 	return View::make('welcome/payment_packages');
 });
-Route::get('job/brief/{id}', array('uses' => 'JobRequestsController@brief', 'as'  => 'job.brief'));
-Route::post('job/brief', array('uses' => 'JobRequestsController@updatebrief', 'as'  => 'job.brief'));
-Route::get('job/details', array('uses' => 'JobRequestsController@details', 'as'  => 'job.details'));
+Route::get('project/brief/{id}', array('uses' => 'ProjectsController@brief', 'as'  => 'project.brief'));
+Route::post('project/brief', array('uses' => 'ProjectsController@updatebrief', 'as'  => 'project.brief'));
+Route::get('project/details', array('uses' => 'ProjectsController@details', 'as'  => 'project.details'));
+Route::group(['before'=>'auth'], function(){
+	Route::get('project/payment', array('uses' => 'ProjectsController@payment'));     
+ Route::post('project/payment', array('uses' => 'ProjectsController@payment'));      
+});
 Route::get('category/create', array('before'=>'isAdmin','uses' => 'CategoriesController@create', 'as'  => 'category.create'));
 Route::post('category/create', array('uses' => 'CategoriesController@store', 'as'  => 'category.create'));
  

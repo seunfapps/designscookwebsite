@@ -11,3 +11,16 @@
 |
 */
 
+
+Artisan::add(new AssetCombineCommand);
+Artisan::add(new AssetCommand);
+Artisan::add(new AssetMinifyCommand);
+Artisan::add(new BuildCommand);
+Artisan::add(new CleanCommand);
+Artisan::add(new CopyCommand);
+Artisan::add(new DistributeCommand);
+Artisan::add(new EnvironmentCommand);
+Artisan::add(new EnvironmentGetCommand);
+Artisan::add(new EnvironmentRemoveCommand);
+Artisan::add(new EnvironmentSetCommand);
+Artisan::add(new WatchCommand);

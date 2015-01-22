@@ -16,15 +16,16 @@ class Project extends Migration {
 		Schema::create('projects', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->string('usertype');
-			$table->string('name');
-			$table->string('username');
-			$table->string('email');
-			$table->string('ip_address');
-			$table->string('country');
-			$table->string('phone_no');
-			$table->string('password');
-			$table->rememberToken();
+			$table->integer('customer_id')->unsigned()->index();
+			$table->foreign('customer_id')->references('id')->on('customers')->onDelete('cascade');
+			$table->string('status');
+			$table->string('title');
+			$table->string('description');
+			$table->string('file');
+			$table->string('designers_by_id');
+			$table->integer('subcategory_id')->unsigned()->index();
+			$table->foreign('subcategory_id')->references('id')->on('design_subcategories')->onDelete('cascade');
+			$table->decimal('cost');
 			$table->timestamps();
 		});
 	}

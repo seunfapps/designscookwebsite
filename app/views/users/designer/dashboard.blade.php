@@ -7,72 +7,70 @@
 
 
 <div class="inner-wrapper">
-					<aside id="sidebar">
-					
-							<!-- BEGIN .widget -->
-							<!--<div class="widget">
-								<div class="wi-banner">
-									<a href="#" target="_blank"><img src="images/no-banner-300x250.jpg" alt="" /></a>
-								</div>-->
-							<!-- END .widget -->
-						
-							<div class="widget">
-								<h3>Projects</h3>
-                                <h4>&nbsp;&nbsp;On going</h4>
-                                <h4>&nbsp;&nbsp;Closed</h4>
-                                
-                                <h3>Categories</h3>
-                                @if (!$categories->isEmpty())
-                					@foreach($categories as $category)
-                						<h4>&nbsp;&nbsp;{{$category->name}}</h4>
-                              	 	@endforeach
-            					@endif 
-							<!-- BEGIN .widget -->
-							</div>
-					
-							<!-- BEGIN .widget -->
-							
+<aside id="sidebar">
+    
+	<div class="widget accordion">
+		<div class="accordion-tab active"><a href="#"></a><h3 ><a class='status' href="#">Projects</a></h3>
+    		<div class="accordion-block">
+        	    <h4>&nbsp;&nbsp;<a id='open' class='status' href="#">Open</a></h4>
+        	    <h4>&nbsp;&nbsp;<a id='closed' class='status' href="#">Closed</a></h4>
+    	    </div>
+	    </div>
+        
+	    
+		<div class="accordion-tab"><a href="#"></a><h3 ><a href="#">My Profile</a></h3>
+	    	<div class="accordion-block">
+	    		<h4>&nbsp;&nbsp;<a href="#">Update Profile</a></h4>
+	    		<h4>&nbsp;&nbsp;<a href="#">Change Password</a></h4>
+	    	</div>
+	    </div>
 
-						<!-- END #sidebar -->
-						</aside>
-						<!-- BEGIN .content-block -->
-						<div class="content-block">
-							<div class="comments-block">
-								
-								<!-- BEGIN #comments -->
-								<ol id="comments">
-									@if (!$jobs->isEmpty())
-										@foreach($jobs as $job)
-									<li>
-										<!--<div class="comment-inner">-->
-											<div class="comment-content">
-												<div class="comment-header">
-													<h3><a href="#">{{$job->title}}</a></h3>
-													<span class="comment-date">{{$job->created_at}}</span>
-												</div>
-                                                <div>
-													<p><span>{{$job->description}}</span>
-                                                	<a href="" class="s-button right" style="margin-right:20px;">Apply</a></p>
-                                                </div>
-											</div>
-										<!--</div>-->
-									</li>
-										@endforeach
-		                            @endif
-								<!-- END #comments -->
-								</ol>
+	</div>
+<!-- END #sidebar -->
+</aside>
+	<!-- BEGIN .content-block -->
 
-							</div>
-							
-							
+	<div class="content-block" >
+    <div class="margin-bottom-10px" >
+       <span >Category</span> {{Form::select('category',$categories,'',['id'=>'category', 'onChange'=>'reload(this);'])}}
 
-						<!-- END .content-block -->
-						</div>
+    </div>
+    <div class="clear-float"></div>
+    <div id="waitImageSidebar" style="display:none;"><img src="{{ asset('images/ajax-loader.gif') }}" alt="Please wait..." title="Please wait..."  />Loading</div>
+    <div id="result" >{{$child}}</div>
+        
+		
+	<!-- END .content-block -->
+	</div>
+	
 
-						<!-- BEGIN #sidebar -->
-						
+<!-- END .inner-wrapper -->
+</div>
+	{{ HTML::script('jscript/jquery-1.10.2.min.js')}}
 
-					<!-- END .inner-wrapper -->
-					</div>
-										
+	<script>
+        var status = '';
+        $(function(){
+            $(".status").on('click',function(e){
+                e.preventDefault();
+                document.getElementById('waitImageSidebar').style.position = "absolute";
+                document.getElementById('waitImageSidebar').style.left = $(e.target).offset().left+100 + "px";
+                document.getElementById('waitImageSidebar').style.top = $(e.target).offset().top + "px";
+                 $(document).ajaxStart(function () {
+                    $("#result").hide();
+                    $("#waitImageSidebar").show();
+                }).ajaxStop(function () {
+                    $("#waitImageSidebar").hide();
+                    $("#result").show();
+                });
+                status = e.target.id;
+                reload();
+                return false;
+            });
+        });
+        function reload(){
+                cat = $('#category').val();
+                $('#result').load(window.location.origin+ '/designer/projects/'+cat.toString()+'/'+ status.toString(), " #result");
+        }
+    </script>						
 @stop

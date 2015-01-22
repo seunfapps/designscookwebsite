@@ -9,7 +9,10 @@
         <div>
             Hi {{$name}}, <br><br>
 
-            Thanks for creating an account with DesignsCook.<br>
+            Thanks for creating an account with DesignsCook.<br><br>
+
+            Yours Sincerely, <br>
+            DesignsCook Team
 
         </div>
 

@@ -81,15 +81,16 @@ Route::filter('guest', function()
 
 Route::filter('csrf', function()
 {
-	if (Session::token() !== Input::get('_token'))
+	$token = Request::ajax() ? Request::header('X-CSRF-Token') : Input::get('_token');
+    if (Session::token() != $token)
 	{
-		throw new Illuminate\Session\TokenMismatchException;
+		 return Redirect::intended('/')->withInput(Input::except('token'))->with('_token',Session::token());
 	}
 });
 
 Route::filter('isAdmin',function(){
 	if(Auth::check()){
-		if(Auth::user()->user_type !== 'admin'){
+		if(Auth::user()->userable_type !== 'Admin'){
 			return Redirect::to('/');
 		}
 	}

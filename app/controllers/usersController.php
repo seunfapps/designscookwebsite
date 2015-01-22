@@ -2,9 +2,78 @@
 
 class usersController extends \BaseController {
 
-public function __construct() {
-    $this->beforeFilter('csrf', array('on'=>'post'));
-}
+	public function dashboard($page = ''){
+		if(Auth::check()){
+			$user = Auth::user();
+			switch ($user->userable_type) {
+				case 'Designer':
+					return Redirect::to('designer/dashboard/'.$page);
+				case 'Customer':
+					$projects = $user->userable->projects;
+					return View::make('users/customer/dashboard');
+				default:
+					# code...
+					break;
+			}		
+		}
+		return Redirect::to('login')->with('status', 'Please login or create a new account.');
+	}
+
+	public function cust_projects($categoryid,$status = null){
+		if(Request::ajax()){
+			$projects = null;
+			$category = Category::find($categoryid);
+			//echo $category.$status;
+			if (empty($category)) {
+				if(empty($status)){
+					$projects = $projects = CustomerProject::join('design_categories', 'projects.subcategory_id','=','design_categories.id')
+					->select('projects.id', 'projects.title', 'projects.description','projects.subcategory_id'
+						,'projects.customer_id','design_categories.name as category_name','projects.created_at')
+					->get();
+				}else{
+					$projects = CustomerProject::join('design_categories', 'projects.subcategory_id','=','design_categories.id')
+					->where('status','=',$status)
+					->select('projects.id', 'projects.title', 'projects.description','projects.subcategory_id'
+						,'projects.customer_id','design_categories.name as category_name','projects.created_at')
+					->get();
+				}
+			}
+			else{
+				if(empty($status)){
+					$projects = CustomerProject::join('design_categories', 'projects.subcategory_id','=','design_categories.id')
+					->where('design_categories.id','=',$categoryid)
+					->select('projects.id', 'projects.title', 'projects.description','projects.subcategory_id'
+						,'projects.customer_id','design_categories.name as category_name','projects.created_at')
+					->get();
+				}else{
+					$projects = CustomerProject::join('design_categories', 'projects.subcategory_id','=','design_categories.id')
+					->where('design_categories.id','=',$categoryid)
+					->where('status','=',$status)
+					->select('projects.id', 'projects.title', 'projects.description','projects.subcategory_id'
+						,'projects.customer_id','design_categories.name as category_name','projects.created_at')
+					->get();
+				}
+			}
+			// echo $projects;
+			$view =  View::make('users/designer/cust_projects',['projects'=> $projects,'projectstatus'=>$status]);
+			return $view;
+		}else{
+			$projects = '';
+			if(Auth::check()){
+				$user = Auth::user();
+				if(empty($status)){
+					$projects = CustomerProject::all();	
+				}else{
+					$projects = CustomerProject::where('status','=',$status)->get();
+				}
+				//return View::make('users/designer/cust_projects',['projects'=> $projects,'projectstatus'=>$status]);
+					
+			}
+		}
+		
+		
+	}
+
 	/**
 	 * Show the form for registering a new user.
 	 *
@@ -12,6 +81,7 @@ public function __construct() {
 	 */
 	public function register()
 	{
+		Auth::logout();
 		return View::make('users/register');
 	}
 
@@ -29,33 +99,35 @@ public function __construct() {
 			$user->name = Input::get('fname');
 			$user->email = Input::get('email');
 			$user->phone_no = Input::get('phone');
-			$user->user_type = strtolower(Input::get('user_type'));
 			$user->password = Hash::make( Input::get('password') );
 
 			$newcode = $this->generateConfirmationCode();
 			$user->confirmation_code = $newcode;
-			$result = $user->save();
-			if($user->user_type == 'designer'){
+			if(Input::get('user_type') == 'Designer'){
 				$designer = new Designer;
-				$designer->user_id = $user->id;
 				$designer->save();
+				$designer->user()->save($user);
 
-			}elseif($user->user_type == 'customer'){
+			}elseif(Input::get('user_type') == 'Customer'){
 				$customer = new Customer;
-				$customer->user_id = $user->id;
 				$customer->save();
+				$customer->user()->save($user);
 			}
 			//$user = User::where('email', '=',Input::get('email'))->first();
 			$data  = array('email' => Input::get('email'),
 			'token'=>$newcode.':'.$user->id,'name'=>$user->name );
 
-			Mail::queue('emails.verify',$data, function($message)
+			Mail::queue('emails.thankyou',$data, function($message)
 			{
 				$message ->to(Input::get('email'))->subject('Welcome!');
 
 			});
-			
-			return Redirect::to('login')->withInput(Input::except('password'))->withErrors('Thanks for registering. A link has been sent to your email.');
+			Auth::login($user);
+			if(Session::has('intended')){				
+				return Redirect::to(Session::get('intended'))->withInput(Input::except('password'))->withErrors('Thanks for registering.');	
+			}else{
+				return Redirect::to('user/dashboard')->withInput(Input::except('password'))->withErrors('Thanks for registering.');
+			}
 		}
 		else{
 			return Redirect::back()->withInput(Input::except('passwd'))->withErrors($validation);
@@ -63,7 +135,6 @@ public function __construct() {
 	}
 
 	public function generateConfirmationCode(){
-
 		for($code_length=25, $newcode='';strlen($newcode) < $code_length; $newcode .= chr(!rand(0,2) ?rand(48,57):(!rand(0,1) ? rand(65,90):rand(97,122))));
 		return $newcode;
 	}
@@ -102,8 +173,7 @@ public function __construct() {
 	{
 		//
 
-echo $id;
-
+		
 	}
 
 
@@ -133,7 +203,7 @@ echo $id;
 	public function auth()
 	{
 		if(Auth::check()){
-			return View::make('welcome/index');
+			return Redirect::to('/');
 		}elseif (Auth::viaRemember()){
 			return Redirect::back();
 		}else{
@@ -143,14 +213,13 @@ echo $id;
 	}
 
 	public function login()
-	{
-
-		$email  = Input::get('email');
+	{			$resetCode =true;
+				$email  = Input::get('email');
 		$passwd = Input::get('passwd');
 		$rememberme = Input::get('rememberme');
 		Input::flashExcept('passwd');
 
-		if(Auth::attempt(array('email' => $email, 'password'=>$passwd, 'confirmed'=> 1),$rememberme))
+		if(Auth::attempt(array('email' => $email, 'password'=>$passwd),$rememberme))
 		{
 			return Redirect::intended('user/dashboard');
 		}
@@ -159,7 +228,6 @@ echo $id;
 			$user = User::where('email','=',$email)->first();
 			$message = "Your account has not been confirmed.";
 
-			$resetCode =true;
 
 			Session::put('resetCode',$resetCode);
 			Session::put('id',$user->id);
@@ -168,25 +236,17 @@ echo $id;
 		else{
 			$message = "Your email or password is wrong";
 			return Redirect::back()->withInput(Input::except('passwd'))->withErrors($message);	
-		}		
-		
+		}				
 	}
 
-	public function dashboard(){
-		if(Auth::check()){
-			$jobs = JobRequest::all();
-			$categories = Category::all();
-			return View::make('users/'.Auth::user()->user_type.'/dashboard',['jobs'=>$jobs,'categories'=>$categories]);
-		}
-		return Redirect::to('login')->with('status', 'Please login or create a new account.');
-	}
+	
 	public function resetConfirmationCode($id){
 
 		$user = User::find($id);
 		$newcode = $this->generateConfirmationCode();
 		$user->confirmation_code = $newcode;
 		$user->save();
-		echo $user->email;
+		//echo $user->email;
 		$data  = array('email' => $user->email,
 			'token'=>$newcode.':'.$user->id,'name'=>$user->name );
 		Mail::queue('emails.verify',$data, function($message) use ($user)

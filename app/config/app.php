@@ -121,8 +121,12 @@ return array(
 		'Illuminate\Validation\ValidationServiceProvider',
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
-
+		    // other service providers here
+		//'JasonLewis\ResourceWatcher\Integration\LaravelServiceProvider'
 	),
+
+
+
 
 	/*
 	|--------------------------------------------------------------------------

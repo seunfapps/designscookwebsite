@@ -1,17 +1,17 @@
 @extends('layouts.master')
 @section('pagetree')
 <li>{{HTML::link('/', 'Homepage')}}</li>
-<li>{{HTML::link('job/post', 'Post a job')}}</li>
+<li>{{HTML::link('project/post', 'Post a project')}}</li>
 
-<li><span>Job Brief</span></li>
+<li><span>Project Brief</span></li>
 @stop
 @section('content')
     <div class="inner-wrapper">
-    <div class="block-title"><h2>Job Brief</h2></div>
+    <div class="block-title"><h2>Project Brief</h2></div>
         
         <div class="comment-form">
                            
-            {{Form::model($job_request, array('action'=>'job.brief', 'files'=>true))}}
+            {{Form::model($project, array('action'=>'project.brief', 'files'=>true))}}
             <p class="form-info" style="font-size:24px;">{{$name}} Design Price : {{$price}}</p>
             <!--<p class="form-info">Tell us about the work you want done</p>-->
             <p class="form-name">
@@ -21,7 +21,7 @@
             </p>
             <p class="form-comment">
             <label for="">Description<span class="required">*</span></label>
-            {{Form::textarea('description', Input::old('description'), ['placeholder'=>'Some information that may come in handy for designers', 'class'=>'input-text', 'required'=>'true'])}}
+            {{Form::textarea('description', Input::old('description'), ['placeholder'=>'Some information that may come in handy for designers',  'required'=>'true'])}}
             </p>
             <p class="form-name">
             <label for="">File(Optional)<span class="required"></span></label>

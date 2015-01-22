@@ -33,7 +33,7 @@
 										<div class="om-layer om-layer-5" data-animation-in="flipInY" data-animation-out="bounceOutRight" data-delay="800" data-delayout="800" style="top: 135px; left: 480px;">
 											<p>DesignsCook is an online design marketplace that provides logo, graphics, website, 3D and print designs services by providing access to freelance graphic designers and design studios around the world. </p>
 										</div>
-										<div class="om-layer om-layer-6" data-animation-in="tada" data-animation-out="hinge" data-delay="1000" data-delayout="100" style="top: 270px; left: 480px;" data-href="#themeforest_url">
+										<div class="om-layer om-layer-6" data-animation-in="tada" data-animation-out="hinge" data-delay="1000" data-delayout="100" style="top: 270px; left: 480px;" data-href="{{URL::to('project/post')}}">
 											<h6>Order Now</h6>
 										</div>
 									<!-- END .om-slide-1 -->
@@ -48,7 +48,7 @@
 											<h3>Huge image on back &amp; text on top</h3>
 										</div>
 										<div class="om-layer om-layer-3" data-animation-in="bounceInDown" data-animation-out="fadeOutLeftBig" data-delay="500" data-delayout="0" style="top: 260px; left: 80px;">
-											<h6>Why noy ? :) That's possible !</h6>
+											<h6>Why not ? :) That's possible !</h6>
 										</div>
 									<!-- END .om-slide-2 -->
 									</div>
@@ -60,7 +60,7 @@
 										</div>
 										<div class="om-layer om-layer-2" data-animation-in="bounceInLeft" data-animation-out="bounceOut" data-delay="0" data-delayout="0" style="top: 0px; left: 0px; width: 600px;">
 											<div class="video-container">
-												<iframe src="http://player.vimeo.com/video/12825278?portrait=0&amp;color=df5840" width="700" height="394" allowfullscreen></iframe>
+												<!-- <iframe src="http://player.vimeo.com/video/12825278?portrait=0&amp;color=df5840" width="700" height="394" allowfullscreen></iframe> -->
 											</div>
 										</div>
 										<div class="om-layer om-layer-3" data-animation-in="bounceInDown" data-animation-out="flipOutY" data-delay="300" data-delayout="0" style="top: 120px; left: 620px;">
@@ -91,13 +91,13 @@
 					</div>
 
 <!-- BEGIN .page-block -->
-<div class="page-block lightcolor">
+<div class="page-block">
 						<!-- BEGIN .inner-wrapper -->
 						<div class="inner-wrapper">
 
 							<div class="split info-blocks dat-scrollnimate" data-animation="bounceIn" style="display:flex-box">
 								
-								<div class="size4">
+								<div class="size4 categories-inner">
 									<img src="images/photos/icon-2.png" alt="" />
 									<!-- <i class="fa fa-shopping-cart"></i> -->
 									<h2>Graphic Design</h2>
@@ -197,7 +197,6 @@
                         				<i class="fa fa-check fa-1x"></i> &nbsp; 2 Revisions<br />
                         				Duration: 5 working days<br />
                                     </p>
-									<a href="post-single.html#comments" class="comment-button"><i class="fa fa-comments"></i><b>40 comments</b><span>Leave a comment</span></a>
 									<a href="post-single.html" class="s-border-button right">Read More</a>
 									<div class="clear-float"></div>
 								</div>
@@ -217,7 +216,6 @@
                         				<i class="fa fa-check fa-1x"></i> &nbsp; 5 Revisions<br />
                         				Duration: 5 working days<br />
                                     </p>
-									<a href="post-single.html#comments" class="comment-button"><i class="fa fa-comments"></i><b>40 comments</b><span>Leave a comment</span></a>
 									<a href="post-single.html" class="s-border-button right">Read More</a>
 									<div class="clear-float"></div>
 								</div>
@@ -240,8 +238,7 @@
                         <i class="fa fa-check fa-1x"></i> &nbsp; 8 Revisions<br />
                         Duration: 5 working days<br />
                                     </p>
-									<a href="post-single.html#comments" class="comment-button"><i class="fa fa-comments"></i><b>40 comments</b><span>Leave a comment</span></a>
-									<a href="post-single.html" class="s-border-button right">Read More</a>
+									<a href="" class="s-border-button right">Read More</a>
 									<div class="clear-float"></div>
 								</div>
                                 
@@ -264,7 +261,6 @@
                         <i class="fa fa-check fa-1x"></i> &nbsp; 12 Revisions<br />
                         Duration: 5 working days<br />
                                     </p>
-									<a href="post-single.html#comments" class="comment-button"><i class="fa fa-comments"></i><b>40 comments</b><span>Leave a comment</span></a>
 									<a href="post-single.html" class="s-border-button right">Read More</a>
 									<div class="clear-float"></div>
 								</div>
@@ -373,7 +369,7 @@
 											<div class="accordion-tab">
 												<a href="#">What happens if I don't like any of the designs I receive?</a>
 												<div class="accordion-block">
-													<p>If you haven't found what you're looking for, contact us and we can reach out to more designers on your behalf. If you're still not satisfied with the designs you receive, DesignCrowd offers a money back guarantee!</p>
+													<p>If you haven't found what you're looking for, contact us and we can reach out to more designers on your behalf. If you're still not satisfied with the designs you receive, DesignsCook offers a money back guarantee!</p>
 												</div>
 											</div>
                                             
