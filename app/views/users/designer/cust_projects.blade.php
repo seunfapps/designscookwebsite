@@ -4,7 +4,7 @@
 		<!-- <div class=""> -->
 			<div class="panel-block">
 				<div class="article-header">
-					<h3>{{$project->title}}
+					<h3><a href="#">{{$project->title}}</a>
 					@if($project->status == 'open')
 						<i class="fa fa-unlock right"></i>
 					@else
