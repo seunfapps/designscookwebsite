@@ -87,7 +87,7 @@ background-image: -moz-linear-gradient(center bottom , rgba(140, 140, 140, 0.29)
 						</li>
                         	
                         	 @if(Auth::user()->userable_type == 'Designer')
-	                        	<li>{{HTML::link('project/post','Browse Projects',['class'=>'mybutton', 'style'=>'background: none repeat scroll 0% 0% #A6BE29; color:#fff'])}}
+	                        	<li>{{HTML::link('user/dashboard','Browse Projects',['class'=>'mybutton', 'style'=>'background: none repeat scroll 0% 0% #A6BE29; color:#fff'])}}
 	                        @elseif(Auth::user()->userable_type == 'Customer')
 								<li>{{HTML::link('project/post','Post A Project',['class'=>'mybutton', 'style'=>'background: none repeat scroll 0% 0% #A6BE29; color:#fff'])}}
 							@endif

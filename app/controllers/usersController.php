@@ -2,20 +2,15 @@
 
 class usersController extends \BaseController {
 
-	public function dashboard(){
+	public function dashboard($page = ''){
 		if(Auth::check()){
 			$user = Auth::user();
 			switch ($user->userable_type) {
 				case 'Designer':
-					$projects = CustomerProject::all();
-					$categories = Category::lists('name','id');
-					array_push($categories,'All');
-					asort($categories);
-					echo implode(",", $categories);
-					return View::make('users/designer/dashboard',['categories'=>$categories])->nest('child','users/designer/cust_projects',['projects'=>$projects,'projectstatus'=>'']);	
+					return Redirect::to('designer/dashboard/'.$page);
 				case 'Customer':
 					$projects = $user->userable->projects;
-					return View::make('users/customer/dashboard')->nest('child','users/customer/cust_projects',['projects'=>$projects,'name'=>$user->name]);	
+					return View::make('users/customer/dashboard');
 				default:
 					# code...
 					break;
@@ -24,21 +19,42 @@ class usersController extends \BaseController {
 		return Redirect::to('login')->with('status', 'Please login or create a new account.');
 	}
 
-	public function cust_projects($category = 'All', $status = null){
+	public function cust_projects($categoryid,$status = null){
 		if(Request::ajax()){
-
 			$projects = null;
-			if ($category == 'All') {
+			$category = Category::find($categoryid);
+			//echo $category.$status;
+			if (empty($category)) {
 				if(empty($status)){
-					$projects = CustomerProject::all();	
+					$projects = $projects = CustomerProject::join('design_categories', 'projects.subcategory_id','=','design_categories.id')
+					->select('projects.id', 'projects.title', 'projects.description','projects.subcategory_id'
+						,'projects.customer_id','design_categories.name as category_name','projects.created_at')
+					->get();
 				}else{
-					$projects = CustomerProject::where('status','=',$status)->get();
+					$projects = CustomerProject::join('design_categories', 'projects.subcategory_id','=','design_categories.id')
+					->where('status','=',$status)
+					->select('projects.id', 'projects.title', 'projects.description','projects.subcategory_id'
+						,'projects.customer_id','design_categories.name as category_name','projects.created_at')
+					->get();
 				}
 			}
 			else{
-					$projects = CustomerProject::where('status','=',$status)->get();
-
+				if(empty($status)){
+					$projects = CustomerProject::join('design_categories', 'projects.subcategory_id','=','design_categories.id')
+					->where('design_categories.id','=',$categoryid)
+					->select('projects.id', 'projects.title', 'projects.description','projects.subcategory_id'
+						,'projects.customer_id','design_categories.name as category_name','projects.created_at')
+					->get();
+				}else{
+					$projects = CustomerProject::join('design_categories', 'projects.subcategory_id','=','design_categories.id')
+					->where('design_categories.id','=',$categoryid)
+					->where('status','=',$status)
+					->select('projects.id', 'projects.title', 'projects.description','projects.subcategory_id'
+						,'projects.customer_id','design_categories.name as category_name','projects.created_at')
+					->get();
+				}
 			}
+			// echo $projects;
 			$view =  View::make('users/designer/cust_projects',['projects'=> $projects,'projectstatus'=>$status]);
 			return $view;
 		}else{
@@ -50,7 +66,7 @@ class usersController extends \BaseController {
 				}else{
 					$projects = CustomerProject::where('status','=',$status)->get();
 				}
-				return View::make('users/designer/cust_projects',['projects'=> $projects,'projectstatus'=>$status]);
+				//return View::make('users/designer/cust_projects',['projects'=> $projects,'projectstatus'=>$status]);
 					
 			}
 		}
@@ -230,7 +246,7 @@ class usersController extends \BaseController {
 		$newcode = $this->generateConfirmationCode();
 		$user->confirmation_code = $newcode;
 		$user->save();
-		echo $user->email;
+		//echo $user->email;
 		$data  = array('email' => $user->email,
 			'token'=>$newcode.':'.$user->id,'name'=>$user->name );
 		Mail::queue('emails.verify',$data, function($message) use ($user)

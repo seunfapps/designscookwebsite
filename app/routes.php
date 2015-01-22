@@ -25,9 +25,10 @@ Route::get('logout', function(){
 Route::get('register', 'usersController@register');
 Route::post('register',  array('uses' => 'usersController@store', 'as'  => 'users.register'));
 Route::post('subscribe', 'welcomeController@subscribe');
-Route::get('user/dashboard',['before'=>'auth', 'uses'=>'usersController@dashboard'] );
-Route::get('user/projects/{status?}/','usersController@cust_projects');
-Route::get('user/project/changestatus/{id}/','ProjectsController@changestatus');
+Route::get('designer/dashboard{page?}',['before'=>'auth', 'uses'=>'DesignersController@dashboard'] );
+Route::get('user/dashboard{page?}',['before'=>'auth', 'uses'=>'usersController@dashboard'] );
+Route::get('designer/projects/{category}/{status?}','DesignersController@cust_projects');
+Route::get('designer/project/changestatus/{id}/','ProjectsController@changestatus');
 Route::get('register/verify/{token}', 'usersController@confirm');
 Route::get('register/code/{id}', 'usersController@resetConfirmationCode');
 Route::get('password/remind/', array('uses' => 'RemindersController@getRemind', 'as'  => 'password.remind'));
