@@ -18,4 +18,11 @@ class CustomerProject extends \Eloquent {
 	public function customer(){
 		return $this->belongsTo('Customer');
 	}
+
+	public function subcategory(){
+		return $this->belongsTo('SubCategory');
+	}
+	 public function designers(){
+        return $this->belongsToMany('Designers');
+    }
 }

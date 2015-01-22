@@ -17,4 +17,8 @@ class Designer extends Eloquent {
 	public function user(){
 		return $this->morphOne('User', 'userable');
 	}
+
+    public function projects(){
+        return $this->belongsToMany('CustomerProject');
+    }
 }

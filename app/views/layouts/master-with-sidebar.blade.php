@@ -139,6 +139,7 @@ background-image: -moz-linear-gradient(center bottom , rgba(140, 140, 140, 0.29)
 
 
 
+
 		<!-- BEGIN #footer -->
 		<footer id="footer">
 			<!-- BEGIN .inner-wrapper -->
@@ -161,23 +162,25 @@ background-image: -moz-linear-gradient(center bottom , rgba(140, 140, 140, 0.29)
 					<!-- BEGIN .widget -->
 					<div class="widget size4">
 						<h3>Contact Us</h3>
-						<div class="comment-form">
-							{{Form::open(['action'=>'welcomeController@contactus'])}}
+						{{Form::open(['action'=>'welcomeController@contactus'])}}
+						<div class="contact-footer">
+							<div>
 							<p class="input-text">
 								{{Form::text('name','', ['placeholder'=>'Name', 'class'=>'input-text', 'required'=>'true'])}}
 							</p>
 							<p class="form-email">
-								{{Form::email('email','', ['placeholder'=>'Email', 'class'=>'input-text','required'=>'true'])}}
+								{{Form::email('email','', ['placeholder'=>'Email','required'=>'true'])}}
 							</p>
 							
 							<p class="form-comment">
-								{{Form::textarea('message','', ['placeholder'=>'Your message here', 'class'=>'input-text', 'required'=>'true'])}}
+								{{Form::textarea('message','', ['placeholder'=>'Your message here', 'required'=>'true'])}}
 							</p>
 							<p class="form-submit">
 								{{Form::submit('Submit')}}
 							</p>
-							{{Form::close()}}
 						</div>
+						</div>
+							{{Form::close()}}
 					</div>
 					
 					<!-- BEGIN .widget -->
@@ -200,7 +203,7 @@ background-image: -moz-linear-gradient(center bottom , rgba(140, 140, 140, 0.29)
 
 					<div class="footer-subscribe-form right">
 						{{Form::open(['action'=>'welcomeController@subscribe'])}}
-							{{Form::email('subscription_email','', ['placeholder'=>'Your email', 'class'=>'input-text', 'required'=>'true'])}}
+							{{Form::email('subscription_email','', ['placeholder'=>'Your email', 'required'=>'true'])}}
 							{{Form::submit('Subscribe')}}
 						{{Form::close()}}
 						{{$errors->first('subscription_email','<p>:message</p>')}}
