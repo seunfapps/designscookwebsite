@@ -6102,7 +6102,7 @@ table.table-customer-projects
 	width: 90%;
 	margin-bottom: 10px;
 }*/
->>>>>>> 8c00c28931fc1ecbaabcafab32b3e1c6063b9607
+
 
  .comment-inner .s-border-button {
 	display: inline-block;
@@ -6119,4 +6119,15 @@ table.table-customer-projects
 .categories-inner:hover .s-border-button {
 	opacity: 1;
 	filter: alpha(opacity=100);
+}
+.labelAlignRight
+{
+	text-align: right;
+	/*margin-right: 5px;*/
+	font-weight: bold;
+}
+.dataAlignLeft
+{
+	text-align: left;
+	/*margin-left: 5px;*/
 }
