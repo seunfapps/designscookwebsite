@@ -8,8 +8,11 @@ class usersController extends \BaseController {
 			switch ($user->userable_type) {
 				case 'Designer':
 					$projects = CustomerProject::all();
-					$categories = Category::all();
-					return View::make('users/designer/dashboard',['categories'=>$categories])->nest('child','users/designer/cust_projects',['projects'=>$projects]);	
+					$categories = Category::lists('name','id');
+					array_push($categories,'All');
+					asort($categories);
+					echo implode(",", $categories);
+					return View::make('users/designer/dashboard',['categories'=>$categories])->nest('child','users/designer/cust_projects',['projects'=>$projects,'projectstatus'=>'']);	
 				case 'Customer':
 					$projects = $user->userable->projects;
 					return View::make('users/customer/dashboard')->nest('child','users/customer/cust_projects',['projects'=>$projects,'name'=>$user->name]);	
@@ -21,31 +24,35 @@ class usersController extends \BaseController {
 		return Redirect::to('login')->with('status', 'Please login or create a new account.');
 	}
 
-	public function cust_projects($status){
+	public function cust_projects($category = 'All', $status = null){
 		if(Request::ajax()){
-			$projects = CustomerProject::where('status','=',$status)->get();
-			$view =  View::make('users/designer/cust_projects',['projects'=> $projects]);
+
+			$projects = null;
+			if ($category == 'All') {
+				if(empty($status)){
+					$projects = CustomerProject::all();	
+				}else{
+					$projects = CustomerProject::where('status','=',$status)->get();
+				}
+			}
+			else{
+					$projects = CustomerProject::where('status','=',$status)->get();
+
+			}
+			$view =  View::make('users/designer/cust_projects',['projects'=> $projects,'projectstatus'=>$status]);
 			return $view;
 		}else{
 			$projects = '';
-		if(Auth::check()){
-			$user = Auth::user();
-			switch ($user->userable_type) {
-				case 'Designer':
-					if(empty($status)){
-						$projects = CustomerProject::all();	
-					}else{
-						$projects = CustomerProject::where('status','=',$status);
-					}
-					return View::make('users/designer/dashboard',['projects'=>$projects,'categories'=>$categories]);	
-				case 'Customer':
-					$projects = $user->userable->projects;
-					return View::make('users/customer/dashboard',['projects'=>$projects,'name'=>$user->name]);	
-				default:
-					# code...
-					break;
-			}		
-		}
+			if(Auth::check()){
+				$user = Auth::user();
+				if(empty($status)){
+					$projects = CustomerProject::all();	
+				}else{
+					$projects = CustomerProject::where('status','=',$status)->get();
+				}
+				return View::make('users/designer/cust_projects',['projects'=> $projects,'projectstatus'=>$status]);
+					
+			}
 		}
 		
 		

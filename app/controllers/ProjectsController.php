@@ -137,5 +137,14 @@ class ProjectsController extends \BaseController {
 		//
 	}
 
-
+	public function changestatus($id){
+		if(Auth::check()){
+			$user = Auth::user();
+			if($user->userable->projects->contains($id)){
+				$user->userable->projects()->detach($id);
+			}else{
+				$user->userable->projects()->attach($id);
+			}
+		}
+	}
 }

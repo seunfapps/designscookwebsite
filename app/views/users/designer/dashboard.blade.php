@@ -8,22 +8,16 @@
 
 <div class="inner-wrapper">
 <aside id="sidebar">
+    
 	<div class="widget accordion">
 		<div class="accordion-tab active"><a href="#"><h3 >Projects</h3></a>
-		<div class="accordion-block">
-	    <h4>&nbsp;&nbsp;<a id='open' class='status' href="?status=open">Open</a></h4>
-	    <h4>&nbsp;&nbsp;<a id='closed' class='status' href="#">Closed</a></h4>
+    		<div class="accordion-block">
+        	    <h4>&nbsp;&nbsp;<a id='open' class='status' href="#">Open</a></h4>
+        	    <h4>&nbsp;&nbsp;<a id='closed' class='status' href="#">Closed</a></h4>
+    	    </div>
 	    </div>
-	    </div>
-	    @if (!$categories->isEmpty())
-	    <div class="accordion-tab"><a href="#"><h3 >Categories</h3></a>
-	    	<div class="accordion-block">
-			@foreach($categories as $category)
-				<h4>&nbsp;&nbsp;{{$category->name}}</h4>
-	  	 	@endforeach
-	  	 	</div>
-	  	</div>
-		@endif 
+        
+	    
 		<div class="accordion-tab"><a href="#"><h3 >My Profile</h3></a>
 	    	<div class="accordion-block">
 	    		<h4>&nbsp;&nbsp;<a href="#">Update Profile</a></h4>
@@ -35,8 +29,16 @@
 <!-- END #sidebar -->
 </aside>
 	<!-- BEGIN .content-block -->
-	<div class="content-block">
-		{{$child}}
+
+	<div class="content-block" >
+    <div class="margin-bottom-10px" >
+       <span >Category</span> {{Form::select('category',$categories,'',['id'=>'category'])}}
+
+    </div>
+    <div class="clear-float"></div>
+    <div id="waitImageSidebar" style="display:none;"><img src="{{ asset('images/ajax-loader.gif') }}" alt="Please wait..." title="Please wait..."  />Loading</div>
+    <div id="result" >{{$child}}</div>
+        
 		
 	<!-- END .content-block -->
 	</div>
@@ -47,28 +49,27 @@
 	{{ HTML::script('jscript/jquery-1.10.2.min.js')}}
 
 	<script>
-        $("document").ready(function(){
+        
+       
+        $(function(){
+
             $(".status").on('click',function(e){
                 e.preventDefault();
-
-
-               	$.ajaxSetup({
-   					headers: { 'X-CSRF-Token' : $('meta[name=_token]').attr('content') }
-				});
-                $.ajax({
-                    type: "POST",
-                    url : window.location.origin+ '/user/projects/'+ e.target.id,
-                    data : null,
-                    success : function(data){
-                    	if(data == ""){
-                    		data = "<h2 align='center'>There are no "+e.target.id+" project</h2>";
-                    	}
-                    	$('.content-block').replaceWith('<div class="content-block">'+data+'</div>');
-                        console.log(data);
-                    }
+                document.getElementById('waitImageSidebar').style.position = "absolute";
+                document.getElementById('waitImageSidebar').style.left = $(e.target).offset().left+100 + "px";
+                document.getElementById('waitImageSidebar').style.top = $(e.target).offset().top + "px";
+                 $(document).ajaxStart(function () {
+                    $("#result").hide();
+                    $("#waitImageSidebar").show();
+                }).ajaxStop(function () {
+                    $("#waitImageSidebar").hide();
+                    $("#result").show();
                 });
+                $('#result').load(window.location.origin+ '/user/projects/'+ e.target.id, " #result");
+                return false;
+            });
+           
 
-        });
         });//end of document ready function
     </script>						
 @stop

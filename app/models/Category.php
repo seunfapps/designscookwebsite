@@ -17,4 +17,8 @@ class Category extends Eloquent {
 		return $this->hasMany('SubCategory');
 	}
 
+	public function projects(){
+		return $this->hasManyThrough('CustomerProject','SubCategory');
+	}
+
 }

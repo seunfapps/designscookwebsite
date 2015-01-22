@@ -23,7 +23,8 @@ class Project extends Migration {
 			$table->string('description');
 			$table->string('file');
 			$table->string('designers_by_id');
-			$table->string('subcategory_id');
+			$table->integer('subcategory_id')->unsigned()->index();
+			$table->foreign('subcategory_id')->references('id')->on('design_subcategories')->onDelete('cascade');
 			$table->decimal('cost');
 			$table->timestamps();
 		});
