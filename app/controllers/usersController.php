@@ -263,5 +263,8 @@ class usersController extends \BaseController {
 		
 	}
 
-
+	public function updateProfile()
+	{
+		return View::make('users/update');
+	}
 }
