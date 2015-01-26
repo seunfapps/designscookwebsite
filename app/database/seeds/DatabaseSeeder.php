@@ -21,10 +21,10 @@ class DatabaseSeeder extends Seeder {
 class ProjectTableSeeder extends Seeder{
 	public function run()
 	{
-		DB::table('projects')->delete();
+		DB::table('customerprojects')->delete();
 		CustomerProject::create(array('status'=>'open', 'cost'=>1200,'subcategory_id' => 1,'customer_id'=>1,'title'=>'My logo design', 'description'=>'Blah blah blah Blah blah blahBlah blah blahBlah blah blahBlah blah blahBlah blah blahBlah blah blahBlah blah blah'));
-		CustomerProject::create(array('status'=>'open','cost'=>1200,'subcategory_id' => 1,'customer_id'=>1,'title'=>'My logo design', 'description'=>'Blah blah blah Blah blah blahBlah blah blahBlah blah blahBlah blah blahBlah blah blahBlah blah blahBlah blah blah'));
-		CustomerProject::create(array('status'=>'open','cost'=>1200,'subcategory_id' => 1,'customer_id'=>1,'title'=>'My logo design', 'description'=>'Blah blah blah Blah blah blahBlah blah blahBlah blah blahBlah blah blahBlah blah blahBlah blah blahBlah blah blah'));
+		CustomerProject::create(array('status'=>'open','cost'=>1200,'subcategory_id' => 2,'customer_id'=>1,'title'=>'My logo design', 'description'=>'Blah blah blah Blah blah blahBlah blah blahBlah blah blahBlah blah blahBlah blah blahBlah blah blahBlah blah blah'));
+		CustomerProject::create(array('status'=>'open','cost'=>1200,'subcategory_id' => 6,'customer_id'=>1,'title'=>'My logo design', 'description'=>'Blah blah blah Blah blah blahBlah blah blahBlah blah blahBlah blah blahBlah blah blahBlah blah blahBlah blah blah'));
 	}
 }
 class CategoryTableSeeder extends Seeder{

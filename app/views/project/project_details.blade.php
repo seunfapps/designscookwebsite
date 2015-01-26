@@ -6,47 +6,54 @@
 <li><span>Project Details</span></li>
 @stop
 @section('content')
+    <div class="page-block"  >
 
-    <div class="block-title"><h2>Project Details</h2></div>
-    	<div class="comment-form">
-        {{Form::open(array('action'=>'ProjectsController@payment'))}}
-		    <p class="form-name">
-            	<label for="">Project Title</label>
-               {{$project_details['title']}} 
-            </p>
-             <div class="clear-float"></div>
-           <!--  <p class="form-comment">
-            	{{$project_details['title']}}            
-            </p> -->
-            <p class="form-name">
-            <label for="">Design Name</label>
-                {{$project_details ['design_name']}}
-            </p>
-            <div class="clear-float"></div>
-           <!--  <p class="form-comment">
-            	{{$project_details ['design_name']}}            
-            </p> -->
-            <p class="form-name">
-            <label for="">Category</label>
-            {{$project_details ['category']}} 
-            </p>
-             <div class="clear-float"></div>
-           <!--  <p class="form-comment">
-            	{{$project_details ['category']}}            
-            </p> -->
-            <p class="form-name">
-            <label for="">Cost</label>
-            {{$project_details ['cost']}}
-            </p>
-           <!--  <p class="form-comment">
-            	{{$project_details ['cost']}}            
-            </p> -->
+        <div class="inner-wrapper">
+            <div class="block-title" align="center"><h2>Project Details</h2></div>
+            <div style="margin:0px auto 0px auto; width:50%" data-animation="bounceIn">
+                <!-- <div class="size8" > -->
+                    <div >
+        {{Form::open(array('action'=>'ProjectsController@payment','style'=>''))}}
+                
+            <div class='split'>
+                <div style='width:50%'>
+                    <label for="">Project Title</label>
+                </div>
+                <div class='size4'>
+                    <p>{{$project_details['title']}}</p>
+                </div>
+            </div>
+            <div class='split'>
+                <div style='width:50%'>
+                    <label for="">Design Type</label>
+                </div>
+                <div >
+                    <p>{{$project_details ['design_name']}}</p>
+                </div>
+            </div>
+            <div class='split'>
+                <div style='width:50%'>
+                    <label for="">Category</label>
+                </div>
+                <div class='size4'>
+                    <p>{{$project_details ['category']}}</p>
+                </div>
+            </div>
+            <div class='split'>
+                <div class='size4'>
+                    <label for="">Cost</label>
+                </div>
+                <div class='size4'>
+                    <p>{{$project_details ['cost']}}</p>
+                </div>
+            </div>
             <p class="form-submit">
                 {{Form::submit('Proceed to payment')}}                        
             </p>
 
             {{Form::close()}}
-        </div>
-	</div>    
-
+        <!-- </div> -->
+    </div>
+    </div>
+</div>
 @stop

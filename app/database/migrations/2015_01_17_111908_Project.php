@@ -13,7 +13,7 @@ class Project extends Migration {
 	public function up()
 	{
 		//
-		Schema::create('projects', function(Blueprint $table)
+		Schema::create('customerprojects', function(Blueprint $table)
 		{
 			$table->increments('id');
 			$table->integer('customer_id')->unsigned()->index();
@@ -38,7 +38,7 @@ class Project extends Migration {
 	public function down()
 	{
 		//
-		Schema::drop('projects');
+		Schema::drop('customerprojects');
 	}
 
 }

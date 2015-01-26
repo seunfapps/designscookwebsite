@@ -14,14 +14,14 @@ class welcomeController extends \BaseController {
 
 	public function contactus(){
 		$data = [
-			'name'=>Input::get('name'),
-			'message'=>Input::get('message'),
-			'email'=>Input::get('email'),
+			'name'=>Input::get('cu_name'),
+			'message'=>Input::get('cu_message'),
+			'email'=>Input::get('cu_email'),
 			];
 		$feedback = Feedback::create($data);
 		$feedback->save();
 		Mail::queue('emails.feedback', $data, function($message){
-			$message ->to(Input::get('email'))->subject('Thank you for contacting us');
+			$message ->to(Input::get('cu_email'))->subject('Thank you for contacting us');
 		});
 		return Redirect::back()->with('status', 'Feedback was successfully sent.');
 	}

@@ -16,11 +16,13 @@ class Users extends Migration {
 		{
 			$table->increments('id');
 			$table->string('user_type');
-			$table->string('name');
+			$table->string('firstname');
+			$table->string('lastname');
 			$table->string('email')->unique();
 			$table->string('ip_address');
 			$table->string('country')->nullable();
-			$table->string('phone_no');
+			$table->string('company')->nullable();
+			$table->string('phone');
 			$table->string('password');
 			$table->string('confirmed')->default(0);
 			$table->string('confirmation_code')->nullable();

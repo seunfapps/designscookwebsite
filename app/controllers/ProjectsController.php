@@ -36,7 +36,7 @@ class ProjectsController extends \BaseController {
 			$uploaded_file = '';
 			if(Session::has('project_details')){
 				$project_details = Session::pull('project_details');
-				$uploaded_file = $Session::pull('uploaded_file');
+				$uploaded_file = Session::pull('uploaded_file');
 				$project->title = $project_details ['title'];
 				$project->description = $project_details ['description'];
 				
@@ -110,6 +110,16 @@ class ProjectsController extends \BaseController {
 		}
 	}
 
+	public function proj_details($id){
+		if(Auth::check()){
+			$project = CustomerProject::find($id);
+			$user = Auth::user();
+			if($user->userable_type == 'Designer'){
+				return View::make('users/designer/cust_project_details',['project'=>$project]);
+			}
+		}
+		
+	}
 
 	/**
 	 * Show the form for editing the specified resource.

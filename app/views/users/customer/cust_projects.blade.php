@@ -4,7 +4,7 @@
 		<!-- <div class=""> -->
 			<div class="panel-block">
 				<div class="article-header">
-					<h3><a href="#" class='project_details' id='{{$project->id}}'>{{$project->title}}</a>
+					<h3><a href="#">{{$project->title}}</a>
 					@if($project->status == 'open')
 						<i class="fa fa-unlock right"></i>
 					@else
@@ -13,9 +13,7 @@
 					</h3>
 					<h6><i>{{$project->category_name}}</i></h6>
 					<div class="theicoon">
-						<a href="#"><i class="fa fa-user"></i><span>{{$project->customer->user->firstname}}<i>Author of the Project</i></span></a>
-						<a href="#"><i class="fa fa-users"></i><span>{{$project->designers->count()}}
-						Entries<i>Designers Interested</i></span></a>
+						<a href="#"><i class="fa fa-users"></i><span>{{$project->designers->count()}} Entries<i>Designers Interested</i></span></a>
 						<a href="#"><i class="fa fa-calendar-o"></i><span>{{$project->created_at}}<i>Date when project was submitted</i></span></a>
 
 
@@ -23,11 +21,7 @@
 				</div>
 			<p >
 				{{substr( $project->description,0,70)}} ...
-				@if(Auth::user()->userable->projects->contains($project->id))
-				<a href="#" id = {{$project->id}}  class ='s-button right fol' style='margin-right:20px;'>Following</a>
-				@else
-					<a href="#" id = {{$project->id}}  class ='s-button right fol' style='margin-right:20px;'>Follow</a>
-				@endif
+				
 			</p>
 			
 			</div>
@@ -38,9 +32,6 @@
 @endif
 <script>
 	$(function(){
-		$(".project_details").on('click',function(e){
-			projectdetails(e);
-		});
 		$(".fol").on('click',function(e){
             e.preventDefault();
             $.ajaxSetup({
@@ -49,7 +40,7 @@
             ajaxLoader(e,-80,10);
             $.ajax({
                 type: "GET",
-                url : window.location.origin+ '/designer/project/changestatus/'+ e.target.id,
+                url : window.location.origin+ '/customer/project/changestatus/'+ e.target.id,
                 data : null,
                 success : function(data){
                     console.log(data);

@@ -89,10 +89,33 @@ Route::filter('csrf', function()
 });
 
 Route::filter('isAdmin',function(){
-	if(Auth::check()){
-		if(Auth::user()->userable_type !== 'Admin'){
-			return Redirect::to('/');
+	
+	if(Auth::user()->userable_type !== 'Admin')
+	{
+		if (Request::ajax())
+		{
+			return Response::make('Unauthorized', 401);
 		}
+		return Redirect::guest('login');
 	}
-	return Redirect::to('login');
+});
+Route::filter('isDesigner',function(){
+	if(Auth::user()->userable_type !== 'Designer')
+	{
+		if (Request::ajax())
+		{
+			return Response::make('Unauthorized', 401);
+		}
+		return Redirect::guest('login');
+	}
+});
+Route::filter('isCustomer',function(){
+	if(Auth::user()->userable_type !== 'Customer')
+	{
+		if (Request::ajax())
+		{
+			return Response::make('Unauthorized', 401);
+		}
+		return Redirect::guest('login');
+	}
 });

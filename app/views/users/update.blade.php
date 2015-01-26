@@ -13,7 +13,8 @@
 	{{Form::text('fname', '', ['placeholder'=>'First Name', 'class'=>'input-text', 'required'=>'true'])}}{{Form::text('lname', '', ['placeholder'=>'Last Name', 'class'=>'input-text'])}}<br>
 	{{Form::email('email', '', ['placeholder'=>'Email', 'class'=>'input-text', 'required'=>'true'])}} {{Form::text('company', '', ['placeholder'=>'Company', 'class'=>'input-text'])}}<br>
 	{{Form::text('phone', '', ['placeholder'=>'Phone Number', 'class'=>'input-text'])}}{{Form::text('country', '', ['placeholder'=>'Country', 'class'=>'input-text'])}}<br>
-	{{Form::label('Password'}}{{HTML::link('/', '(Change Password))')}}<br>
-	{{Form::submit('Sign up', ['class'=>'input-text'])}}<br>
+	<!-- {{Form::label('Password'}}{{HTML::link('/', '(Change Password))')}}<br> -->
+	{{Form::submit('Update', ['class'=>'input-text'])}}<br>
+	<!-- {{Form::submit('Sign up', ['class'=>'input-text'])}}<br> -->
 {{ Form::close() }}
 @stop

@@ -9,8 +9,7 @@ class usersController extends \BaseController {
 				case 'Designer':
 					return Redirect::to('designer/dashboard/'.$page);
 				case 'Customer':
-					$projects = $user->userable->projects;
-					return View::make('users/customer/dashboard');
+					return Redirect::to('customer/dashboard/'.$page);
 				default:
 					# code...
 					break;
@@ -69,9 +68,7 @@ class usersController extends \BaseController {
 				//return View::make('users/designer/cust_projects',['projects'=> $projects,'projectstatus'=>$status]);
 					
 			}
-		}
-		
-		
+		}	
 	}
 
 	/**
@@ -96,9 +93,9 @@ class usersController extends \BaseController {
 		if($validation->passes())
 		{
 			$user = new User;
-			$user->name = Input::get('fname');
+			$user->firstname = Input::get('firstname');
 			$user->email = Input::get('email');
-			$user->phone_no = Input::get('phone');
+			$user->phone = Input::get('phone');
 			$user->password = Hash::make( Input::get('password') );
 
 			$newcode = $this->generateConfirmationCode();
@@ -212,8 +209,8 @@ class usersController extends \BaseController {
 		
 	}
 
-	public function login()
-	{			$resetCode =true;
+	public function login()	{		
+		$resetCode =true;
 				$email  = Input::get('email');
 		$passwd = Input::get('passwd');
 		$rememberme = Input::get('rememberme');
@@ -259,9 +256,45 @@ class usersController extends \BaseController {
 	}
 	
 	
-	public function forgotPassword(){
-		
+	public function changepassword(){
+		if(Auth::check()){
+			 $user = Auth::user();
+
+			$rules = array(
+		        'old_password' => 'required',
+		        'new_password' => 'required|alphaNum|between:6,16|confirmed'
+		    );
+		    $messages  = array('alphaNum' 	=> 'The :attribute must be alphanumeric',
+		    	'between'=>'The length of :attribute should be at least 6 and at most 16',
+        		'required'  =>  ':attribute is required' );
+		    
+			$validation = Validator::make(Input::all(), $rules, $messages);
+			if($validation->passes())
+			{
+				$user = Auth::user();
+				$old_password = Input::get('old_password');
+				$new_password= Input::get('new_password');
+				if(Auth::validate(['email'=>$user->email,'password'=>$old_password])){
+					$user->password = Hash::make( $new_password );
+					$user->save();	
+					// if(Request::ajax()){
+					return View::make('users/changepassword')->withErrors('Password was successfully updated.');
+					// }else{
+					// 	return Redirect::back()->with('status','Password was successfully updated.');
+					// }
+				}
+
+				// if(Request::ajax()){
+				return View::make('users/changepassword')->withErrors('Incorrect/Invalid password.');
+					// }else{
+					// 	return Redirect::back()->withErrors();	
+				// }
+			}else{
+						//return View::make('users/changepassword')->withErrors('Incorrect/Invalid password. Password should be at least 6 characters long and most 16 characters long.');
+				return View::make('users/changepassword')->withErrors($validation);
+
+
+			}
+		}
 	}
-
-
 }
