@@ -9,15 +9,13 @@
     <div class="inner-wrapper">
     <div class="block-title"><h2>Project Brief</h2></div>
         
-        <div class="comment-form">
-                           
+        <div class="comment-form">                           
             {{Form::model($project, array('action'=>'project.brief', 'files'=>true))}}
             <p class="form-info" style="font-size:24px;">{{$name}} Design Price : {{$price}}</p>
             <!--<p class="form-info">Tell us about the work you want done</p>-->
             <p class="form-name">
             <label for="">Title<span class="required">*</span></label>
             {{Form::text('title', Input::old('email'), ['placeholder'=>'Project Title', 'class'=>'input-text', 'required'=>'true'])}}
-            
             </p>
             <p class="form-comment">
             <label for="">Description<span class="required">*</span></label>

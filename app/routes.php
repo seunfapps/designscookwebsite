@@ -15,7 +15,7 @@
 Route::get('/', 'welcomeController@index');
 Route::post('contactus', 'welcomeController@contactus');
 Route::get('login', 'usersController@auth');
-Route::post('login', array('before'=>'guest|csrf', 'uses' => 'usersController@login', 'as'  => 'users.login'));
+Route::post('login', array('before'=>'csrf', 'uses' => 'usersController@login', 'as'  => 'users.login'));
 Route::get('logout', function(){
   Auth::logout(); //logout the current user
   Session::flush(); //delete the session
@@ -25,10 +25,9 @@ Route::get('logout', function(){
 Route::get('register', 'usersController@register');
 Route::post('register',  array('uses' => 'usersController@store', 'as'  => 'users.register'));
 Route::post('subscribe', 'welcomeController@subscribe');
-Route::get('designer/dashboard{page?}',['before'=>'auth', 'uses'=>'DesignersController@dashboard'] );
-Route::get('user/dashboard{page?}',['before'=>'auth', 'uses'=>'usersController@dashboard'] );
-Route::get('designer/projects/{category}/{status?}','DesignersController@cust_projects');
-Route::get('designer/project/changestatus/{id}/','ProjectsController@changestatus');
+
+
+
 Route::get('register/verify/{token}', 'usersController@confirm');
 Route::get('register/code/{id}', 'usersController@resetConfirmationCode');
 Route::get('password/remind/', array('uses' => 'RemindersController@getRemind', 'as'  => 'password.remind'));
@@ -43,7 +42,41 @@ Route::get('business_packages', function(){
 Route::get('project/brief/{id}', array('uses' => 'ProjectsController@brief', 'as'  => 'project.brief'));
 Route::post('project/brief', array('uses' => 'ProjectsController@updatebrief', 'as'  => 'project.brief'));
 Route::get('project/details', array('uses' => 'ProjectsController@details', 'as'  => 'project.details'));
+Route::get('project/details/{id}', array('uses' => 'ProjectsController@proj_details', 'as'  => 'project.details'));
 Route::group(['before'=>'auth'], function(){
+	Route::get('user/profile',function(){
+			$user = Auth::user();
+		if(Auth::user()->userable_type == 'Designer'){
+			return View::make('users/designer/updateprofile',['user'=>$user]);
+		}elseif(Auth::user()->userable_type == 'Customer'){
+			return View::make('users/customer/updateprofile',['user'=>$user]);
+		}
+	});	
+	Route::get('user/projects',function(){
+		if(Auth::user()->userable_type == 'Designer'){
+			return View::make('designer/projects/{category}/{status?}');
+		}elseif(Auth::user()->userable_type == 'Customer'){
+			return View::make('users/customer/updateprofile');
+		}
+	});	
+	Route::get('user/dashboard/{page?}',['uses'=>'usersController@dashboard'] );
+
+	Route::post('designer/updateprofile',['before'=>'isDesigner', 'uses'=>'DesignersController@updateprofile'] );
+	Route::get('designer/dashboard/{page?}',['before'=>'isDesigner','uses'=>'DesignersController@dashboard'] );
+	Route::get('designer/projects/{category}/{status?}',['before'=>'isDesigner','uses'=>'DesignersController@cust_projects']);
+	Route::get('designer/project/changestatus/{id}/',['before'=>'isDesigner','uses'=>'ProjectsController@changestatus']);
+
+
+	Route::post('customer/updateprofile',['before'=>'isCustomer', 'uses'=>'DesignersController@updateprofile'] );
+	Route::get('customer/dashboard/{page?}',['before'=>'isCustomer','uses'=>'customersController@dashboard'] );
+	Route::get('customer/projects/{category}/{status?}',['before'=>'isCustomer','uses'=>'customersController@cust_projects']);
+	Route::get('customer/project/changestatus/{id}/',['before'=>'isCustomer','uses'=>'ProjectsController@changestatus']);
+
+	Route::get('user/changepassword',function(){
+		return View::make('users/changepassword');
+	});	
+	Route::post('user/updatepassword',['uses'=>'usersController@changepassword'] );
+
 	Route::get('project/payment', array('uses' => 'ProjectsController@payment'));     
  Route::post('project/payment', array('uses' => 'ProjectsController@payment'));      
 });

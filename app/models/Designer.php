@@ -19,6 +19,6 @@ class Designer extends Eloquent {
 	}
 
     public function projects(){
-        return $this->belongsToMany('CustomerProject');
+        return $this->belongsToMany('Customerproject')->withTimestamps();
     }
 }

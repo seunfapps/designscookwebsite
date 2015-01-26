@@ -5,9 +5,9 @@
 @stop
 @section('content')
 
-		<div class="split dat-scrollnimate" data-animation="bounceIn">
-    
-		<div class="size4" style="margin-left: 33%;">
+	<div class="split dat-scrollnimate" data-animation="bounceIn">
+
+    	<div class="size4" style="margin-left: 33%;">
         	<div class="block-title"><h2>Forgot Password</h2></div>
             	<div align="center">
             {{ Form::open(['action'=>'usersController@create', 'class'=>'login']) }}	
@@ -22,11 +22,11 @@
            	 {{Form::email('email', '', ['placeholder'=>'Email', 'class'=>'input-text', 'required'=>'true', 'style'=>'width: 100%'])}}
             </div>
             
-                <input type="submit" name="submit" value="Submit" class='button'>
+            <input type="submit" name="submit" value="Submit" class='button'>
               
             {{ Form::close() }}
             </div>
-           </div>
-        </div>
- 
+       </div>
+    </div>
+
 @stop

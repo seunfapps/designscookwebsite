@@ -12,13 +12,13 @@ class CreateCustomerProjectDesignerTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('customer_project_designer', function(Blueprint $table)
+		Schema::create('customerproject_designer', function(Blueprint $table)
 		{
 			$table->increments('id');
 			$table->integer('designer_id')->unsigned()->index();
 			$table->foreign('designer_id')->references('id')->on('designers')->onDelete('cascade');
-			$table->integer('customer_project_id')->unsigned()->index();
-			$table->foreign('customer_project_id')->references('id')->on('projects')->onDelete('cascade');
+			$table->integer('customerproject_id')->unsigned()->index();
+			$table->foreign('customerproject_id')->references('id')->on('customerprojects')->onDelete('cascade');
 			$table->timestamps();
 		});
 	}
@@ -30,7 +30,7 @@ class CreateCustomerProjectDesignerTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('customer_project_designer');
+		Schema::drop('customerproject_designer');
 	}
 
 }

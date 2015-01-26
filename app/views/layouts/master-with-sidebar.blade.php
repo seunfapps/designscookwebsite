@@ -17,7 +17,6 @@
 	 {{ HTML::style('css/responsive.css') }}
     
     
-    
      <style type="text/css">
 	.mybutton{
 border: 1px solid rgba(175, 175, 175, 0.75);
@@ -81,7 +80,7 @@ background-image: -moz-linear-gradient(center bottom , rgba(140, 140, 140, 0.29)
 	                     @else
 	                     	<li><a href="" class='mybutton'><span>My Account</span></a>
 							<ul class="sub-menu">
-								<li>{{HTML::link('user/dashboard','My Profile')}}</li>
+								<li>{{HTML::link('user/dashboard/profile','My Profile',['class'=>'profile'])}}</li>
 								<li>{{HTML::link('logout','Log out')}}</li>
 							</ul>
 						</li>
@@ -166,14 +165,14 @@ background-image: -moz-linear-gradient(center bottom , rgba(140, 140, 140, 0.29)
 						<div class="contact-footer">
 							<div>
 							<p class="input-text">
-								{{Form::text('name','', ['placeholder'=>'Name', 'class'=>'input-text', 'required'=>'true'])}}
+								{{Form::text('cu_name','', ['placeholder'=>'Name', 'class'=>'input-text', 'required'=>'true'])}}
 							</p>
 							<p class="form-email">
-								{{Form::email('email','', ['placeholder'=>'Email','required'=>'true'])}}
+								{{Form::email('cu_email','', ['placeholder'=>'Email','required'=>'true'])}}
 							</p>
 							
 							<p class="form-comment">
-								{{Form::textarea('message','', ['placeholder'=>'Your message here', 'required'=>'true'])}}
+								{{Form::textarea('cu_message','', ['placeholder'=>'Your message here', 'required'=>'true'])}}
 							</p>
 							<p class="form-submit">
 								{{Form::submit('Submit')}}
@@ -222,7 +221,7 @@ background-image: -moz-linear-gradient(center bottom , rgba(140, 140, 140, 0.29)
 				<div class="footer-copyright">
 					
 					<p>
-						&copy; <script>var now = new Date(); document.write(now.getFullYear())</script> 
+						&copy; <script type="text/javascript">var now = new Date(); document.write(now.getFullYear());</script> 
 						<a href="">designscook.com.ng</a> . All rights reserved
 					</p>
 
@@ -256,7 +255,6 @@ background-image: -moz-linear-gradient(center bottom , rgba(140, 140, 140, 0.29)
 
 	
 
- 	{{ HTML::script('jscript/jquery-1.10.2.min.js')}}
 	{{ HTML::script('jscript/iscroll.js')}}
 	{{ HTML::script('jscript/modernizr.custom.50878.js')}}
 	{{ HTML::script('jscript/jquery-1.10.2.min.js')}}
@@ -264,12 +262,15 @@ background-image: -moz-linear-gradient(center bottom , rgba(140, 140, 140, 0.29)
 	{{ HTML::script('jscript/jquery.knob.js')}}
 	{{ HTML::script('jscript/theme-script.js')}}
 	{{ HTML::script('jscript/dat-menu.js')}}
+	{{ HTML::script('jscript/site.js')}}
 	@if (Session::has('status'))
 			
-		<script>
+		<script type="text/javascript">
 			alert('<?php echo Session::get('status') ?>');
 		</script>
 		{{Session::forget('status')}}
 	@endif
+
+
 </body>
 </html>
