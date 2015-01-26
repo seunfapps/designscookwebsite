@@ -27,14 +27,15 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	* Ardent Validation Rules
 	*/
 	public static $rules = [
-		'email'		=> 'unique:users,email',
-		
+		'email'		=> 'required|unique:users,email',
+		'password' => 'required|alphaNum|between:6,16'
 
 		
 	];
 
 	public static $messages = [
-		'unique' 	=> 'The :attribute already exists, try another'
+		'unique' 	=> 'The :attribute already exists, try another',
+        'required'  =>  'The :attribute is required'
 	];
 
 	public $autoPurgeRedundantAttributes = true;

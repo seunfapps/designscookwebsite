@@ -2,7 +2,7 @@
 
 
 
-class CustomerProject extends \Eloquent {
+class Customerproject extends \Eloquent {
 
 	
 
@@ -11,7 +11,7 @@ class CustomerProject extends \Eloquent {
 	 *
 	 * @var string
 	 */
-	protected $table = 'projects';
+	protected $table = 'customerprojects';
 
 	protected $fillable  = array('title','description','file' );	
 
@@ -23,6 +23,6 @@ class CustomerProject extends \Eloquent {
 		return $this->belongsTo('SubCategory');
 	}
 	 public function designers(){
-        return $this->belongsToMany('Designers');
+        return $this->belongsToMany('Designer');
     }
 }
