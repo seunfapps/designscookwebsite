@@ -6131,3 +6131,8 @@ table.table-customer-projects
 	text-align: left;
 	/*margin-left: 5px;*/
 }
+.center{
+	display: flex;
+	justify-content: center;
+	align-content: center;
+}

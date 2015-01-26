@@ -87,7 +87,7 @@ background-image: -moz-linear-gradient(center bottom , rgba(140, 140, 140, 0.29)
 						</li>
                         	
                         	 @if(Auth::user()->userable_type == 'Designer')
-	                        	<li>{{HTML::link('user/dashboard','Browse Projects',['class'=>'mybutton', 'style'=>'background: none repeat scroll 0% 0% #A6BE29; color:#fff'])}}
+	                        	<li>{{HTML::link('user/dashboard/profile','Browse Projects',['class'=>'mybutton', 'style'=>'background: none repeat scroll 0% 0% #A6BE29; color:#fff'])}}
 	                        @elseif(Auth::user()->userable_type == 'Customer')
 								<li>{{HTML::link('project/post','Post A Project',['class'=>'mybutton', 'style'=>'background: none repeat scroll 0% 0% #A6BE29; color:#fff'])}}
 							@endif
@@ -164,14 +164,14 @@ background-image: -moz-linear-gradient(center bottom , rgba(140, 140, 140, 0.29)
 						<div class="contact-footer">
 							<div>
 							<p class="input-text">
-								{{Form::text('name','', ['placeholder'=>'Name', 'class'=>'input-text', 'required'=>'true'])}}
+								{{Form::text('cu_name','', ['placeholder'=>'Name', 'class'=>'input-text', 'required'=>'true'])}}
 							</p>
 							<p class="form-email">
-								{{Form::email('email','', ['placeholder'=>'Email','required'=>'true'])}}
+								{{Form::email('cu_email','', ['placeholder'=>'Email','required'=>'true'])}}
 							</p>
 							
 							<p class="form-comment">
-								{{Form::textarea('message','', ['placeholder'=>'Your message here', 'required'=>'true'])}}
+								{{Form::textarea('cu_message','', ['placeholder'=>'Your message here', 'required'=>'true'])}}
 							</p>
 							<p class="form-submit">
 								{{Form::submit('Submit')}}
@@ -220,7 +220,7 @@ background-image: -moz-linear-gradient(center bottom , rgba(140, 140, 140, 0.29)
 				<div class="footer-copyright">
 					
 					<p>
-						&copy; <script>var now = new Date(); document.write(now.getFullYear())</script> 
+						&copy; <script type="text/javascript">var now = new Date(); document.write(now.getFullYear())</script> 
 						<a href="">designscook.com.ng</a> . All rights reserved
 					</p>
 
@@ -254,7 +254,6 @@ background-image: -moz-linear-gradient(center bottom , rgba(140, 140, 140, 0.29)
 
 	
 
- 	{{ HTML::script('jscript/jquery-1.10.2.min.js')}}
 	{{ HTML::script('jscript/iscroll.js')}}
 	{{ HTML::script('jscript/modernizr.custom.50878.js')}}
 	{{ HTML::script('jscript/jquery-1.10.2.min.js')}}
@@ -264,7 +263,7 @@ background-image: -moz-linear-gradient(center bottom , rgba(140, 140, 140, 0.29)
 	{{ HTML::script('jscript/dat-menu.js')}}
 	@if (Session::has('status'))
 			
-		<script>
+		<script type="text/javascript">
 			alert('<?php echo Session::get('status') ?>');
 		</script>
 		{{Session::forget('status')}}
