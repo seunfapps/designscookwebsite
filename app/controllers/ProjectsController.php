@@ -7,7 +7,6 @@ class ProjectsController extends \BaseController {
 	 *
 	 * @return Response
 	 */
-	private $file;
 	public function index()
 	{
 		//
@@ -23,29 +22,28 @@ class ProjectsController extends \BaseController {
 	{
 		//
 		Session::forget('uploaded_file');
-		Session::forget('project_details');
+		Session::forget('projectdetails');
 		$categories = Category::all();		
-		return View::make('project/pick_category',array('categories' => $categories));
+		return View::make('project/post/pick_category',array('categories' => $categories));
 	}
 
 	
 	public function brief($id)
 	{
 		//
-			$project = new CustomerProject;
-			$uploaded_file = '';
-			if(Session::has('project_details')){
-				$project_details = Session::pull('project_details');
-				$uploaded_file = Session::pull('uploaded_file');
-				$project->title = $project_details ['title'];
-				$project->description = $project_details ['description'];
-				
-			}
 			$subcategory = SubCategory::find($id);
-			Session::put('id',$id);						
-			return View::make('project/project_brief',array('project'=> $project,'uploaded_file'=>$uploaded_file, 'name' => $subcategory->name, 'price' => $subcategory->price,'id'=>$id));
+
+			$project = new CustomerProject;
+			$project->subcategory_id = $id;
+			$project->design_name = $subcategory->name;
+			$project->cost = $subcategory->price;
+			if(Session::has('projectdetails')){
+				$project = Session::get('projectdetails');
+				echo $project;
+			}
+			return View::make('project/post/project_brief',array('project'=> $project));
 	}
-/**
+	/**
 	 * Update the specified resource in storage.
 	 *
 	 * @param  int  $id
@@ -56,29 +54,81 @@ class ProjectsController extends \BaseController {
 		//
 		$destinationPath = '';
 		$filename = '';
-		if(Input::hasFile('upload')){
-			$this->file = Input::file('upload');
-			$destinationPath = public_path().'/uploads/';
-			$filename = str_random(6).'_'.$this->file->getClientOriginalName();
-			// $this->file->move($destinationPath,$filename);
-			Session::put('uploaded_file', $this->file->getClientOriginalName());
+		//echo ini_get('post_max_size');
+		$file_max = ini_get('upload_max_filesize');
+        $file_max_str_leng = strlen($file_max);
+        $file_max_meassure_unit = substr($file_max,$file_max_str_leng - 1,1);
+        $file_max_meassure_unit = $file_max_meassure_unit == 'K' ? 'kb' : ($file_max_meassure_unit == 'M' ? 'mb' : ($file_max_meassure_unit == 'G' ? 'gb' : 'unidades'));
+        $file_max = substr($file_max,0,$file_max_str_leng - 1);
+        $file_max = intval($file_max);
+      	 // echo $file_max;
+        // var_dump(Input::file('file'));
+         //handle second case
+        if((empty($_FILES) && empty($_POST) && isset($_SERVER['REQUEST_METHOD']) && strtolower($_SERVER['REQUEST_METHOD']) == 'post'))
+        { //catch file overload error...
+             //grab the size limits...
+            return Redirect::back()->withErrors(sprintf('The file size should be lower than %s%s.',$file_max,$file_max_meassure_unit))->withInput();
+        }
+		$project = new CustomerProject;
+		if(Session::has('projectdetails')){
+			$project = Session::get('projectdetails');
 		}
+
+       	try {
+
+			if(Input::hasFile('file')){
+				$file = Input::file('file');
+				$file_max = 15728640;
+				$file_max_meassure_unit = "KB";
+				if( $file->getClientSize() > $file_max){
+					return Redirect::back()->withErrors(sprintf('The file size should be lower than %s%s.',$file_max,$file_max_meassure_unit))->withInput();
+				}
+				$destinationPath = public_path().'\\uploads\\';
+				$filename = str_random(6).'_'.$file->getClientOriginalName();
+				$file->move($destinationPath,$filename);
+				$project->file= $destinationPath.','.$filename;
+				$project->filename= $file->getClientOriginalName();
+
+			}else{
+
+			}
+			
+		} catch (Exception $e) {
+			return Redirect::back()->withErrors(sprintf('The file size should be lower than %s%s.',$file_max,$file_max_meassure_unit))->withInput();
+		}
+		
 		$subcategory = SubCategory::find(Session::get('id'));
 
-		$project_details = array('title' => Input::get('title'),
-			'description' => Input::get('description'),
-			'file'=>$destinationPath.':'.$filename,
-			'subcategory_id' => Session::get('id'),
-			'design_name'=> $subcategory->name,
-			'category'=> $subcategory->category->name,
-			'cost'=>$subcategory->price, );
+		$project->title = Input::get('title');
+		$project->description = Input::get('description');
+		$project->subcategory_id = Session::get('id');
+		$project->design_name = $subcategory->name;
+		$project->category = $subcategory->category->name;
+		$project->cost = $subcategory->price;
+			
+		echo $project;
 		if(Auth::check()){
 			$user = Auth::user();
 			
 		}
-		Session::put('project_details',$project_details);
-		Session::put('intended', 'project/details');
-		return Redirect::to('project/details');
+		Session::put('projectdetails',$project);
+		Session::put('intended', 'project/post/confirm_details');
+		return Redirect::to('project/post/confirm_details')->with(['project'=>$project]);
+	}
+
+	
+	public function deletefile($filename){
+		$destinationPath = public_path().'\\uploads\\';
+		File::delete($destinationPath.$filename);
+
+		if(!File::exists($destinationPath.$filename)){
+			$project = Session::get('projectdetails');
+			$project->file = null;
+			$project->filename = null;
+			return json_encode('File successfully deleted.');
+		}
+		return json_encode('Error in deleting file.');
+
 	}
 	/**
 	 * Store a newly created resource in storage.
@@ -89,7 +139,14 @@ class ProjectsController extends \BaseController {
 	{
 		//integrate to payment platform
 		
-		echo "Please pay";
+		// echo "Please pay";
+
+		if(true){
+
+			
+			$project = Session::get('project');
+
+		}
 
 		
 	}
@@ -99,14 +156,15 @@ class ProjectsController extends \BaseController {
 	 *
 	 * @return Response
 	 */
-	public function details()
+	public function confirm_details()
 	{
 		//
-		if(Session::has('project_details')){
-			$project_details = Session::get('project_details');
-			return View::make('project/project_details',['project_details'=>$project_details] );
+		echo Session::get('projectdetails');
+		if(Session::has('projectdetails')){
+			$project = Session::get('projectdetails');
+			return View::make('project/post/confirm_details',['project'=>$project] );
 		}else{
-			return Redirect::to(project/post);
+			return Redirect::to('project/post');
 		}
 	}
 
@@ -114,9 +172,10 @@ class ProjectsController extends \BaseController {
 		if(Auth::check()){
 			$project = CustomerProject::find($id);
 			$user = Auth::user();
-			if($user->userable_type == 'Designer'){
-				return View::make('users/designer/cust_project_details',['project'=>$project]);
-			}
+
+			// if($user->userable_type == 'Designer'){
+				return View::make('project/details',['project'=>$project]);
+			// }
 		}
 		
 	}
@@ -150,11 +209,12 @@ class ProjectsController extends \BaseController {
 	public function changestatus($id){
 		if(Auth::check()){
 			$user = Auth::user();
-			if($user->userable->projects->contains($id)){
-				$user->userable->projects()->detach($id);
+			if($user->userable->customerprojects->contains($id)){
+				$user->userable->customerprojects()->detach($id);
 			}else{
-				$user->userable->projects()->attach($id);
+				$user->userable->customerprojects()->attach($id);
 			}
 		}
+		return Redirect::to('project/details/'.$id);
 	}
 }

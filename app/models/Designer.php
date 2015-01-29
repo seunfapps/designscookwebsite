@@ -18,7 +18,7 @@ class Designer extends Eloquent {
 		return $this->morphOne('User', 'userable');
 	}
 
-    public function projects(){
+    public function customerprojects(){
         return $this->belongsToMany('Customerproject')->withTimestamps();
     }
 }

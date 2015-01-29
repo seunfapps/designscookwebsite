@@ -13,7 +13,7 @@ return array(
 	|
 	*/
 
-	'debug' => true,
+	'debug' => false,
 
 	/*
 	|--------------------------------------------------------------------------
@@ -122,7 +122,7 @@ return array(
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
 		    // other service providers here
-		//'JasonLewis\ResourceWatcher\Integration\LaravelServiceProvider'
+		// 'JasonLewis\ResourceWatcher\Integration\LaravelServiceProvider'
 	),
 
 

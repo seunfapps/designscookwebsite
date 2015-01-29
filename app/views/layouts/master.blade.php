@@ -3,7 +3,7 @@
 <head>
 	<!-- Head Meta Data -->
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>Designscook | gettting your designs done right</title>
+	<title>DesignsCook | gettting your designs done right</title>
 	<link rel="shortcut icon" type="image/x-icon" href="{{ asset('images/favicon.ico') }}">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -235,7 +235,8 @@ background-image: -moz-linear-gradient(center bottom , rgba(140, 140, 140, 0.29)
 	<!-- END #wrapper -->
 	</div>
 
-
+        <div id="waitImage" style="display:none;"><img src="{{ asset('images/ajax-loader.gif') }}" alt="Please wait..." title="Please wait..."  />Loading</div>
+	
 	<!-- Theme Scripts -->
 	<script>
 		// Animation time of revieling and hiding menu (defaut = 400)
@@ -258,6 +259,7 @@ background-image: -moz-linear-gradient(center bottom , rgba(140, 140, 140, 0.29)
 	{{ HTML::script('jscript/modernizr.custom.50878.js')}}
 	{{ HTML::script('jscript/jquery-1.10.2.min.js')}}
 	{{ HTML::script('jscript/flowtype.js')}}
+	{{ HTML::script('jscript/site.js')}}
 	{{ HTML::script('jscript/jquery.knob.js')}}
 	{{ HTML::script('jscript/theme-script.js')}}
 	{{ HTML::script('jscript/dat-menu.js')}}

@@ -24,7 +24,9 @@
         
          
    $("#updateprofile").submit(function(e){
-         updateprofile(e);
+   	 	e.preventDefault();
+         e.stopPropagation();
+         updateprofile();
     });
     });
 

@@ -119,3 +119,9 @@ Route::filter('isCustomer',function(){
 		return Redirect::guest('login');
 	}
 });
+
+Route::filter('ajax',function(){
+	if(!Request::ajax()){
+		return Redirect::to('/');
+	}
+});

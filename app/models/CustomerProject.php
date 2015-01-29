@@ -13,7 +13,7 @@ class Customerproject extends \Eloquent {
 	 */
 	protected $table = 'customerprojects';
 
-	protected $fillable  = array('title','description','file' );	
+	// protected $fillable  = array('title','description','file' );	
 
 	public function customer(){
 		return $this->belongsTo('Customer');

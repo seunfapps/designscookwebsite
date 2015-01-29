@@ -31,7 +31,6 @@
     	<!-- BEGIN .content-block -->
 
     <div class="content-block" >  
-        <div id="waitImageSidebar" style="display:none;"><img src="{{ asset('images/ajax-loader.gif') }}" alt="Please wait..." title="Please wait..."  />Loading</div>
         <div id="projects" >
             <div class="margin-bottom-10px" >
                 <span >Category</span> {{Form::select('category',$categories,'',['id'=>'category', 'onChange'=>'reload(this);'])}}
@@ -53,9 +52,8 @@
     var currenttab = '{{$currenttab}}';    
     var elem = $('.content-block>div');
     var status = '';
-    function updateprofile(e){
-        e.preventDefault();
-         e.stopPropagation();
+    function updateprofile(){
+       
          var inputs = $("#updateprofile").serializeArray();
            $.ajax({
                 type: "POST",
@@ -70,17 +68,17 @@
          return false;
     }
 
-    function projectdetails(e){
-        e.preventDefault();
+    function projectdetails(id){
             $.ajax({
                 type: "GET",
-                url : window.location.origin+ '/project/details/'+ e.target.id,
+                url : window.location.origin+ '/project/details/'+ id,
                 data : null,
                 success : function(data){
                     console.log(data);
                     hideContent();
                     $("#projectdetails").html(data);
                     $("#projectdetails").show();
+                    window.history.pushState(null,"", window.location.origin + "/designer/dashboard/projectdetails");
                 }
             });
             return false;
@@ -139,7 +137,9 @@
     }
 
     function loadtab(tabname){
-        $($('.'+tabname)[0]).trigger('click');
+        if(tabname){
+            $($('.'+tabname)[0]).trigger('click');
+        }
     }
     function reload(){
         hideContent();
