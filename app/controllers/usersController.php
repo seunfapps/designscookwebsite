@@ -211,7 +211,7 @@ class usersController extends \BaseController {
 
 	public function login()	{		
 		$resetCode =true;
-				$email  = Input::get('email');
+		$email  = Input::get('email');
 		$passwd = Input::get('passwd');
 		$rememberme = Input::get('rememberme');
 		Input::flashExcept('passwd');
@@ -234,7 +234,7 @@ class usersController extends \BaseController {
 			$message = "Your email or password is wrong";
 			return Redirect::back()->withInput(Input::except('passwd'))->withErrors($message);	
 		}				
-	}
+  	}
 
 	
 	public function resetConfirmationCode($id){
