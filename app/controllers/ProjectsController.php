@@ -41,6 +41,7 @@ class ProjectsController extends \BaseController {
 				$project = Session::get('projectdetails');
 				echo $project;
 			}
+			Session::put('id',$id);
 			return View::make('project/post/project_brief',array('project'=> $project));
 	}
 	/**
@@ -98,7 +99,7 @@ class ProjectsController extends \BaseController {
 		}
 		
 		$subcategory = SubCategory::find(Session::get('id'));
-
+		// echo $subcategory;
 		$project->title = Input::get('title');
 		$project->description = Input::get('description');
 		$project->subcategory_id = Session::get('id');
