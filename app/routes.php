@@ -83,4 +83,3 @@ Route::group(['before'=>'auth'], function(){
 Route::get('category/create', array('before'=>'isAdmin','uses' => 'CategoriesController@create', 'as'  => 'category.create'));
 Route::post('category/create', array('uses' => 'CategoriesController@store', 'as'  => 'category.create'));
  
-Route::get('update','usersController@updateProfile');

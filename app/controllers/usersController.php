@@ -293,6 +293,7 @@ class usersController extends \BaseController {
 						//return View::make('users/changepassword')->withErrors('Incorrect/Invalid password. Password should be at least 6 characters long and most 16 characters long.');
 				return View::make('users/changepassword')->withErrors($validation);
 
+
 			}
 		}
 	}
